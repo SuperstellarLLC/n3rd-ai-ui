@@ -1,0 +1,61 @@
+:root {
+  /* typography */
+  --n3rd-font:
+    'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'SF Mono', 'Consolas', 'Courier New', monospace;
+  --n3rd-text-xs: 0.6875rem;
+  --n3rd-text-sm: 0.8125rem;
+  --n3rd-text-base: 0.875rem;
+  --n3rd-text-lg: 1rem;
+  --n3rd-text-xl: 1.25rem;
+  --n3rd-text-2xl: 1.5rem;
+  --n3rd-line-height: 1.6;
+
+  /* spacing */
+  --n3rd-space-1: 0.25rem;
+  --n3rd-space-2: 0.5rem;
+  --n3rd-space-3: 0.75rem;
+  --n3rd-space-4: 1rem;
+  --n3rd-space-6: 1.5rem;
+  --n3rd-space-8: 2rem;
+  --n3rd-space-12: 3rem;
+
+  /* surfaces */
+  --n3rd-bg-primary: #0a0a0a;
+  --n3rd-bg-secondary: #111111;
+  --n3rd-bg-tertiary: #1a1a1a;
+
+  /* text */
+  --n3rd-text-primary: #e0e0e0;
+  --n3rd-text-secondary: #888888;
+  --n3rd-text-tertiary: #555555;
+
+  /* borders */
+  --n3rd-border-default: #333333;
+  --n3rd-border-focus: #a855f7;
+  --n3rd-border-muted: #222222;
+
+  /* unicorn accent spectrum */
+  --n3rd-accent-violet: #7c3aed;
+  --n3rd-accent-purple: #a855f7;
+  --n3rd-accent-lavender: #c084fc;
+  --n3rd-accent-pink: #ec4899;
+  --n3rd-accent-rose: #f472b6;
+  --n3rd-accent-cyan: #06b6d4;
+  --n3rd-accent-aqua: #22d3ee;
+
+  /* semantic */
+  --n3rd-accent-primary: #a855f7;
+  --n3rd-accent-success: #22d3ee;
+  --n3rd-accent-warning: #f472b6;
+  --n3rd-accent-danger: #ec4899;
+  --n3rd-accent-info: #06b6d4;
+
+  /* gradients */
+  --n3rd-gradient: linear-gradient(90deg, #7c3aed, #a855f7, #ec4899);
+  --n3rd-gradient-full: linear-gradient(90deg, #7c3aed, #ec4899, #06b6d4);
+
+  /* animation durations */
+  --n3rd-cursor-blink: 530ms;
+  --n3rd-typewriter-speed: 50ms;
+  --n3rd-fade-duration: 200ms;
+}

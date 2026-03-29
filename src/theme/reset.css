@@ -1,0 +1,86 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--n3rd-font);
+  font-size: var(--n3rd-text-base);
+  line-height: var(--n3rd-line-height);
+  color: var(--n3rd-text-primary);
+  background-color: var(--n3rd-bg-primary);
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--n3rd-font);
+  font-weight: 700;
+}
+
+a {
+  color: var(--n3rd-accent-cyan);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: var(--n3rd-font);
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+
+input,
+textarea,
+select {
+  font-family: var(--n3rd-font);
+  font-size: var(--n3rd-text-base);
+  color: var(--n3rd-text-primary);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+code,
+pre {
+  font-family: var(--n3rd-font);
+}
+
+::selection {
+  background: var(--n3rd-accent-purple);
+  color: var(--n3rd-bg-primary);
+}
+
+:focus-visible {
+  outline: 1px solid var(--n3rd-border-focus);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

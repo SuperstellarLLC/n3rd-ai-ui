@@ -1,0 +1,75 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--n3rd-space-1);
+  font-family: var(--n3rd-font);
+  font-size: var(--n3rd-text-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition:
+    color 0.15s,
+    background-color 0.15s;
+  text-decoration: none;
+  border: none;
+  background: none;
+  padding: var(--n3rd-space-1) var(--n3rd-space-2);
+}
+
+.primary {
+  color: var(--n3rd-accent-primary);
+}
+
+.primary:hover {
+  background: var(--n3rd-accent-primary);
+  color: var(--n3rd-bg-primary);
+}
+
+.secondary {
+  color: var(--n3rd-text-secondary);
+}
+
+.secondary:hover {
+  color: var(--n3rd-text-primary);
+}
+
+.danger {
+  color: var(--n3rd-accent-danger);
+}
+
+.danger:hover {
+  background: var(--n3rd-accent-danger);
+  color: var(--n3rd-bg-primary);
+}
+
+.ghost {
+  color: var(--n3rd-text-secondary);
+  padding: var(--n3rd-space-1) 0;
+}
+
+.ghost:hover {
+  color: var(--n3rd-text-primary);
+}
+
+.disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.loading {
+  cursor: wait;
+}
+
+.spinner {
+  display: inline-block;
+  animation: n3rd-spin 0.8s steps(10) infinite;
+  margin-right: var(--n3rd-space-1);
+}
+
+@keyframes n3rd-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

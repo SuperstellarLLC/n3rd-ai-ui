@@ -1,0 +1,23 @@
+@import '../tokens.css';
+@import '../reset.css';
+
+:root {
+  --n3rd-accent-violet: #d97706;
+  --n3rd-accent-purple: #f59e0b;
+  --n3rd-accent-lavender: #fbbf24;
+  --n3rd-accent-pink: #ef4444;
+  --n3rd-accent-rose: #f87171;
+  --n3rd-accent-cyan: #f59e0b;
+  --n3rd-accent-aqua: #fbbf24;
+
+  --n3rd-accent-primary: #f59e0b;
+  --n3rd-accent-success: #fbbf24;
+  --n3rd-accent-warning: #f97316;
+  --n3rd-accent-danger: #ef4444;
+  --n3rd-accent-info: #f59e0b;
+
+  --n3rd-border-focus: #f59e0b;
+
+  --n3rd-gradient: linear-gradient(90deg, #d97706, #f59e0b, #fbbf24);
+  --n3rd-gradient-full: linear-gradient(90deg, #d97706, #f59e0b, #fbbf24);
+}

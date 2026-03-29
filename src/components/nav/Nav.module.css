@@ -1,0 +1,38 @@
+.nav {
+  display: flex;
+  align-items: center;
+  padding: var(--n3rd-space-3) var(--n3rd-space-4);
+  font-family: var(--n3rd-font);
+  font-size: var(--n3rd-text-sm);
+  border-bottom: 1px solid var(--n3rd-border-muted);
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  gap: var(--n3rd-space-2);
+  flex-wrap: wrap;
+}
+
+.item {
+  color: var(--n3rd-text-secondary);
+  text-decoration: none;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.item:hover {
+  color: var(--n3rd-text-primary);
+}
+
+.active {
+  color: var(--n3rd-accent-primary);
+}
+
+.active:hover {
+  color: var(--n3rd-accent-primary);
+}
+
+.indicator {
+  color: var(--n3rd-accent-primary);
+}

@@ -1,0 +1,26 @@
+node_modules/
+dist/
+.next/
+*.tsbuildinfo
+.DS_Store
+
+# env / secrets
+.env
+.env.*
+.npmrc
+*.pem
+*.key
+*.crt
+
+# test artifacts
+coverage/
+.nyc_output/
+
+# logs
+*.log
+
+# editor
+.idea/
+.vscode/
+*.swp
+*.swo
