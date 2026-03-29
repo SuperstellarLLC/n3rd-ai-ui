@@ -1,6 +1,6 @@
 {
   "name": "@n3rd-ai/ui",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Terminal-first UI framework for Next.js. ASCII everything. Zero images. Pure text.",
   "type": "module",
   "main": "./dist/index.js",

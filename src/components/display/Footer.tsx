@@ -34,17 +34,17 @@ export function Footer({
       </div>
 
       <div className="n3rd-footer-sunset" aria-hidden="true">
-        <div className="n3rd-footer-sun-line" style={{ width: '30%', background: '#7c3aed' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '45%', background: '#a855f7' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '20%', background: '#7c3aed' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '30%', background: '#a855f7' }} />
         <div className="n3rd-footer-sun-gap" />
-        <div className="n3rd-footer-sun-line" style={{ width: '55%', background: '#c084fc' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '62%', background: '#ec4899' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '37%', background: '#c084fc' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '42%', background: '#ec4899' }} />
         <div className="n3rd-footer-sun-gap" />
-        <div className="n3rd-footer-sun-line" style={{ width: '70%', background: '#f472b6' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '78%', background: '#fb7185' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '47%', background: '#f472b6' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '52%', background: '#fb7185' }} />
         <div className="n3rd-footer-sun-gap" style={{ height: '3px' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '85%', background: '#fda4af' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '92%', background: '#fecdd3' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '57%', background: '#fda4af' }} />
+        <div className="n3rd-footer-sun-line" style={{ width: '62%', background: '#fecdd3' }} />
       </div>
 
       <div className="n3rd-footer-horizon" aria-hidden="true">
