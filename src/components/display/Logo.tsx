@@ -29,7 +29,7 @@ export function Logo({ text, gradient = false, accent, className, style }: LogoP
 
   const containerStyle: CSSProperties = {
     fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-sm)',
+    fontSize: 'var(--n3rd-text-base)',
     fontWeight: 700,
     whiteSpace: 'pre',
     lineHeight: 1,
