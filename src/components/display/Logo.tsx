@@ -19,11 +19,24 @@ export interface LogoProps {
   text: string
   gradient?: boolean | string
   accent?: Accent
+  decorated?: boolean
   className?: string
   style?: CSSProperties
 }
 
-export function Logo({ text, gradient = false, accent, className, style }: LogoProps) {
+const STAR_ROWS = [
+  '  ·    ✦        ·            ·        ✦    ·  ',
+  '       ·    ·        ✦            ·           ',
+]
+
+export function Logo({
+  text,
+  gradient = false,
+  accent,
+  decorated = false,
+  className,
+  style,
+}: LogoProps) {
   const lines = renderAsciiLines(text)
   const gradientValue = typeof gradient === 'string' ? gradient : 'var(--n3rd-gradient)'
 
@@ -34,6 +47,8 @@ export function Logo({ text, gradient = false, accent, className, style }: LogoP
     whiteSpace: 'pre',
     lineHeight: 1,
     letterSpacing: '-0.05em',
+    textAlign: 'center',
+    padding: 'var(--n3rd-space-6) 0',
     color: accent ? `var(--n3rd-accent-${accent})` : 'var(--n3rd-text-primary)',
     ...style,
   }
@@ -47,13 +62,35 @@ export function Logo({ text, gradient = false, accent, className, style }: LogoP
       }
     : {}
 
+  const starStyle: CSSProperties = {
+    color: 'var(--n3rd-accent-lavender, #c084fc)',
+    opacity: 0.35,
+    letterSpacing: 'normal',
+    fontSize: 'var(--n3rd-text-sm)',
+    lineHeight: 1.8,
+  }
+
   return (
     <div className={className} style={containerStyle} aria-label={text} role="img">
+      {decorated &&
+        STAR_ROWS.map((row, i) => (
+          <div key={`star-top-${i}`} style={starStyle} aria-hidden="true">
+            {row}
+          </div>
+        ))}
       {lines.map((line, i) => (
         <div key={i} style={gradientStyle}>
           {line}
         </div>
       ))}
+      {decorated &&
+        STAR_ROWS.slice()
+          .reverse()
+          .map((row, i) => (
+            <div key={`star-bottom-${i}`} style={starStyle} aria-hidden="true">
+              {row}
+            </div>
+          ))}
     </div>
   )
 }
