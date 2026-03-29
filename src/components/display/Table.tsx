@@ -42,6 +42,7 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
             {columns.map((col) => (
               <th
                 key={col}
+                scope="col"
                 style={{
                   textAlign: 'left',
                   padding: 'var(--n3rd-space-2)',

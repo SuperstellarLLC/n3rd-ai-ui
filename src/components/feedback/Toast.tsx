@@ -76,7 +76,7 @@ export function ToastProvider({
     display: 'flex',
     flexDirection: 'column',
     gap: 'var(--n3rd-space-2)',
-    zIndex: 9998,
+    zIndex: 'var(--n3rd-z-toast, 9998)' as unknown as number,
     fontFamily: 'var(--n3rd-font)',
     fontSize: 'var(--n3rd-text-sm)',
   }

@@ -24,6 +24,8 @@ export function Typewriter({
   const [displayed, setDisplayed] = useState('')
   const [done, setDone] = useState(false)
   const hasRun = useRef(false)
+  const onCompleteRef = useRef(onComplete)
+  onCompleteRef.current = onComplete
 
   useEffect(() => {
     if (hasRun.current) return
@@ -39,7 +41,7 @@ export function Typewriter({
         } else {
           clearInterval(interval)
           setDone(true)
-          onComplete?.()
+          onCompleteRef.current?.()
         }
       }, speed)
     }, delay)
@@ -48,7 +50,7 @@ export function Typewriter({
       clearTimeout(timeout)
       clearInterval(interval)
     }
-  }, [text, speed, delay, onComplete])
+  }, [text, speed, delay])
 
   return (
     <span className={className}>

@@ -13,6 +13,8 @@ export function useTypewriter({ text, speed = 50, delay = 0, onComplete }: UseTy
   const [displayed, setDisplayed] = useState('')
   const [done, setDone] = useState(false)
   const hasRun = useRef(false)
+  const onCompleteRef = useRef(onComplete)
+  onCompleteRef.current = onComplete
 
   useEffect(() => {
     if (hasRun.current) return
@@ -28,7 +30,7 @@ export function useTypewriter({ text, speed = 50, delay = 0, onComplete }: UseTy
         } else {
           clearInterval(interval)
           setDone(true)
-          onComplete?.()
+          onCompleteRef.current?.()
         }
       }, speed)
     }, delay)
@@ -37,7 +39,7 @@ export function useTypewriter({ text, speed = 50, delay = 0, onComplete }: UseTy
       clearTimeout(timeout)
       clearInterval(interval)
     }
-  }, [text, speed, delay, onComplete])
+  }, [text, speed, delay])
 
   return { displayed, done }
 }

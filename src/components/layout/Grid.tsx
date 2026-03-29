@@ -1,4 +1,5 @@
 import type { ReactNode, CSSProperties } from 'react'
+import './Grid.css'
 
 type Gap = 'none' | 'sm' | 'md' | 'lg' | 'xl'
 
@@ -27,7 +28,7 @@ export function Grid({ children, columns = 3, gap = 'md', className, style }: Gr
   }
 
   return (
-    <div className={className} style={gridStyle}>
+    <div className={`n3rd-grid ${className ?? ''}`} style={gridStyle}>
       {children}
     </div>
   )

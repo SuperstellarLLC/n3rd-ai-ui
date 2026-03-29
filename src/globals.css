@@ -18,3 +18,15 @@
     transform: translateY(0);
   }
 }
+
+/* Responsive: stack grids and tighten spacing on small screens */
+@media (max-width: 640px) {
+  .n3rd-nav {
+    padding: var(--n3rd-space-2) var(--n3rd-space-3);
+    font-size: var(--n3rd-text-xs);
+  }
+
+  .n3rd-footer-starfield {
+    display: none;
+  }
+}

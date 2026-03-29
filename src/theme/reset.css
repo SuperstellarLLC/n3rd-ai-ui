@@ -65,6 +65,17 @@ pre {
   font-family: var(--n3rd-font);
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th,
+td {
+  padding: 0;
+  text-align: left;
+}
+
 ::selection {
   background: var(--n3rd-accent-purple);
   color: var(--n3rd-bg-primary);

@@ -41,6 +41,7 @@ export function Progress({
       style={progressStyle}
       role="progressbar"
       aria-valuenow={value}
+      aria-valuemin={0}
       aria-valuemax={max}
     >
       <span>[{bar}]</span>
