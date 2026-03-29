@@ -1,7 +1,5 @@
-'use client'
-
 import type { CSSProperties } from 'react'
-import styles from './Nav.module.css'
+import './Nav.css'
 
 interface NavItem {
   label: string
@@ -18,16 +16,16 @@ export interface NavProps {
 
 export function Nav({ items, className, style }: NavProps) {
   return (
-    <nav className={`${styles.nav} ${className ?? ''}`} style={style}>
-      <div className={styles.items}>
+    <nav className={`n3rd-nav ${className ?? ''}`} style={style}>
+      <div className="n3rd-nav-items">
         {items.map((item) => (
           <a
             key={item.label}
             href={item.href}
-            className={`${styles.item} ${item.active ? styles.active : ''}`}
+            className={`n3rd-nav-item ${item.active ? 'n3rd-nav-active' : ''}`}
             {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
-            {item.active && <span className={styles.indicator}>&gt; </span>}[ {item.label}
+            {item.active && <span className="n3rd-nav-indicator">&gt; </span>}[ {item.label}
             {item.external ? ' ↗' : ''} ]
           </a>
         ))}

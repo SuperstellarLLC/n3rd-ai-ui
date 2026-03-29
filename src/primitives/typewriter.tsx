@@ -30,8 +30,9 @@ export function Typewriter({
     hasRun.current = true
 
     let index = 0
+    let interval: ReturnType<typeof setInterval>
     const timeout = setTimeout(() => {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         if (index < text.length) {
           setDisplayed(text.slice(0, index + 1))
           index++
@@ -41,11 +42,12 @@ export function Typewriter({
           onComplete?.()
         }
       }, speed)
-
-      return () => clearInterval(interval)
     }, delay)
 
-    return () => clearTimeout(timeout)
+    return () => {
+      clearTimeout(timeout)
+      clearInterval(interval)
+    }
   }, [text, speed, delay, onComplete])
 
   return (

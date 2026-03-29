@@ -58,11 +58,17 @@ export function Heading({
   return (
     <Tag className={className} style={headingStyle}>
       {prefix && (
-        <span style={{ color: 'var(--n3rd-text-tertiary)', marginRight: 'var(--n3rd-space-2)' }}>
+        <span
+          style={{
+            color: 'var(--n3rd-text-tertiary)',
+            marginRight: 'var(--n3rd-space-2)',
+            ...(gradient && { WebkitTextFillColor: 'var(--n3rd-text-tertiary)' }),
+          }}
+        >
           {PREFIX_MAP[level]}
         </span>
       )}
-      {children}
+      {gradient ? <span>{children}</span> : children}
     </Tag>
   )
 }

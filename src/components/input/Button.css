@@ -1,4 +1,4 @@
-.button {
+.n3rd-btn {
   display: inline-flex;
   align-items: center;
   gap: var(--n3rd-space-1);
@@ -17,59 +17,52 @@
   padding: var(--n3rd-space-1) var(--n3rd-space-2);
 }
 
-.primary {
+.n3rd-btn-primary {
   color: var(--n3rd-accent-primary);
 }
 
-.primary:hover {
+.n3rd-btn-primary:hover {
   background: var(--n3rd-accent-primary);
   color: var(--n3rd-bg-primary);
 }
 
-.secondary {
+.n3rd-btn-secondary {
   color: var(--n3rd-text-secondary);
 }
 
-.secondary:hover {
+.n3rd-btn-secondary:hover {
   color: var(--n3rd-text-primary);
 }
 
-.danger {
+.n3rd-btn-danger {
   color: var(--n3rd-accent-danger);
 }
 
-.danger:hover {
+.n3rd-btn-danger:hover {
   background: var(--n3rd-accent-danger);
   color: var(--n3rd-bg-primary);
 }
 
-.ghost {
+.n3rd-btn-ghost {
   color: var(--n3rd-text-secondary);
   padding: var(--n3rd-space-1) 0;
 }
 
-.ghost:hover {
+.n3rd-btn-ghost:hover {
   color: var(--n3rd-text-primary);
 }
 
-.disabled {
+.n3rd-btn-disabled {
   opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.loading {
+.n3rd-btn-loading {
   cursor: wait;
 }
 
-.spinner {
+.n3rd-btn-spinner {
   display: inline-block;
-  animation: n3rd-spin 0.8s steps(10) infinite;
   margin-right: var(--n3rd-space-1);
-}
-
-@keyframes n3rd-spin {
-  to {
-    transform: rotate(360deg);
-  }
 }

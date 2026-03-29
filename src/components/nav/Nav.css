@@ -1,4 +1,4 @@
-.nav {
+.n3rd-nav {
   display: flex;
   align-items: center;
   padding: var(--n3rd-space-3) var(--n3rd-space-4);
@@ -7,32 +7,32 @@
   border-bottom: 1px solid var(--n3rd-border-muted);
 }
 
-.items {
+.n3rd-nav-items {
   display: flex;
   align-items: center;
   gap: var(--n3rd-space-2);
   flex-wrap: wrap;
 }
 
-.item {
+.n3rd-nav-item {
   color: var(--n3rd-text-secondary);
   text-decoration: none;
   transition: color 0.15s;
   white-space: nowrap;
 }
 
-.item:hover {
+.n3rd-nav-item:hover {
   color: var(--n3rd-text-primary);
 }
 
-.active {
+.n3rd-nav-active {
   color: var(--n3rd-accent-primary);
 }
 
-.active:hover {
+.n3rd-nav-active:hover {
   color: var(--n3rd-accent-primary);
 }
 
-.indicator {
+.n3rd-nav-indicator {
   color: var(--n3rd-accent-primary);
 }

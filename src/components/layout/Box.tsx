@@ -1,7 +1,7 @@
 import type { ReactNode, CSSProperties } from 'react'
 import { getBorderChars } from '../../primitives/ascii-border'
 import type { BorderStyle } from '../../primitives/ascii-border'
-import styles from './Box.module.css'
+import './Box.css'
 
 type Accent = 'primary' | 'success' | 'warning' | 'danger' | 'info'
 type Padding = 'none' | 'sm' | 'md' | 'lg'
@@ -50,31 +50,31 @@ export function Box({
   } as CSSProperties
 
   return (
-    <div className={`${styles.box} ${className ?? ''}`} style={boxStyle}>
-      <div className={styles.borderTop} aria-hidden="true">
-        <span className={styles.borderChar}>{chars.topLeft}</span>
+    <div className={`n3rd-box ${className ?? ''}`} style={boxStyle}>
+      <div className="n3rd-box-border-top" aria-hidden="true">
+        <span className="n3rd-box-border-char">{chars.topLeft}</span>
         {title && (
           <>
-            <span className={styles.borderChar}>{chars.horizontal}</span>
-            <span className={styles.title}>{` ${title} `}</span>
+            <span className="n3rd-box-border-char">{chars.horizontal}</span>
+            <span className="n3rd-box-title">{` ${title} `}</span>
           </>
         )}
-        <span className={styles.borderLine}>{chars.horizontal}</span>
-        <span className={styles.borderChar}>{chars.topRight}</span>
+        <span className="n3rd-box-border-line">{chars.horizontal.repeat(200)}</span>
+        <span className="n3rd-box-border-char">{chars.topRight}</span>
       </div>
-      <div className={styles.content}>
-        <span className={styles.borderSide} aria-hidden="true">
+      <div className="n3rd-box-content">
+        <span className="n3rd-box-border-side" aria-hidden="true">
           {chars.vertical}
         </span>
-        <div className={styles.inner}>{children}</div>
-        <span className={styles.borderSide} aria-hidden="true">
+        <div className="n3rd-box-inner">{children}</div>
+        <span className="n3rd-box-border-side" aria-hidden="true">
           {chars.vertical}
         </span>
       </div>
-      <div className={styles.borderBottom} aria-hidden="true">
-        <span className={styles.borderChar}>{chars.bottomLeft}</span>
-        <span className={styles.borderLine}>{chars.horizontal}</span>
-        <span className={styles.borderChar}>{chars.bottomRight}</span>
+      <div className="n3rd-box-border-bottom" aria-hidden="true">
+        <span className="n3rd-box-border-char">{chars.bottomLeft}</span>
+        <span className="n3rd-box-border-line">{chars.horizontal.repeat(200)}</span>
+        <span className="n3rd-box-border-char">{chars.bottomRight}</span>
       </div>
     </div>
   )

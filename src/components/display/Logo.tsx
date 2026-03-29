@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import { renderAsciiLines } from '../../primitives/ascii-font'
 
 type Accent =
   | 'primary'
@@ -23,31 +24,35 @@ export interface LogoProps {
 }
 
 export function Logo({ text, gradient = false, accent, className, style }: LogoProps) {
+  const lines = renderAsciiLines(text)
   const gradientValue = typeof gradient === 'string' ? gradient : 'var(--n3rd-gradient)'
 
-  const logoStyle: CSSProperties = {
+  const containerStyle: CSSProperties = {
     fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-2xl)',
+    fontSize: 'var(--n3rd-text-sm)',
     fontWeight: 700,
     whiteSpace: 'pre',
     lineHeight: 1.1,
-    color: gradient
-      ? 'transparent'
-      : accent
-        ? `var(--n3rd-accent-${accent})`
-        : 'var(--n3rd-text-primary)',
-    ...(gradient && {
-      background: gradientValue,
-      backgroundClip: 'text',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-    }),
+    color: accent ? `var(--n3rd-accent-${accent})` : 'var(--n3rd-text-primary)',
     ...style,
   }
 
+  const gradientStyle: CSSProperties = gradient
+    ? {
+        background: gradientValue,
+        backgroundClip: 'text',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+      }
+    : {}
+
   return (
-    <div className={className} style={logoStyle} aria-label={text} role="img">
-      {text}
+    <div className={className} style={containerStyle} aria-label={text} role="img">
+      {lines.map((line, i) => (
+        <div key={i} style={gradientStyle}>
+          {line}
+        </div>
+      ))}
     </div>
   )
 }

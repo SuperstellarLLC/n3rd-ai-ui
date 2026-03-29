@@ -6,7 +6,6 @@ import { Scanline } from './primitives/scanline'
 
 export interface N3rdProviderProps {
   children: ReactNode
-  theme?: 'unicorn' | 'classic' | 'retro' | 'paper'
   scanlines?: boolean
   toastDuration?: number
 }

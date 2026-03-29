@@ -18,11 +18,12 @@ export function useKeyboard(shortcuts: Shortcut[]) {
     (e: KeyboardEvent) => {
       for (const shortcut of shortcuts) {
         const keyMatch = e.key.toLowerCase() === shortcut.key.toLowerCase()
-        const ctrlMatch = (shortcut.ctrl ?? false) === (e.ctrlKey || e.metaKey)
+        const ctrlMatch = (shortcut.ctrl ?? false) === e.ctrlKey
+        const metaMatch = (shortcut.meta ?? false) === e.metaKey
         const shiftMatch = (shortcut.shift ?? false) === e.shiftKey
         const altMatch = (shortcut.alt ?? false) === e.altKey
 
-        if (keyMatch && ctrlMatch && shiftMatch && altMatch) {
+        if (keyMatch && ctrlMatch && metaMatch && shiftMatch && altMatch) {
           e.preventDefault()
           shortcut.handler(e)
           return

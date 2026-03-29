@@ -1,15 +1,15 @@
-.wrapper {
+.n3rd-input-wrapper {
   font-family: var(--n3rd-font);
 }
 
-.label {
+.n3rd-input-label {
   display: block;
   color: var(--n3rd-text-secondary);
   font-size: var(--n3rd-text-sm);
   margin-bottom: var(--n3rd-space-1);
 }
 
-.field {
+.n3rd-input-field {
   display: flex;
   align-items: center;
   gap: var(--n3rd-space-2);
@@ -19,28 +19,28 @@
   cursor: text;
 }
 
-.focused {
+.n3rd-input-field-focused {
   border-color: var(--n3rd-border-focus);
 }
 
-.disabled {
+.n3rd-input-field-disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.prefix {
+.n3rd-input-prefix {
   color: var(--n3rd-accent-primary);
   flex-shrink: 0;
   user-select: none;
 }
 
-.inputWrap {
+.n3rd-input-wrap {
   flex: 1;
   display: flex;
   align-items: center;
 }
 
-.input {
+.n3rd-input {
   flex: 1;
   font-family: var(--n3rd-font);
   font-size: var(--n3rd-text-base);
@@ -52,6 +52,6 @@
   caret-color: transparent;
 }
 
-.input::placeholder {
+.n3rd-input::placeholder {
   color: var(--n3rd-text-tertiary);
 }

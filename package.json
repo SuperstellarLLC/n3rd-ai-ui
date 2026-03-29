@@ -1,6 +1,6 @@
 {
   "name": "@n3rd-ai/ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Terminal-first UI framework for Next.js. ASCII everything. Zero images. Pure text.",
   "type": "module",
   "main": "./dist/index.js",
@@ -23,6 +23,8 @@
     "./theme/classic.css": "./dist/theme/presets/classic.css",
     "./theme/retro.css": "./dist/theme/presets/retro.css",
     "./theme/paper.css": "./dist/theme/presets/paper.css",
+    "./styles.css": "./dist/index.css",
+    "./theme/fonts.css": "./dist/theme/fonts.css",
     "./theme/tokens.css": "./dist/theme/tokens.css",
     "./theme/reset.css": "./dist/theme/reset.css"
   },
@@ -74,7 +76,10 @@
     "node": ">=20"
   },
   "sideEffects": [
-    "**/*.css"
+    "**/*.css",
+    "./dist/index.js",
+    "./dist/chunk-*.js",
+    "./dist/hooks/index.js"
   ],
   "peerDependencies": {
     "next": ">=14.0.0",

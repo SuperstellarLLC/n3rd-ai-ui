@@ -1,3 +1,6 @@
+// Global keyframes (cursor blink, fade-in, etc.)
+import './globals.css'
+
 // Layout (RSC — zero JS)
 export { Box } from './components/layout/Box'
 export type { BoxProps } from './components/layout/Box'
@@ -62,10 +65,11 @@ export { Scanline } from './primitives/scanline'
 export type { ScanlineProps } from './primitives/scanline'
 export { BORDER_CHARS, getBorderChars } from './primitives/ascii-border'
 export type { BorderStyle } from './primitives/ascii-border'
+export { renderAsciiText, renderAsciiLines } from './primitives/ascii-font'
 
 // Provider
 export { N3rdProvider } from './provider'
 export type { N3rdProviderProps } from './provider'
 
 // Theme / Fonts
-export { N3rdFonts, jetbrainsMono } from './theme/fonts'
+export { N3rdFonts, jetbrainsMono, N3RD_FONT_FAMILY } from './theme/fonts'

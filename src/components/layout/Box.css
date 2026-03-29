@@ -1,0 +1,49 @@
+.n3rd-box {
+  font-family: var(--n3rd-font);
+  color: var(--box-border-color, var(--n3rd-border-default));
+  width: 100%;
+  line-height: 1;
+}
+
+.n3rd-box-border-top,
+.n3rd-box-border-bottom {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  letter-spacing: -0.05em;
+}
+
+.n3rd-box-border-char {
+  flex-shrink: 0;
+}
+
+.n3rd-box-border-line {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.n3rd-box-title {
+  flex-shrink: 0;
+  color: var(--n3rd-text-secondary);
+  font-size: var(--n3rd-text-sm);
+  letter-spacing: normal;
+}
+
+.n3rd-box-content {
+  display: flex;
+  letter-spacing: -0.05em;
+}
+
+.n3rd-box-border-side {
+  flex-shrink: 0;
+}
+
+.n3rd-box-inner {
+  flex: 1;
+  padding: var(--box-padding, var(--n3rd-space-4));
+  color: var(--n3rd-text-primary);
+  letter-spacing: normal;
+  line-height: var(--n3rd-line-height);
+}

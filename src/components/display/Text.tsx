@@ -72,11 +72,17 @@ export function Text({
   return (
     <Tag className={className} style={textStyle}>
       {prefix && (
-        <span style={{ color: 'var(--n3rd-text-secondary)', marginRight: 'var(--n3rd-space-1)' }}>
+        <span
+          style={{
+            color: 'var(--n3rd-text-secondary)',
+            marginRight: 'var(--n3rd-space-1)',
+            ...(gradient && { WebkitTextFillColor: 'var(--n3rd-text-secondary)' }),
+          }}
+        >
           {prefix}
         </span>
       )}
-      {children}
+      {gradient ? <span>{children}</span> : children}
     </Tag>
   )
 }

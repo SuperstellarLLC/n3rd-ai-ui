@@ -1,7 +1,8 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import type { ReactNode, CSSProperties, MouseEvent } from 'react'
-import styles from './Button.module.css'
+import './Button.css'
 
 type Variant = 'primary' | 'secondary' | 'danger' | 'ghost'
 
@@ -20,6 +21,13 @@ export interface ButtonProps {
 
 const SPINNER_FRAMES = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
 
+const VARIANT_CLASS: Record<Variant, string> = {
+  primary: 'n3rd-btn-primary',
+  secondary: 'n3rd-btn-secondary',
+  danger: 'n3rd-btn-danger',
+  ghost: 'n3rd-btn-ghost',
+}
+
 export function Button({
   children,
   variant = 'primary',
@@ -32,11 +40,21 @@ export function Button({
   style,
   type = 'button',
 }: ButtonProps) {
+  const [frame, setFrame] = useState(0)
+
+  useEffect(() => {
+    if (!loading) return
+    const id = setInterval(() => {
+      setFrame((f) => (f + 1) % SPINNER_FRAMES.length)
+    }, 80)
+    return () => clearInterval(id)
+  }, [loading])
+
   const classes = [
-    styles.button,
-    styles[variant],
-    loading ? styles.loading : '',
-    disabled ? styles.disabled : '',
+    'n3rd-btn',
+    VARIANT_CLASS[variant],
+    loading ? 'n3rd-btn-loading' : '',
+    disabled ? 'n3rd-btn-disabled' : '',
     className ?? '',
   ]
     .filter(Boolean)
@@ -46,8 +64,8 @@ export function Button({
     <>
       {variant !== 'ghost' && '[ '}
       {loading && (
-        <span className={styles.spinner} aria-hidden="true">
-          {SPINNER_FRAMES[0]}
+        <span className="n3rd-btn-spinner" aria-hidden="true">
+          {SPINNER_FRAMES[frame]}
         </span>
       )}
       {loading ? <>{children}...</> : children}

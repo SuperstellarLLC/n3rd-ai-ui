@@ -15,5 +15,5 @@ export default defineConfig({
   esbuildOptions(options) {
     options.jsx = 'automatic'
   },
-  onSuccess: 'cp -r src/theme dist/theme',
+  onSuccess: 'node scripts/postbuild.mjs',
 })
