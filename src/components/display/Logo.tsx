@@ -32,7 +32,8 @@ export function Logo({ text, gradient = false, accent, className, style }: LogoP
     fontSize: 'var(--n3rd-text-sm)',
     fontWeight: 700,
     whiteSpace: 'pre',
-    lineHeight: 1.1,
+    lineHeight: 1,
+    letterSpacing: '-0.05em',
     color: accent ? `var(--n3rd-accent-${accent})` : 'var(--n3rd-text-primary)',
     ...style,
   }
