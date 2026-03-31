@@ -24,6 +24,13 @@ function getCellAccent(cell: CellValue): Accent | undefined {
 
 export function Table({ columns, rows, border = 'single', className, style }: TableProps) {
   const chars = getBorderChars(border)
+  const colCount = columns.length
+
+  // Pad or trim rows to match column count
+  const normalizedRows = rows.map((row) => {
+    if (row.length >= colCount) return row.slice(0, colCount)
+    return [...row, ...Array(colCount - row.length).fill('')]
+  })
 
   const tableStyle: CSSProperties = {
     fontFamily: 'var(--n3rd-font)',
@@ -55,7 +62,7 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, i) => (
+          {normalizedRows.map((row, i) => (
             <tr key={i}>
               {row.map((cell, j) => (
                 <td
@@ -80,7 +87,7 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
   // Calculate column widths
   const colWidths = columns.map((col, i) => {
     let max = col.length
-    for (const row of rows) {
+    for (const row of normalizedRows) {
       if (row[i]) {
         max = Math.max(max, getCellText(row[i]).length)
       }
@@ -103,7 +110,7 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
       <div>{line(chars.topLeft, chars.teeTop, chars.topRight, chars.horizontal)}</div>
       <div style={{ color: 'var(--n3rd-text-secondary)' }}>{headerRow}</div>
       <div>{line(chars.teeLeft, chars.cross, chars.teeRight, chars.horizontal)}</div>
-      {rows.map((row, i) => (
+      {normalizedRows.map((row, i) => (
         <div key={i}>
           {chars.vertical}
           {row.map((cell, j) => {
@@ -117,7 +124,7 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
                 ) : (
                   <span style={{ color: 'var(--n3rd-text-primary)' }}>{content}</span>
                 )}
-                {j < row.length - 1 ? chars.vertical : ''}
+                {j < colCount - 1 ? chars.vertical : ''}
               </span>
             )
           })}

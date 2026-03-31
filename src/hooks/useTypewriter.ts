@@ -12,13 +12,12 @@ export interface UseTypewriterOptions {
 export function useTypewriter({ text, speed = 50, delay = 0, onComplete }: UseTypewriterOptions) {
   const [displayed, setDisplayed] = useState('')
   const [done, setDone] = useState(false)
-  const hasRun = useRef(false)
   const onCompleteRef = useRef(onComplete)
   onCompleteRef.current = onComplete
 
   useEffect(() => {
-    if (hasRun.current) return
-    hasRun.current = true
+    setDisplayed('')
+    setDone(false)
 
     let index = 0
     let interval: ReturnType<typeof setInterval>

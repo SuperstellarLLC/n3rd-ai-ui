@@ -32,14 +32,16 @@ const COLORS: Record<ToastType, string> = {
 }
 
 interface ToastContextValue {
-  success: (message: string) => void
-  warning: (message: string) => void
-  error: (message: string) => void
-  info: (message: string) => void
+  success: (message: string) => number
+  warning: (message: string) => number
+  error: (message: string) => number
+  info: (message: string) => number
+  dismiss: (id: number) => void
 }
 
 const ToastContext = createContext<ToastContextValue | null>(null)
 
+const MAX_TOASTS = 5
 let idCounter = 0
 
 export function ToastProvider({
@@ -51,15 +53,21 @@ export function ToastProvider({
 }) {
   const [toasts, setToasts] = useState<ToastItem[]>([])
 
+  const dismiss = useCallback((id: number) => {
+    setToasts((prev) => prev.filter((t) => t.id !== id))
+  }, [])
+
   const addToast = useCallback(
-    (message: string, type: ToastType) => {
+    (message: string, type: ToastType): number => {
       const id = ++idCounter
-      setToasts((prev) => [...prev, { id, message, type }])
-      setTimeout(() => {
-        setToasts((prev) => prev.filter((t) => t.id !== id))
-      }, duration)
+      setToasts((prev) => {
+        const next = [...prev, { id, message, type }]
+        return next.length > MAX_TOASTS ? next.slice(-MAX_TOASTS) : next
+      })
+      setTimeout(() => dismiss(id), duration)
+      return id
     },
-    [duration],
+    [duration, dismiss],
   )
 
   const toast: ToastContextValue = {
@@ -67,6 +75,7 @@ export function ToastProvider({
     warning: (msg) => addToast(msg, 'warning'),
     error: (msg) => addToast(msg, 'error'),
     info: (msg) => addToast(msg, 'info'),
+    dismiss,
   }
 
   const containerStyle: CSSProperties = {

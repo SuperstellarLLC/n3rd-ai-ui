@@ -20,9 +20,10 @@ const GAP_MAP: Record<Gap, string> = {
 }
 
 export function Grid({ children, columns = 3, gap = 'md', className, style }: GridProps) {
+  const cols = typeof columns === 'number' ? Math.max(1, Math.round(columns)) : columns
   const gridStyle: CSSProperties = {
     display: 'grid',
-    gridTemplateColumns: typeof columns === 'number' ? `repeat(${columns}, 1fr)` : columns,
+    gridTemplateColumns: typeof cols === 'number' ? `repeat(${cols}, 1fr)` : cols,
     gap: GAP_MAP[gap],
     ...style,
   }

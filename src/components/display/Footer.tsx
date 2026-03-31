@@ -90,20 +90,27 @@ export function Footer({
       {tagline && <div className="n3rd-footer-tagline">{tagline.toUpperCase()}</div>}
 
       {links.length > 0 && (
-        <nav className="n3rd-footer-links">
-          {links.map((link, i) => (
-            <span key={link.label}>
-              {i > 0 && <span className="n3rd-footer-sep"> │ </span>}
-              <a
-                href={link.href}
-                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="n3rd-footer-link"
-              >
-                {link.label}
-                {link.external ? ' ↗' : ''}
-              </a>
-            </span>
-          ))}
+        <nav className="n3rd-footer-links" aria-label="Footer">
+          <ul className="n3rd-footer-link-list">
+            {links.map((link, i) => (
+              <li key={link.href}>
+                {i > 0 && (
+                  <span className="n3rd-footer-sep" aria-hidden="true">
+                    {' '}
+                    │{' '}
+                  </span>
+                )}
+                <a
+                  href={link.href}
+                  {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className="n3rd-footer-link"
+                >
+                  {link.label}
+                  {link.external ? ' ↗' : ''}
+                </a>
+              </li>
+            ))}
+          </ul>
         </nav>
       )}
     </footer>

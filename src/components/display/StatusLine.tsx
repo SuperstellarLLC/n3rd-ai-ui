@@ -23,7 +23,7 @@ export function StatusLine({ left, center, right, className, style }: StatusLine
   }
 
   return (
-    <div className={className} style={lineStyle} role="status">
+    <div className={className} style={lineStyle} role="status" aria-live="polite">
       <div>{left}</div>
       <div>{center}</div>
       <div>{right}</div>
