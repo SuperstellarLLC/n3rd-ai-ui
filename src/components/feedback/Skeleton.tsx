@@ -24,3 +24,5 @@ export function Skeleton({ width = 30, lines = 1, className, style }: SkeletonPr
     </div>
   )
 }
+
+Skeleton.displayName = 'Skeleton'

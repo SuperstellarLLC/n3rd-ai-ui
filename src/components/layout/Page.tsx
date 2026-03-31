@@ -23,3 +23,5 @@ export function Page({ children, maxWidth = '1200px', className, style }: PagePr
     </main>
   )
 }
+
+Page.displayName = 'Page'

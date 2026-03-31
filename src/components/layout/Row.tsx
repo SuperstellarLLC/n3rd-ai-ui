@@ -53,3 +53,5 @@ export function Row({
     </div>
   )
 }
+
+Row.displayName = 'Row'

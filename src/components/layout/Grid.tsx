@@ -33,3 +33,5 @@ export function Grid({ children, columns = 3, gap = 'md', className, style }: Gr
     </div>
   )
 }
+
+Grid.displayName = 'Grid'

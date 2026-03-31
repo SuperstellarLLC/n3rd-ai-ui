@@ -56,3 +56,5 @@ export function Divider({ variant = 'single', label, className, style }: Divider
     </div>
   )
 }
+
+Divider.displayName = 'Divider'

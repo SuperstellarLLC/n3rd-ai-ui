@@ -33,3 +33,5 @@ export function Stack({ children, gap = 'md', align = 'stretch', className, styl
     </div>
   )
 }
+
+Stack.displayName = 'Stack'

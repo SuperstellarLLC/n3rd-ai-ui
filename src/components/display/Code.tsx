@@ -56,3 +56,5 @@ export function Code({
     </Box>
   )
 }
+
+Code.displayName = 'Code'

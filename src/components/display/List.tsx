@@ -41,3 +41,5 @@ export function List({ items, bullet = '>', className, style }: ListProps) {
     </ul>
   )
 }
+
+List.displayName = 'List'

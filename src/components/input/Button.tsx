@@ -17,6 +17,7 @@ export interface ButtonProps {
   className?: string
   style?: CSSProperties
   type?: 'button' | 'submit' | 'reset'
+  'aria-label'?: string
 }
 
 const SPINNER_FRAMES = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
@@ -39,6 +40,7 @@ export function Button({
   className,
   style,
   type = 'button',
+  'aria-label': ariaLabel,
 }: ButtonProps) {
   const [frame, setFrame] = useState(0)
 
@@ -80,6 +82,7 @@ export function Button({
         href={href}
         className={classes}
         style={style}
+        aria-label={ariaLabel}
         onClick={onClick as (e: MouseEvent<HTMLAnchorElement>) => void}
         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
@@ -93,6 +96,7 @@ export function Button({
       type={type}
       className={classes}
       style={style}
+      aria-label={ariaLabel}
       onClick={onClick as (e: MouseEvent<HTMLButtonElement>) => void}
       disabled={disabled || loading}
     >
@@ -100,3 +104,5 @@ export function Button({
     </button>
   )
 }
+
+Button.displayName = 'Button'

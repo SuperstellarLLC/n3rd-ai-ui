@@ -22,3 +22,5 @@ export function N3rdProvider({
     </ToastProvider>
   )
 }
+
+N3rdProvider.displayName = 'N3rdProvider'

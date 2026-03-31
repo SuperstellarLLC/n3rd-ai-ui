@@ -128,3 +128,5 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
     </div>
   )
 }
+
+Table.displayName = 'Table'

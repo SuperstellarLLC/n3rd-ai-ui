@@ -114,3 +114,5 @@ export function useToast(): ToastContextValue {
   if (!ctx) throw new Error('useToast must be used within <ToastProvider> or <N3rdProvider>')
   return ctx
 }
+
+ToastProvider.displayName = 'ToastProvider'

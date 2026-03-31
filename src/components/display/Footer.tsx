@@ -35,20 +35,50 @@ export function Footer({
 
       <div className="n3rd-footer-sunset" aria-hidden="true">
         {/* Semicircle: widths follow sqrt curve, steep at top, flat at bottom */}
-        <div className="n3rd-footer-sun-line" style={{ width: '26%', background: '#7c3aed' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '42%', background: '#8b5cf6' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '52%', background: '#a855f7' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '60%', background: '#c084fc' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '66%', background: '#d946ef' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '71%', background: '#ec4899' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '75%', background: '#f472b6' }} />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '26%', background: 'var(--n3rd-accent-violet)' }}
+        />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '42%', background: 'var(--n3rd-accent-violet)' }}
+        />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '52%', background: 'var(--n3rd-accent-purple)' }}
+        />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '60%', background: 'var(--n3rd-accent-lavender)' }}
+        />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '66%', background: 'var(--n3rd-accent-pink)' }}
+        />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '71%', background: 'var(--n3rd-accent-pink)' }}
+        />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '75%', background: 'var(--n3rd-accent-rose)' }}
+        />
         {/* Horizon gaps — sun dipping behind the water */}
         <div className="n3rd-footer-sun-gap" />
-        <div className="n3rd-footer-sun-line" style={{ width: '78%', background: '#fb7185' }} />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '78%', background: 'var(--n3rd-accent-rose)' }}
+        />
         <div className="n3rd-footer-sun-gap" />
-        <div className="n3rd-footer-sun-line" style={{ width: '80%', background: '#fda4af' }} />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '80%', background: 'var(--n3rd-accent-rose)' }}
+        />
         <div className="n3rd-footer-sun-gap" style={{ height: '3px' }} />
-        <div className="n3rd-footer-sun-line" style={{ width: '82%', background: '#fecdd3' }} />
+        <div
+          className="n3rd-footer-sun-line"
+          style={{ width: '82%', background: 'var(--n3rd-accent-rose)' }}
+        />
       </div>
 
       <div className="n3rd-footer-horizon" aria-hidden="true">
@@ -79,3 +109,5 @@ export function Footer({
     </footer>
   )
 }
+
+Footer.displayName = 'Footer'

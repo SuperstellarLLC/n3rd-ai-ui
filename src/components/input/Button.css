@@ -52,6 +52,15 @@
   color: var(--n3rd-text-primary);
 }
 
+.n3rd-btn:focus-visible {
+  outline: 2px solid var(--n3rd-border-focus);
+  outline-offset: 2px;
+}
+
+.n3rd-btn:active:not(.n3rd-btn-disabled) {
+  opacity: 0.8;
+}
+
 .n3rd-btn-disabled {
   opacity: 0.4;
   cursor: not-allowed;

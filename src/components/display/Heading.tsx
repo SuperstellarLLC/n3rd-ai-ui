@@ -72,3 +72,5 @@ export function Heading({
     </Tag>
   )
 }
+
+Heading.displayName = 'Heading'

@@ -33,3 +33,5 @@ export function Nav({ items, className, style }: NavProps) {
     </nav>
   )
 }
+
+Nav.displayName = 'Nav'

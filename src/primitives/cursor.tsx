@@ -28,3 +28,5 @@ export function Cursor({ style = 'block', className }: CursorProps) {
     </span>
   )
 }
+
+Cursor.displayName = 'Cursor'

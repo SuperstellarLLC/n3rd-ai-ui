@@ -44,3 +44,5 @@ export function Alert({ children, variant = 'info', className, style }: AlertPro
     </div>
   )
 }
+
+Alert.displayName = 'Alert'

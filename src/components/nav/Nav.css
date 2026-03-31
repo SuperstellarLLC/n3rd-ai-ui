@@ -25,6 +25,11 @@
   color: var(--n3rd-text-primary);
 }
 
+.n3rd-nav-item:focus-visible {
+  outline: 2px solid var(--n3rd-border-focus);
+  outline-offset: 2px;
+}
+
 .n3rd-nav-active {
   color: var(--n3rd-accent-primary);
 }

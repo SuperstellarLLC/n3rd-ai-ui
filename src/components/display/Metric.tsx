@@ -43,3 +43,5 @@ export function Metric({ value, label, suffix, prefix, accent, className, style 
     </div>
   )
 }
+
+Metric.displayName = 'Metric'

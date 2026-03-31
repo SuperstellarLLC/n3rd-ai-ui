@@ -35,3 +35,5 @@ export function Badge({ children, variant = 'default', className, style }: Badge
     </span>
   )
 }
+
+Badge.displayName = 'Badge'

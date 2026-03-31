@@ -79,3 +79,5 @@ export function Box({
     </div>
   )
 }
+
+Box.displayName = 'Box'

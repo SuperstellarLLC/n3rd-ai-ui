@@ -94,3 +94,5 @@ export function Logo({
     </div>
   )
 }
+
+Logo.displayName = 'Logo'

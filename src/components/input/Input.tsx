@@ -16,10 +16,16 @@ export interface InputProps {
   cursor?: CursorStyle
   type?: 'text' | 'email' | 'password' | 'url' | 'number'
   disabled?: boolean
+  required?: boolean
+  error?: boolean
+  errorMessage?: string
+  autoComplete?: string
   className?: string
   style?: CSSProperties
   name?: string
   id?: string
+  'aria-label'?: string
+  'aria-describedby'?: string
 }
 
 export function Input({
@@ -33,15 +39,22 @@ export function Input({
   cursor = 'block',
   type = 'text',
   disabled = false,
+  required = false,
+  error = false,
+  errorMessage,
+  autoComplete,
   className,
   style,
   name,
   id,
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedBy,
 }: InputProps) {
   const [internalValue, setInternalValue] = useState(defaultValue)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const value = controlledValue ?? internalValue
+  const errorId = errorMessage && id ? `${id}-error` : undefined
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const val = e.target.value
@@ -59,6 +72,7 @@ export function Input({
     'n3rd-input-field',
     focused ? 'n3rd-input-field-focused' : '',
     disabled ? 'n3rd-input-field-disabled' : '',
+    error ? 'n3rd-input-field-error' : '',
   ]
     .filter(Boolean)
     .join(' ')
@@ -67,7 +81,7 @@ export function Input({
     <div className={`n3rd-input-wrapper ${className ?? ''}`} style={style}>
       {label && (
         <label className="n3rd-input-label" htmlFor={id}>
-          {label}:
+          {label}:{required && ' *'}
         </label>
       )}
       <div className={fieldClasses} onClick={() => inputRef.current?.focus()}>
@@ -85,11 +99,23 @@ export function Input({
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             disabled={disabled}
+            required={required}
+            autoComplete={autoComplete}
+            aria-label={ariaLabel}
+            aria-invalid={error || undefined}
+            aria-describedby={errorId ?? ariaDescribedBy}
             className="n3rd-input"
           />
           {focused && !disabled && <Cursor style={cursor} />}
         </div>
       </div>
+      {error && errorMessage && (
+        <div id={errorId} className="n3rd-input-error-message" role="alert">
+          [✗] {errorMessage}
+        </div>
+      )}
     </div>
   )
 }
+
+Input.displayName = 'Input'

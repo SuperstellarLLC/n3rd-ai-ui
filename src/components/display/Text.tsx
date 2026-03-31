@@ -86,3 +86,5 @@ export function Text({
     </Tag>
   )
 }
+
+Text.displayName = 'Text'

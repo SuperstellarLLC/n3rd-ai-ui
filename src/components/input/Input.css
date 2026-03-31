@@ -19,8 +19,11 @@
   cursor: text;
 }
 
-.n3rd-input-field-focused {
+.n3rd-input-field-focused,
+.n3rd-input-field:focus-within {
   border-color: var(--n3rd-border-focus);
+  outline: 1px solid var(--n3rd-border-focus);
+  outline-offset: -1px;
 }
 
 .n3rd-input-field-disabled {
@@ -49,9 +52,19 @@
   border: none;
   outline: none;
   padding: 0;
-  caret-color: transparent;
+  caret-color: var(--n3rd-accent-primary);
 }
 
 .n3rd-input::placeholder {
   color: var(--n3rd-text-tertiary);
+}
+
+.n3rd-input-field-error {
+  border-color: var(--n3rd-accent-danger);
+}
+
+.n3rd-input-error-message {
+  color: var(--n3rd-accent-danger);
+  font-size: var(--n3rd-text-xs);
+  margin-top: var(--n3rd-space-1);
 }

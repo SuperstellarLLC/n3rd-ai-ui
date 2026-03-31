@@ -30,3 +30,5 @@ export function StatusLine({ left, center, right, className, style }: StatusLine
     </div>
   )
 }
+
+StatusLine.displayName = 'StatusLine'

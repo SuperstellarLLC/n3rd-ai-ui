@@ -26,3 +26,5 @@ export function Scanline({ opacity = 0.03 }: ScanlineProps) {
 
   return <div style={style} aria-hidden="true" />
 }
+
+Scanline.displayName = 'Scanline'
