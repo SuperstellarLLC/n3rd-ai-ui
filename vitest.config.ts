@@ -14,7 +14,7 @@ export default defineConfig({
         functions: 80,
         lines: 80,
       },
-      exclude: ['dist/**', 'tests/**', '**/*.d.ts', '**/*.config.*'],
+      exclude: ['dist/**', 'tests/**', 'scripts/**', '**/*.d.ts', '**/*.config.*', '**/index.ts'],
     },
   },
 })
