@@ -1,0 +1,49 @@
+.n3rd-card {
+  font-family: var(--n3rd-font);
+  background: var(--n3rd-bg-secondary);
+  border: 1px solid var(--card-accent, var(--n3rd-border-default));
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.n3rd-card-link:hover {
+  border-color: var(--n3rd-border-focus);
+}
+
+.n3rd-card-link:focus-visible {
+  outline: 2px solid var(--n3rd-border-focus);
+  outline-offset: 2px;
+}
+
+.n3rd-card-header {
+  padding: var(--n3rd-space-3) var(--n3rd-space-4);
+  border-bottom: 1px solid var(--n3rd-border-muted);
+}
+
+.n3rd-card-title {
+  font-size: var(--n3rd-text-base);
+  font-weight: 700;
+  color: var(--n3rd-text-primary);
+}
+
+.n3rd-card-subtitle {
+  font-size: var(--n3rd-text-sm);
+  color: var(--n3rd-text-secondary);
+  margin-top: var(--n3rd-space-1);
+}
+
+.n3rd-card-body {
+  padding: var(--n3rd-space-4);
+  flex: 1;
+  color: var(--n3rd-text-primary);
+}
+
+.n3rd-card-footer {
+  padding: var(--n3rd-space-3) var(--n3rd-space-4);
+  border-top: 1px solid var(--n3rd-border-muted);
+  font-size: var(--n3rd-text-sm);
+  color: var(--n3rd-text-secondary);
+}
