@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, vi } from 'vitest'
 import { createRateLimiter } from '../src/rate-limit/index.js'
 import type { IncomingMessage } from 'node:http'
 
@@ -111,6 +111,19 @@ describe('createRateLimiter', () => {
     const result = limiter.check(mockReq())
     expect(result.limit).toBe(120)
     expect(result.resetSeconds).toBe(60)
+  })
+
+  it('emits warning when trustProxy is enabled', () => {
+    const warn = vi.fn()
+    createRateLimiter({ trustProxy: true }, { logger: { warning: warn } })
+    expect(warn).toHaveBeenCalledOnce()
+    expect(warn.mock.calls[0][0]).toContain('trustProxy')
+  })
+
+  it('does not warn when trustProxy is disabled', () => {
+    const warn = vi.fn()
+    createRateLimiter({ trustProxy: false }, { logger: { warning: warn } })
+    expect(warn).not.toHaveBeenCalled()
   })
 
   it('throws on max <= 0', () => {

@@ -358,4 +358,57 @@ describe('HTTP server endpoints', () => {
     expect(res.status).toBe(401)
     expect(res.headers.get('www-authenticate')).toContain('Bearer')
   })
+
+  it('returns 503 when max sessions reached', async () => {
+    server = createN3rdServer(
+      {
+        server: { name: 'test', version: '1.0.0' },
+        transport: {
+          type: 'http',
+          options: { port: 0, host: '127.0.0.1', maxSessions: 1, sessionTtlMs: 60_000 },
+        },
+        logger: { level: 'error' },
+      },
+      (mcp) => {
+        mcp.registerTool('ping', { description: 'Ping' }, () => ({
+          content: [{ type: 'text', text: 'pong' }],
+        }))
+      },
+    )
+    await server.start()
+    const port = getPort(server)
+
+    const initBody = JSON.stringify({
+      jsonrpc: '2.0',
+      method: 'initialize',
+      id: 1,
+      params: {
+        protocolVersion: '2025-03-26',
+        capabilities: {},
+        clientInfo: { name: 'test', version: '0.0.0' },
+      },
+    })
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Accept: 'application/json, text/event-stream',
+    }
+
+    // First session — should succeed
+    const res1 = await fetch(`http://127.0.0.1:${port}/mcp`, {
+      method: 'POST',
+      headers,
+      body: initBody,
+    })
+    expect(res1.status).toBe(200)
+
+    // Second session — should get 503
+    const res2 = await fetch(`http://127.0.0.1:${port}/mcp`, {
+      method: 'POST',
+      headers,
+      body: initBody,
+    })
+    expect(res2.status).toBe(503)
+    expect(res2.headers.get('retry-after')).toBe('30')
+  })
 })

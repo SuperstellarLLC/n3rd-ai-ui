@@ -39,6 +39,7 @@ export {
   buildProtectedResourceMetadata,
   buildWwwAuthenticate,
   extractBearerToken,
+  validateBearerToken,
   createJwtValidator,
 } from './auth/index.js'
 export type { ProtectedResourceMetadata, JwtValidator, JwtValidatorOptions } from './auth/index.js'
