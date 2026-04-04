@@ -1,0 +1,89 @@
+{
+  "name": "@n3rd-ai/mcp",
+  "version": "0.1.0",
+  "description": "Production-ready MCP server framework. Opinionated defaults, OAuth 2.1, health checks, structured logging.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "import": "./dist/testing/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "mcp-framework",
+    "ai",
+    "agents",
+    "oauth2",
+    "server"
+  ],
+  "author": "Superstellar LLC",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SuperstellarLLC/n3rd-ai",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/SuperstellarLLC/n3rd-ai/issues"
+  },
+  "homepage": "https://n3rd.ai",
+  "mcpName": "io.github.superstellarllc/n3rd-ai-mcp",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0"
+  },
+  "peerDependencies": {
+    "jose": ">=5.0.0",
+    "zod": ">=3.23.0"
+  },
+  "peerDependenciesMeta": {
+    "jose": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "jose": "^6.0.0",
+    "zod": "^3.25.0",
+    "@vitest/coverage-v8": "^1.6.0",
+    "eslint": "^9.0.0",
+    "size-limit": "^11.0.0",
+    "@size-limit/preset-small-lib": "^11.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "~5.8.0",
+    "typescript-eslint": "^8.0.0",
+    "vitest": "^1.6.0"
+  }
+}

@@ -1,0 +1,5 @@
+export { buildProtectedResourceMetadata, buildWwwAuthenticate } from './metadata.js'
+export type { ProtectedResourceMetadata } from './metadata.js'
+export { extractBearerToken, validateBearerToken } from './token.js'
+export { createJwtValidator } from './jwt.js'
+export type { JwtValidator, JwtValidatorOptions } from './jwt.js'
