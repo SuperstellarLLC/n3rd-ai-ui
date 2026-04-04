@@ -42,7 +42,7 @@
     "test": "vitest run",
     "test:ci": "vitest run --coverage",
     "test:watch": "vitest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "pnpm run build"
   },
   "keywords": [
     "terminal",
@@ -59,11 +59,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SuperstellarLLC/n3rd-ai-ui",
+    "url": "https://github.com/SuperstellarLLC/n3rd-ai",
     "directory": "packages/ui"
   },
   "bugs": {
-    "url": "https://github.com/SuperstellarLLC/n3rd-ai-ui/issues"
+    "url": "https://github.com/SuperstellarLLC/n3rd-ai/issues"
   },
   "homepage": "https://n3rd.ai",
   "publishConfig": {
