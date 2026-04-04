@@ -1,0 +1,16 @@
+@import '@n3rd-ai/ui/theme/unicorn.css';
+@import '@n3rd-ai/ui/theme/fonts.css';
+
+html,
+body {
+  min-height: 100vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--n3rd-accent-primary, #a855f7);
+  color: var(--n3rd-bg-primary, #0a0a0a);
+}

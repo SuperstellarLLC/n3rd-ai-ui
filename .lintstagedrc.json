@@ -1,5 +1,6 @@
 {
-  "packages/**/*.{ts,tsx}": ["eslint --fix", "prettier --write"],
-  "**/*.css": ["prettier --write"],
-  "**/*.{json,md,yml,yaml}": ["prettier --write"]
+  "packages/**/*.{ts,tsx}": ["pnpm exec eslint --fix", "pnpm exec prettier --write"],
+  "apps/web/**/*.{ts,tsx}": ["pnpm exec prettier --write"],
+  "**/*.css": ["pnpm exec prettier --write"],
+  "**/*.{json,md,yml,yaml}": ["pnpm exec prettier --write"]
 }
