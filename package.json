@@ -14,7 +14,7 @@
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
     "bench": "pnpm --filter @n3rd-ai/mcp bench",
-    "size": "pnpm --filter @n3rd-ai/ui --filter @n3rd-ai/mcp exec size-limit",
+    "size": "pnpm --filter @n3rd-ai/ui --filter @n3rd-ai/mcp --filter @n3rd-ai/attest exec size-limit",
     "changeset": "changeset",
     "version": "changeset version && pnpm install --lockfile-only",
     "release": "turbo run build && changeset publish",

@@ -1,0 +1,9 @@
+[
+  {
+    "name": "Attest plugin (ESM)",
+    "path": "dist/index.js",
+    "limit": "4 kB",
+    "gzip": true,
+    "ignore": ["@n3rd-ai/mcp", "node:crypto", "node:process", "crypto", "process"]
+  }
+]

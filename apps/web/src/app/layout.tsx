@@ -3,24 +3,22 @@ import { N3rdProvider } from '@n3rd-ai/ui'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'n3rd.ai — Terminal UI for the AI era',
+  title: 'n3rd.ai — The reputation layer for AI agents',
   description:
-    'Terminal-first UI framework for Next.js. ASCII everything. Zero images. Pure text. Import. Wrap. Ship.',
-  keywords: ['terminal', 'ascii', 'ui', 'nextjs', 'react', 'monospace', 'ai', 'mcp'],
+    'Every MCP tool call, signed and scored. One number. Embeddable anywhere. Three lines. Zero config.',
+  keywords: ['mcp', 'model-context-protocol', 'reputation', 'ai-agents', 'attestation', 'n3rd'],
   authors: [{ name: 'Superstellar LLC' }],
   openGraph: {
-    title: 'n3rd.ai — Terminal UI for the AI era',
-    description:
-      'Terminal-first UI framework for Next.js. ASCII everything. Zero images. Pure text.',
+    title: 'n3rd.ai — The reputation layer for AI agents',
+    description: 'Every MCP tool call, signed and scored. One number. Embeddable anywhere.',
     url: 'https://n3rd.ai',
     siteName: 'n3rd.ai',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'n3rd.ai — Terminal UI for the AI era',
-    description:
-      'Terminal-first UI framework for Next.js. ASCII everything. Zero images. Pure text.',
+    title: 'n3rd.ai — The reputation layer for AI agents',
+    description: 'Every MCP tool call, signed and scored. One number. Embeddable anywhere.',
   },
   robots: { index: true, follow: true },
 }

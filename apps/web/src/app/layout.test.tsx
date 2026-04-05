@@ -6,16 +6,16 @@ import { render, screen } from '@testing-library/react'
 describe('RootLayout', () => {
   describe('metadata export', () => {
     it('has the correct title', () => {
-      expect(metadata.title).toBe('n3rd.ai — Terminal UI for the AI era')
+      expect(metadata.title).toBe('n3rd.ai — The reputation layer for AI agents')
     })
 
     it('has a description', () => {
-      expect(metadata.description).toContain('Terminal-first UI framework')
+      expect(metadata.description).toContain('signed and scored')
     })
 
     it('has keywords', () => {
       expect(metadata.keywords).toEqual(
-        expect.arrayContaining(['terminal', 'ascii', 'ui', 'nextjs', 'react', 'mcp']),
+        expect.arrayContaining(['mcp', 'reputation', 'ai-agents', 'attestation']),
       )
     })
 
@@ -26,7 +26,7 @@ describe('RootLayout', () => {
     it('has Open Graph metadata', () => {
       const og = metadata.openGraph as Record<string, unknown>
       expect(og).toBeDefined()
-      expect(og.title).toBe('n3rd.ai — Terminal UI for the AI era')
+      expect(og.title).toBe('n3rd.ai — The reputation layer for AI agents')
       expect(og.url).toBe('https://n3rd.ai')
       expect(og.siteName).toBe('n3rd.ai')
       expect(og.type).toBe('website')
