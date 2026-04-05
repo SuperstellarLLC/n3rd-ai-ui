@@ -74,8 +74,15 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
       - run: pnpm turbo run build
+      - run: pnpm --filter @n3rd-ai/ui exec size-limit
+      - run: pnpm --filter @n3rd-ai/mcp exec size-limit
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: dist-ui
           path: packages/ui/dist/
+          retention-days: 7
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: dist-mcp
+          path: packages/mcp/dist/
           retention-days: 7

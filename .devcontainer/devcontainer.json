@@ -1,0 +1,42 @@
+{
+  "name": "n3rd-ai",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers-contrib/features/pnpm:2": {
+      "version": "10.33.0"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer",
+        "ms-vscode.vscode-typescript-next",
+        "github.vscode-github-actions",
+        "github.copilot"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "typescript.enablePromptUseWorkspaceTsdk": true,
+        "eslint.workingDirectories": [{ "mode": "auto" }]
+      }
+    }
+  },
+  "postCreateCommand": "pnpm install && pnpm turbo run build",
+  "postStartCommand": "pnpm install --frozen-lockfile",
+  "forwardPorts": [3000, 4000],
+  "portsAttributes": {
+    "3000": { "label": "Next.js web app" },
+    "4000": { "label": "agent-stackoverflow MCP server" }
+  },
+  "remoteUser": "node",
+  "mounts": ["source=pnpm-store,target=/home/node/.local/share/pnpm/store,type=volume"]
+}

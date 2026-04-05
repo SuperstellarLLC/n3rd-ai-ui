@@ -8,15 +8,22 @@
   },
   "scripts": {
     "build": "turbo run build",
+    "dev": "turbo run dev",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
     "test:ci": "turbo run test:ci",
+    "bench": "pnpm --filter @n3rd-ai/mcp bench",
+    "size": "pnpm --filter @n3rd-ai/ui --filter @n3rd-ai/mcp exec size-limit",
+    "changeset": "changeset",
+    "version": "changeset version && pnpm install --lockfile-only",
+    "release": "turbo run build && changeset publish",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.0",
     "@commitlint/cli": "^19.0.0",
     "@commitlint/config-conventional": "^19.0.0",
     "eslint": "^9.0.0",

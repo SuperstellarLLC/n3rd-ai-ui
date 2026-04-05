@@ -12,6 +12,10 @@ import { createRateLimiter } from '../rate-limit/rate-limit.js'
 import { buildProtectedResourceMetadata, buildWwwAuthenticate } from '../auth/metadata.js'
 import { validateBearerToken } from '../auth/token.js'
 import { AuthError, ForbiddenError } from '../errors/index.js'
+import { createServerMetrics } from '../metrics/index.js'
+import type { ServerMetrics } from '../metrics/index.js'
+import { noopTracer } from '../observability/index.js'
+import type { Tracer } from '../observability/index.js'
 
 interface SessionEntry {
   transport: StreamableHTTPServerTransport
@@ -32,6 +36,10 @@ export function createN3rdServer(
     context: { server: options.server.name, ...options.logger?.context },
   })
 
+  const metrics: ServerMetrics = createServerMetrics()
+  const tracer: Tracer = options.observability?.tracer ?? noopTracer
+  const metricsEnabled = options.observability?.metrics?.enabled ?? true
+
   let httpServer: Server | undefined
   let stdioTransport: StdioServerTransport | undefined
   const sessions: SessionMap = new Map()
@@ -40,7 +48,7 @@ export function createN3rdServer(
   let sessionCleanupInterval: ReturnType<typeof setInterval> | undefined
 
   function createMcpInstance(): McpServer {
-    return new McpServer(
+    const instance = new McpServer(
       {
         name: options.server.name,
         version: options.server.version,
@@ -53,6 +61,53 @@ export function createN3rdServer(
         instructions: options.server.instructions,
       },
     )
+    instrumentMcpInstance(instance)
+    return instance
+  }
+
+  function instrumentMcpInstance(instance: McpServer): void {
+    // Wrap registerTool to observe every tool call with metrics + tracing
+    const originalRegisterTool = instance.registerTool.bind(instance)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    ;(instance as any).registerTool = (name: string, config: unknown, cb: unknown) => {
+      const wrappedCb = async (...args: unknown[]) => {
+        const span = tracer.startSpan(`mcp.tool/${name}`, {
+          'mcp.tool.name': name,
+          'mcp.server.name': options.server.name,
+        })
+        const start = process.hrtime.bigint()
+        try {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          const result = await (cb as any)(...args)
+          const durationSec = Number(process.hrtime.bigint() - start) / 1e9
+          if (metricsEnabled) {
+            metrics.toolCalls.inc({ tool: name })
+            metrics.toolDuration.observe(durationSec, { tool: name })
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            if ((result as any)?.isError) {
+              metrics.toolErrors.inc({ tool: name, kind: 'soft' })
+              span.setStatus({ code: 'ERROR', message: 'tool returned isError' })
+            } else {
+              span.setStatus({ code: 'OK' })
+            }
+          }
+          span.setAttribute('mcp.tool.duration_ms', durationSec * 1000)
+          return result
+        } catch (err) {
+          if (metricsEnabled) metrics.toolErrors.inc({ tool: name, kind: 'throw' })
+          if (err instanceof Error) span.recordException(err)
+          span.setStatus({
+            code: 'ERROR',
+            message: err instanceof Error ? err.message : String(err),
+          })
+          throw err
+        } finally {
+          span.end()
+        }
+      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return (originalRegisterTool as any)(name, config, wrappedCb)
+    }
   }
 
   async function startStdio(): Promise<void> {
@@ -125,6 +180,7 @@ export function createN3rdServer(
     const maxSessions = httpOpts.maxSessions ?? DEFAULT_MAX_SESSIONS
     const sessionTtlMs = httpOpts.sessionTtlMs ?? DEFAULT_SESSION_TTL_MS
     const cors = httpOpts.cors
+    const metricsPath = httpOpts.metricsPath ?? '/metrics'
 
     if (!endpoint.startsWith('/')) {
       throw new Error(`endpoint must start with "/", got "${endpoint}"`)
@@ -170,6 +226,15 @@ export function createN3rdServer(
         if (req.method === 'OPTIONS') {
           res.writeHead(204)
           res.end()
+          return
+        }
+
+        if (metricsEnabled) metrics.requestsTotal.inc({ method: req.method ?? 'UNKNOWN' })
+
+        // Metrics endpoint (Prometheus format)
+        if (metricsEnabled && url.pathname === metricsPath) {
+          res.writeHead(200, { 'Content-Type': 'text/plain; version=0.0.4' })
+          res.end(metrics.registry.render())
           return
         }
 
@@ -305,6 +370,7 @@ export function createN3rdServer(
         if (sessionId && entry) {
           await entry.transport.close()
           sessions.delete(sessionId)
+          if (metricsEnabled) metrics.sessionsActive.set(sessions.size)
           res.writeHead(200)
           res.end()
           reqLogger.info('Session closed', { sessionId })
@@ -350,6 +416,7 @@ export function createN3rdServer(
         sessionIdGenerator: stateful ? () => randomUUID() : undefined,
         onsessioninitialized: (sid) => {
           sessions.set(sid, { transport: newTransport, createdAt: Date.now() })
+          if (metricsEnabled) metrics.sessionsActive.set(sessions.size)
           reqLogger.info('Session initialized', { sessionId: sid })
         },
       })
@@ -357,6 +424,7 @@ export function createN3rdServer(
       newTransport.onclose = () => {
         if (newTransport.sessionId) {
           sessions.delete(newTransport.sessionId)
+          if (metricsEnabled) metrics.sessionsActive.set(sessions.size)
         }
       }
 
@@ -378,6 +446,7 @@ export function createN3rdServer(
   return {
     logger,
     info: options.server,
+    metrics,
 
     address(): AddressInfo | null {
       if (!httpServer) return null

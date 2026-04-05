@@ -1,4 +1,6 @@
 import type { Logger, LoggerOptions, LogLevel } from '../logging/index.js'
+import type { ServerMetrics } from '../metrics/index.js'
+import type { Tracer } from '../observability/index.js'
 import type { AddressInfo } from 'node:net'
 
 export interface ServerInfo {
@@ -25,6 +27,7 @@ export interface HttpTransportOptions {
   maxSessions?: number
   sessionTtlMs?: number
   cors?: CorsOptions
+  metricsPath?: string
 }
 
 export interface StdioTransportOptions {
@@ -104,6 +107,11 @@ export interface RegistryPackage {
   }>
 }
 
+export interface ObservabilityConfig {
+  metrics?: { enabled?: boolean }
+  tracer?: Tracer
+}
+
 export interface N3rdServerOptions {
   server: ServerInfo
   transport: TransportConfig
@@ -112,11 +120,13 @@ export interface N3rdServerOptions {
   rateLimit?: RateLimitConfig
   auth?: AuthConfig
   registry?: RegistryConfig
+  observability?: ObservabilityConfig
 }
 
 export interface N3rdServer {
   readonly logger: Logger
   readonly info: ServerInfo
+  readonly metrics: ServerMetrics
   address(): AddressInfo | null
   start(): Promise<void>
   stop(): Promise<void>

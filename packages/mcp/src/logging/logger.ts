@@ -45,6 +45,21 @@ export interface LoggerOptions {
   redact?: string[]
   /** Patterns to redact from log message strings (e.g., tokens, keys). */
   redactPatterns?: RegExp[]
+  /**
+   * Custom output function. Use this to plug in Pino, Winston, or any external logger.
+   *
+   * @example
+   * ```ts
+   * import pino from 'pino'
+   * const pinoLogger = pino()
+   * createLogger({
+   *   output: (entry) => {
+   *     const { level, msg, time, ...rest } = entry
+   *     pinoLogger[level === 'warning' ? 'warn' : level]({ time, ...rest }, msg)
+   *   },
+   * })
+   * ```
+   */
   output?: (entry: LogEntry) => void
 }
 

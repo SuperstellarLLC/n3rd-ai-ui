@@ -8,6 +8,7 @@ export type {
   HttpTransportOptions,
   StdioTransportOptions,
   CorsOptions,
+  ObservabilityConfig,
   HealthCheckConfig,
   HealthCheckResult,
   RateLimitConfig,
@@ -55,6 +56,21 @@ export type { RateLimiter, RateLimiterOptions, RateLimitResult } from './rate-li
 // Registry
 export { generateServerJson, generateServerCard } from './registry/index.js'
 export type { ServerJson, ServerCard } from './registry/index.js'
+
+// Metrics
+export { createMetricsRegistry, createServerMetrics } from './metrics/index.js'
+export type {
+  MetricLabels,
+  MetricsRegistry,
+  Counter,
+  Gauge,
+  Histogram,
+  ServerMetrics,
+} from './metrics/index.js'
+
+// Observability
+export { noopTracer, noopSpan, adaptOtelTracer } from './observability/index.js'
+export type { Tracer, Span } from './observability/index.js'
 
 // Re-export key SDK types for convenience
 export { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'

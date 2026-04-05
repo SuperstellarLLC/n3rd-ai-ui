@@ -14,4 +14,5 @@ export type {
   TokenInfo,
   RegistryConfig,
   RegistryPackage,
+  ObservabilityConfig,
 } from './types.js'

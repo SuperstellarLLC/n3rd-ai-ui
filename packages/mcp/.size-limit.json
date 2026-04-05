@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Full framework (ESM)",
+    "path": "dist/index.js",
+    "limit": "9 kB",
+    "gzip": true,
+    "ignore": [
+      "@modelcontextprotocol/sdk",
+      "jose",
+      "zod",
+      "node:http",
+      "node:crypto",
+      "node:net",
+      "node:stream",
+      "node:buffer",
+      "node:events",
+      "node:util",
+      "node:path",
+      "node:fs",
+      "node:process",
+      "http",
+      "crypto",
+      "net",
+      "stream",
+      "buffer",
+      "events",
+      "util",
+      "path",
+      "fs",
+      "process"
+    ]
+  },
+  {
+    "name": "Testing utilities (ESM)",
+    "path": "dist/testing/index.js",
+    "limit": "1.2 kB",
+    "gzip": true,
+    "ignore": ["@modelcontextprotocol/sdk"]
+  }
+]

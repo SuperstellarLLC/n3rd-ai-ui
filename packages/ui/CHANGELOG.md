@@ -1,11 +1,25 @@
-# Changelog
+# @n3rd-ai/ui
 
-All notable changes to this project will be documented in this file.
+## 0.4.3
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### Fixed
 
-## [Unreleased]
+- `--n3rd-text-tertiary` bumped from `#555555` (3.4:1 contrast) to `#808080` (5.3:1) for WCAG AA compliance against the default `#0a0a0a` background
+
+## 0.4.2
+
+### Changed
+
+- Sunset component max-width tightened from 480px to 350px
+- Added integration smoke test rendering all 30 components together
+
+## 0.4.1
+
+### Added
+
+- Comprehensive test suite (229 tests, 99.5% coverage)
+
+## 0.4.0
 
 ### Added
 

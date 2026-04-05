@@ -30,6 +30,7 @@
     "test": "vitest run",
     "test:ci": "vitest run --coverage",
     "test:watch": "vitest",
+    "bench": "node --import tsx bench/tool-throughput.bench.ts",
     "prepublishOnly": "pnpm run build"
   },
   "keywords": [
@@ -76,6 +77,9 @@
   "devDependencies": {
     "@types/node": "^20",
     "@eslint/js": "^9.0.0",
+    "fast-check": "^3.23.0",
+    "tinybench": "^3.0.0",
+    "tsx": "^4.19.0",
     "jose": "^6.0.0",
     "zod": "^3.25.0",
     "@vitest/coverage-v8": "^4.1.0",
