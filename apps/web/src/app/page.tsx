@@ -28,7 +28,8 @@ export default function Home() {
         items={[
           { label: 'HOME', href: '/', active: true },
           { label: 'DOCS', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
-          { label: 'NPM', href: 'https://npmjs.com/package/@n3rd-ai/attest', external: true },
+          { label: 'EXPLORE', href: '/explore' },
+          { label: 'TRY', href: '/try' },
           { label: 'GITHUB', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
         ]}
       />

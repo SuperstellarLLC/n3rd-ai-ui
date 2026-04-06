@@ -3,6 +3,7 @@ import { N3rdProvider } from '@n3rd-ai/ui'
 import './globals.css'
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://n3rd.ai'),
   title: 'n3rd.ai — The reputation layer for AI agents',
   description:
     'Every MCP tool call, signed and scored. One number. Embeddable anywhere. Three lines. Zero config.',
