@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import type { ReactNode, CSSProperties, MouseEvent } from 'react'
+import { legacyClassName } from '../../utils'
 import './Button.css'
 
 type Variant = 'primary' | 'secondary' | 'danger' | 'ghost'
@@ -23,10 +24,10 @@ export interface ButtonProps {
 const SPINNER_FRAMES = '⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
 
 const VARIANT_CLASS: Record<Variant, string> = {
-  primary: 'n3rd-btn-primary',
-  secondary: 'n3rd-btn-secondary',
-  danger: 'n3rd-btn-danger',
-  ghost: 'n3rd-btn-ghost',
+  primary: 'boum-btn-primary',
+  secondary: 'boum-btn-secondary',
+  danger: 'boum-btn-danger',
+  ghost: 'boum-btn-ghost',
 }
 
 export function Button({
@@ -52,21 +53,19 @@ export function Button({
     return () => clearInterval(id)
   }, [loading])
 
-  const classes = [
-    'n3rd-btn',
+  const classes = legacyClassName(
+    'boum-btn',
     VARIANT_CLASS[variant],
-    loading ? 'n3rd-btn-loading' : '',
-    disabled ? 'n3rd-btn-disabled' : '',
+    loading ? 'boum-btn-loading' : '',
+    disabled ? 'boum-btn-disabled' : '',
     className ?? '',
-  ]
-    .filter(Boolean)
-    .join(' ')
+  )
 
   const content = (
     <>
       {variant !== 'ghost' && '[ '}
       {loading && (
-        <span className="n3rd-btn-spinner" aria-hidden="true">
+        <span className={legacyClassName('boum-btn-spinner')} aria-hidden="true">
           {SPINNER_FRAMES[frame]}
         </span>
       )}

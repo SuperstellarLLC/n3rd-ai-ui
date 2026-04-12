@@ -7,5 +7,5 @@ export default defineConfig({
   splitting: false,
   treeshake: true,
   clean: true,
-  external: ['@n3rd-ai/mcp'],
+  external: ['@boum-ai/mcp'],
 })

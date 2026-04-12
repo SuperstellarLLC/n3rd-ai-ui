@@ -1,17 +1,17 @@
-# Contributing to n3rd.ai
+# Contributing to boum.ai
 
 Thanks for your interest in contributing. This is a monorepo built for AI-era infrastructure — small, sharp, and opinionated.
 
 ## Repo structure
 
 ```
-n3rd-ai/
+boum-ai/
 ├── packages/
-│   ├── ui/                    @n3rd-ai/ui       — terminal UI framework
-│   └── mcp/                   @n3rd-ai/mcp      — MCP server framework
+│   ├── ui/                    @boum-ai/ui       — terminal UI framework
+│   └── mcp/                   @boum-ai/mcp      — MCP server framework
 ├── apps/
-│   ├── web/                   @n3rd-ai/web      — n3rd.ai landing page (private)
-│   └── agent-stackoverflow/   @n3rd-ai/agent-stackoverflow — vertical MCP app (private)
+│   ├── web/                   @boum-ai/web      — boum.ai landing page (private)
+│   └── agent-stackoverflow/   @boum-ai/agent-stackoverflow — vertical MCP app (private)
 ├── examples/                  Runnable examples (private workspaces)
 │   ├── stdio-server/
 │   ├── http-server/
@@ -27,8 +27,8 @@ n3rd-ai/
 ## First-time setup
 
 ```bash
-git clone https://github.com/SuperstellarLLC/n3rd-ai
-cd n3rd-ai
+git clone https://github.com/SuperstellarLLC/boum-ai
+cd boum-ai
 pnpm install
 pnpm turbo run build test lint typecheck
 ```
@@ -40,17 +40,17 @@ All four commands should succeed on a clean clone. If any fails, please open an 
 ### Run a single package
 
 ```bash
-pnpm --filter @n3rd-ai/mcp test
-pnpm --filter @n3rd-ai/mcp typecheck
-pnpm --filter @n3rd-ai/mcp build
+pnpm --filter @boum-ai/mcp test
+pnpm --filter @boum-ai/mcp typecheck
+pnpm --filter @boum-ai/mcp build
 ```
 
 ### Watch mode
 
 ```bash
 pnpm dev                              # all packages in watch mode
-pnpm --filter @n3rd-ai/mcp dev        # mcp only (tsup --watch)
-pnpm --filter @n3rd-ai/web dev        # next dev
+pnpm --filter @boum-ai/mcp dev        # mcp only (tsup --watch)
+pnpm --filter @boum-ai/web dev        # next dev
 ```
 
 ### Run benchmarks
@@ -68,7 +68,7 @@ pnpm size
 ## Adding a new package
 
 1. Create the directory under `packages/` (library) or `apps/` (application)
-2. Create a `package.json` with the name `@n3rd-ai/<name>` and `"type": "module"`
+2. Create a `package.json` with the name `@boum-ai/<name>` and `"type": "module"`
 3. Internal deps use `workspace:*`
 4. Add standard scripts: `build`, `lint`, `typecheck`, `test`, `test:ci` — turbo picks these up automatically via `turbo.json`
 5. Extend the root `tsconfig.json` for TypeScript consistency
@@ -79,7 +79,7 @@ pnpm size
 - **Unit tests** cover pure logic (parsers, builders, reducers) — aim for near-100% branch coverage
 - **Property-based tests** (`fast-check`) cover invariants — use these for rate limiters, token buckets, anything with math
 - **E2E tests** cover protocol-level behavior — the MCP package has full `initialize → tools/list → tools/call → close` round-trips using the real SDK `Client`
-- **Coverage thresholds**: 80% across the board for `@n3rd-ai/mcp`, 95%/90%/100%/100% for `@n3rd-ai/web`
+- **Coverage thresholds**: 80% across the board for `@boum-ai/mcp`, 95%/90%/100%/100% for `@boum-ai/web`
 - **No mock-heavy tests** — if you're mocking the SDK, you're testing the wrong layer
 
 ## Commit style

@@ -28,8 +28,8 @@ export function Accordion({ items, multiple = false, className, style }: Accordi
   }
 
   const containerStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-base)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-base)',
     ...style,
   }
 
@@ -45,20 +45,20 @@ export function Accordion({ items, multiple = false, className, style }: Accordi
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: 'var(--n3rd-space-2)',
+                gap: 'var(--boum-space-2)',
                 width: '100%',
-                padding: 'var(--n3rd-space-2) 0',
+                padding: 'var(--boum-space-2) 0',
                 background: 'none',
                 border: 'none',
-                borderBottom: '1px solid var(--n3rd-border-muted)',
-                fontFamily: 'var(--n3rd-font)',
-                fontSize: 'var(--n3rd-text-base)',
-                color: 'var(--n3rd-text-primary)',
+                borderBottom: '1px solid var(--boum-border-muted)',
+                fontFamily: 'var(--boum-font)',
+                fontSize: 'var(--boum-text-base)',
+                color: 'var(--boum-text-primary)',
                 cursor: 'pointer',
                 textAlign: 'left',
               }}
             >
-              <span style={{ color: 'var(--n3rd-accent-primary)', flexShrink: 0 }}>
+              <span style={{ color: 'var(--boum-accent-primary)', flexShrink: 0 }}>
                 {isOpen ? '[-]' : '[+]'}
               </span>
               {item.title}
@@ -66,9 +66,9 @@ export function Accordion({ items, multiple = false, className, style }: Accordi
             {isOpen && (
               <div
                 style={{
-                  padding: 'var(--n3rd-space-3) 0 var(--n3rd-space-3) var(--n3rd-space-6)',
-                  color: 'var(--n3rd-text-secondary)',
-                  borderBottom: '1px solid var(--n3rd-border-muted)',
+                  padding: 'var(--boum-space-3) 0 var(--boum-space-3) var(--boum-space-6)',
+                  color: 'var(--boum-text-secondary)',
+                  borderBottom: '1px solid var(--boum-border-muted)',
                 }}
               >
                 {item.content}

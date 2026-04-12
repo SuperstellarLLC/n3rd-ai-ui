@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server'
 
 const API_BASE =
-  process.env.N3RD_API_URL ?? process.env.NEXT_PUBLIC_N3RD_API_URL ?? 'http://127.0.0.1:4001'
+  process.env.BOUM_API_URL ??
+  process.env.NEXT_PUBLIC_BOUM_API_URL ??
+  process.env.N3RD_API_URL ??
+  process.env.NEXT_PUBLIC_N3RD_API_URL ??
+  'http://127.0.0.1:4001'
 
 export async function POST(request: Request) {
   let body: unknown

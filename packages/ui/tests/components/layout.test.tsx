@@ -45,7 +45,7 @@ describe('Box', () => {
 
   it('applies accent color', () => {
     const { container } = render(<Box accent="success">ok</Box>)
-    const box = container.querySelector('.n3rd-box')
+    const box = container.querySelector('.boum-box')
     expect(box).toBeTruthy()
   })
 
@@ -72,7 +72,7 @@ describe('Stack', () => {
 
   it('applies gap', () => {
     const { container } = render(<Stack gap="lg">child</Stack>)
-    expect(container.firstChild).toHaveStyle({ gap: 'var(--n3rd-space-6)' })
+    expect(container.firstChild).toHaveStyle({ gap: 'var(--boum-space-6)' })
   })
 
   it('applies align', () => {
@@ -137,9 +137,9 @@ describe('Grid', () => {
     expect(container.firstChild).toHaveStyle({ gridTemplateColumns: 'repeat(1, 1fr)' })
   })
 
-  it('has n3rd-grid class', () => {
+  it('has boum-grid class', () => {
     const { container } = render(<Grid>child</Grid>)
-    expect(container.querySelector('.n3rd-grid')).toBeTruthy()
+    expect(container.querySelector('.boum-grid')).toBeTruthy()
   })
 
   it('has displayName', () => {

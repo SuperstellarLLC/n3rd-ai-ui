@@ -14,10 +14,10 @@ export interface RowProps {
 
 const GAP_MAP: Record<Gap, string> = {
   none: '0',
-  sm: 'var(--n3rd-space-2)',
-  md: 'var(--n3rd-space-4)',
-  lg: 'var(--n3rd-space-6)',
-  xl: 'var(--n3rd-space-8)',
+  sm: 'var(--boum-space-2)',
+  md: 'var(--boum-space-4)',
+  lg: 'var(--boum-space-6)',
+  xl: 'var(--boum-space-8)',
 }
 
 const JUSTIFY_MAP = {

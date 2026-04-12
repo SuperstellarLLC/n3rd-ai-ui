@@ -1,9 +1,9 @@
-import { Page, Stack, Row, Box, Text, Heading, Nav, Footer } from '@n3rd-ai/ui'
+import { Page, Stack, Row, Box, Text, Heading, Nav, Footer } from '@boum-ai/ui'
 import { fetchLeaderboard } from '@/lib/api'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Explore MCP Servers — n3rd.ai',
+  title: 'Explore MCP Servers — boum.ai',
   description: 'Browse and compare MCP servers ranked by reputation score.',
 }
 
@@ -38,8 +38,8 @@ export default async function ExplorePage() {
               <Row
                 justify="between"
                 style={{
-                  padding: 'var(--n3rd-space-2) var(--n3rd-space-4)',
-                  borderBottom: '1px solid var(--n3rd-border-default)',
+                  padding: 'var(--boum-space-2) var(--boum-space-4)',
+                  borderBottom: '1px solid var(--boum-border-default)',
                 }}
               >
                 <Text size="xs" color="tertiary" bold style={{ width: 40 }}>
@@ -69,9 +69,9 @@ export default async function ExplorePage() {
                   <Row
                     justify="between"
                     style={{
-                      padding: 'var(--n3rd-space-2) var(--n3rd-space-4)',
+                      padding: 'var(--boum-space-2) var(--boum-space-4)',
                       borderBottom:
-                        i < servers.length - 1 ? '1px dotted var(--n3rd-border-muted)' : 'none',
+                        i < servers.length - 1 ? '1px dotted var(--boum-border-muted)' : 'none',
                     }}
                   >
                     <Text size="sm" color="tertiary" style={{ width: 40 }}>
@@ -121,9 +121,9 @@ export default async function ExplorePage() {
 
       <Footer
         tagline="the reputation layer for ai agents"
-        branding="n3rd.ai"
+        branding="boum.ai"
         links={[
-          { label: 'github', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
+          { label: 'github', href: 'https://github.com/SuperstellarLLC/boum-ai', external: true },
         ]}
       />
     </Page>

@@ -38,18 +38,18 @@ export function Logo({
   style,
 }: LogoProps) {
   const lines = renderAsciiLines(text)
-  const gradientValue = typeof gradient === 'string' ? gradient : 'var(--n3rd-gradient)'
+  const gradientValue = typeof gradient === 'string' ? gradient : 'var(--boum-gradient)'
 
   const containerStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-base)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-base)',
     fontWeight: 700,
     whiteSpace: 'pre',
     lineHeight: 1,
     letterSpacing: '-0.05em',
     textAlign: 'center',
-    padding: 'var(--n3rd-space-6) 0',
-    color: accent ? `var(--n3rd-accent-${accent})` : 'var(--n3rd-text-primary)',
+    padding: 'var(--boum-space-6) 0',
+    color: accent ? `var(--boum-accent-${accent})` : 'var(--boum-text-primary)',
     ...style,
   }
 
@@ -63,10 +63,10 @@ export function Logo({
     : {}
 
   const starStyle: CSSProperties = {
-    color: 'var(--n3rd-accent-lavender, #c084fc)',
+    color: 'var(--boum-accent-lavender, #c084fc)',
     opacity: 0.35,
     letterSpacing: 'normal',
-    fontSize: 'var(--n3rd-text-sm)',
+    fontSize: 'var(--boum-text-sm)',
     lineHeight: 1.8,
   }
 

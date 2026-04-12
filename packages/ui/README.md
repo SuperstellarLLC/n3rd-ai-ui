@@ -1,11 +1,11 @@
-# @n3rd-ai/ui
+# @boum-ai/ui
 
 Terminal-first UI framework for Next.js. ASCII everything. Zero images. Pure text.
 
-[![CI](https://github.com/SuperstellarLLC/n3rd-ai-ui/actions/workflows/ci.yml/badge.svg)](https://github.com/SuperstellarLLC/n3rd-ai-ui/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/@n3rd-ai/ui)](https://npmjs.com/package/@n3rd-ai/ui)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/@n3rd-ai/ui)](https://bundlephobia.com/package/@n3rd-ai/ui)
-[![license](https://img.shields.io/npm/l/@n3rd-ai/ui)](./LICENSE)
+[![CI](https://github.com/SuperstellarLLC/boum-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/SuperstellarLLC/boum-ai/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/@boum-ai/ui)](https://npmjs.com/package/@boum-ai/ui)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@boum-ai/ui)](https://bundlephobia.com/package/@boum-ai/ui)
+[![license](https://img.shields.io/npm/l/@boum-ai/ui)](./LICENSE)
 
 ```
 ┌──────────────────────────────────────────────────┐
@@ -20,21 +20,21 @@ Terminal-first UI framework for Next.js. ASCII everything. Zero images. Pure tex
 ## Install
 
 ```bash
-npm install @n3rd-ai/ui
+npm install @boum-ai/ui
 ```
 
 ## Setup
 
 ```tsx
 // app/layout.tsx
-import { N3rdProvider, N3rdFonts } from '@n3rd-ai/ui'
-import '@n3rd-ai/ui/theme/unicorn.css'
+import { BoumProvider, BoumFonts } from '@boum-ai/ui'
+import '@boum-ai/ui/theme/unicorn.css'
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={N3rdFonts.className}>
+    <html lang="en" className={BoumFonts.className}>
       <body>
-        <N3rdProvider>{children}</N3rdProvider>
+        <BoumProvider>{children}</BoumProvider>
       </body>
     </html>
   )
@@ -44,7 +44,7 @@ export default function RootLayout({ children }) {
 ## Components
 
 ```tsx
-import { Box, Text, Button, Metric, Badge, Table, Nav } from '@n3rd-ai/ui'
+import { Box, Text, Button, Metric, Badge, Table, Nav } from '@boum-ai/ui'
 ```
 
 ### Box
@@ -102,7 +102,7 @@ The core primitive. Everything lives in a box.
 ### Toast
 
 ```tsx
-import { useToast } from '@n3rd-ai/ui/hooks'
+import { useToast } from '@boum-ai/ui/hooks'
 
 const toast = useToast()
 
@@ -115,18 +115,18 @@ toast.error('Connection refused.') // [✗] Connection refused.
 Four built-in presets. Switch by importing a different CSS file:
 
 ```tsx
-import '@n3rd-ai/ui/theme/unicorn.css' // violet → pink → cyan (default)
-import '@n3rd-ai/ui/theme/classic.css' // green on black
-import '@n3rd-ai/ui/theme/retro.css' // amber on black
-import '@n3rd-ai/ui/theme/paper.css' // black on white
+import '@boum-ai/ui/theme/unicorn.css' // violet → pink → cyan (default)
+import '@boum-ai/ui/theme/classic.css' // green on black
+import '@boum-ai/ui/theme/retro.css' // amber on black
+import '@boum-ai/ui/theme/paper.css' // black on white
 ```
 
 Override any token:
 
 ```css
 :root {
-  --n3rd-accent-primary: #06b6d4;
-  --n3rd-gradient: linear-gradient(90deg, #06b6d4, #22d3ee, #67e8f9);
+  --boum-accent-primary: #06b6d4;
+  --boum-gradient: linear-gradient(90deg, #06b6d4, #22d3ee, #67e8f9);
 }
 ```
 

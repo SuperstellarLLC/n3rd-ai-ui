@@ -14,11 +14,11 @@ html {
 }
 
 body {
-  font-family: var(--n3rd-font);
-  font-size: var(--n3rd-text-base);
-  line-height: var(--n3rd-line-height);
-  color: var(--n3rd-text-primary);
-  background-color: var(--n3rd-bg-primary);
+  font-family: var(--boum-font);
+  font-size: var(--boum-text-base);
+  line-height: var(--boum-line-height);
+  color: var(--boum-text-primary);
+  background-color: var(--boum-bg-primary);
   min-height: 100vh;
 }
 
@@ -28,12 +28,12 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--n3rd-font);
+  font-family: var(--boum-font);
   font-weight: 700;
 }
 
 a {
-  color: var(--n3rd-accent-cyan);
+  color: var(--boum-accent-cyan);
   text-decoration: none;
 }
 
@@ -42,7 +42,7 @@ a:hover {
 }
 
 button {
-  font-family: var(--n3rd-font);
+  font-family: var(--boum-font);
   cursor: pointer;
   border: none;
   background: none;
@@ -52,9 +52,9 @@ button {
 input,
 textarea,
 select {
-  font-family: var(--n3rd-font);
-  font-size: var(--n3rd-text-base);
-  color: var(--n3rd-text-primary);
+  font-family: var(--boum-font);
+  font-size: var(--boum-text-base);
+  color: var(--boum-text-primary);
   background: transparent;
   border: none;
   outline: none;
@@ -62,7 +62,7 @@ select {
 
 code,
 pre {
-  font-family: var(--n3rd-font);
+  font-family: var(--boum-font);
 }
 
 table {
@@ -77,12 +77,12 @@ td {
 }
 
 ::selection {
-  background: var(--n3rd-accent-purple);
-  color: var(--n3rd-bg-primary);
+  background: var(--boum-accent-purple);
+  color: var(--boum-bg-primary);
 }
 
 :focus-visible {
-  outline: 1px solid var(--n3rd-border-focus);
+  outline: 1px solid var(--boum-border-focus);
   outline-offset: 2px;
 }
 

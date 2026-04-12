@@ -1,5 +1,5 @@
 {
-  "name": "@n3rd-ai/mcp",
+  "name": "@boum-ai/mcp",
   "version": "0.1.0",
   "description": "Production-ready MCP server framework. Opinionated defaults, OAuth 2.1, health checks, structured logging.",
   "type": "module",
@@ -47,14 +47,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SuperstellarLLC/n3rd-ai",
+    "url": "https://github.com/SuperstellarLLC/boum-ai",
     "directory": "packages/mcp"
   },
   "bugs": {
-    "url": "https://github.com/SuperstellarLLC/n3rd-ai/issues"
+    "url": "https://github.com/SuperstellarLLC/boum-ai/issues"
   },
-  "homepage": "https://n3rd.ai",
-  "mcpName": "io.github.superstellarllc/n3rd-ai-mcp",
+  "homepage": "https://boum.ai",
+  "mcpName": "io.github.superstellarllc/boum-ai-mcp",
   "publishConfig": {
     "access": "public"
   },

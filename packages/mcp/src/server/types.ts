@@ -112,7 +112,7 @@ export interface ObservabilityConfig {
   tracer?: Tracer
 }
 
-export interface N3rdServerOptions {
+export interface BoumServerOptions {
   server: ServerInfo
   transport: TransportConfig
   logger?: LoggerOptions
@@ -123,7 +123,7 @@ export interface N3rdServerOptions {
   observability?: ObservabilityConfig
 }
 
-export interface N3rdServer {
+export interface BoumServer {
   readonly logger: Logger
   readonly info: ServerInfo
   readonly metrics: ServerMetrics
@@ -132,3 +132,9 @@ export interface N3rdServer {
   stop(): Promise<void>
   setLogLevel(level: LogLevel): void
 }
+
+/** @deprecated Use BoumServerOptions instead. */
+export type N3rdServerOptions = BoumServerOptions
+
+/** @deprecated Use BoumServer instead. */
+export type N3rdServer = BoumServer

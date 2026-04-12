@@ -33,12 +33,14 @@ describe('createClient', () => {
 
     const headers = init.headers as Record<string, string>
     expect(headers['Content-Type']).toBe('application/json')
+    expect(headers['X-Boum-Api-Key']).toBe('test-key')
+    expect(headers['X-Boum-Signature']).toMatch(/^sha256=[0-9a-f]{64}$/)
     expect(headers['X-N3rd-Api-Key']).toBe('test-key')
-    expect(headers['X-N3rd-Signature']).toMatch(/^sha256=[0-9a-f]{64}$/)
-    expect(headers['User-Agent']).toBe('@n3rd-ai/attest')
+    expect(headers['X-N3rd-Signature']).toBe(headers['X-Boum-Signature'])
+    expect(headers['User-Agent']).toBe('@boum-ai/attest')
 
     // Verify the signature matches the body
-    const sig = headers['X-N3rd-Signature'].replace(/^sha256=/, '')
+    const sig = headers['X-Boum-Signature'].replace(/^sha256=/, '')
     expect(verify(init.body as string, sig, 'test-key')).toBe(true)
   })
 
@@ -101,6 +103,6 @@ describe('createClient', () => {
     })
     await client.send([event()])
     const [url] = fetchImpl.mock.calls[0] as [string, RequestInit]
-    expect(url).toBe('https://api.n3rd.ai/v1/events')
+    expect(url).toBe('https://api.boum.ai/v1/events')
   })
 })

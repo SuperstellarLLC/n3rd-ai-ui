@@ -1,10 +1,13 @@
 'use client'
 
 import { useState } from 'react'
-import { Page, Stack, Box, Text, Heading, Button, Code, Nav, Footer } from '@n3rd-ai/ui'
+import { Page, Stack, Box, Text, Heading, Button, Code, Nav, Footer } from '@boum-ai/ui'
 import type { KeyResponse } from '@/lib/api'
 
-const API_BASE = process.env.NEXT_PUBLIC_N3RD_API_URL ?? 'http://127.0.0.1:4001'
+const API_BASE =
+  process.env.NEXT_PUBLIC_BOUM_API_URL ??
+  process.env.NEXT_PUBLIC_N3RD_API_URL ??
+  'http://127.0.0.1:4001'
 
 export default function TryPage() {
   const [owner, setOwner] = useState('')
@@ -41,10 +44,10 @@ export default function TryPage() {
   }
 
   const snippet = result
-    ? `import { createN3rdServer } from '@n3rd-ai/mcp'
-import { attest } from '@n3rd-ai/attest'
+    ? `import { createBoumServer } from '@boum-ai/mcp'
+import { attest } from '@boum-ai/attest'
 
-const server = createN3rdServer({
+const server = createBoumServer({
   server: { name: '${name}', version: '1.0.0' },
   transport: { type: 'http' },
   observability: {
@@ -96,11 +99,11 @@ await server.start()`
                     placeholder="alice"
                     style={{
                       fontFamily: 'inherit',
-                      fontSize: 'var(--n3rd-text-base)',
-                      background: 'var(--n3rd-bg-secondary)',
-                      border: '1px solid var(--n3rd-border-default)',
-                      color: 'var(--n3rd-text-primary)',
-                      padding: 'var(--n3rd-space-2) var(--n3rd-space-4)',
+                      fontSize: 'var(--boum-text-base)',
+                      background: 'var(--boum-bg-secondary)',
+                      border: '1px solid var(--boum-border-default)',
+                      color: 'var(--boum-text-primary)',
+                      padding: 'var(--boum-space-2) var(--boum-space-4)',
                       width: '100%',
                     }}
                   />
@@ -115,11 +118,11 @@ await server.start()`
                     placeholder="weather"
                     style={{
                       fontFamily: 'inherit',
-                      fontSize: 'var(--n3rd-text-base)',
-                      background: 'var(--n3rd-bg-secondary)',
-                      border: '1px solid var(--n3rd-border-default)',
-                      color: 'var(--n3rd-text-primary)',
-                      padding: 'var(--n3rd-space-2) var(--n3rd-space-4)',
+                      fontSize: 'var(--boum-text-base)',
+                      background: 'var(--boum-bg-secondary)',
+                      border: '1px solid var(--boum-border-default)',
+                      color: 'var(--boum-text-primary)',
+                      padding: 'var(--boum-space-2) var(--boum-space-4)',
                       width: '100%',
                     }}
                   />
@@ -169,9 +172,9 @@ await server.start()`
 
       <Footer
         tagline="the reputation layer for ai agents"
-        branding="n3rd.ai"
+        branding="boum.ai"
         links={[
-          { label: 'github', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
+          { label: 'github', href: 'https://github.com/SuperstellarLLC/boum-ai', external: true },
         ]}
       />
     </Page>

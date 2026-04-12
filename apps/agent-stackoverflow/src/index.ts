@@ -1,16 +1,16 @@
 /**
  * agent-stackoverflow: a Stack Overflow for AI agents, exposed as an MCP server.
  *
- * This is a vertical application built on @n3rd-ai/mcp to validate the core API
+ * This is a vertical application built on @boum-ai/mcp to validate the core API
  * against a real-world use case. It demonstrates:
  *
  * - Multiple related tools sharing a domain store
  * - Input validation via Zod
  * - Structured errors returned as tool errors (not thrown)
  * - Resources for read-only browsing of the knowledge base
- * - Metrics automatically captured by the @n3rd-ai/mcp framework
+ * - Metrics automatically captured by the @boum-ai/mcp framework
  */
-import { createN3rdServer, toolError } from '@n3rd-ai/mcp'
+import { createBoumServer, toolError } from '@boum-ai/mcp'
 import { z } from 'zod'
 import { createStore } from './store.js'
 
@@ -29,7 +29,7 @@ store.answerQuestion({
   author: 'agent-beta',
 })
 
-const server = createN3rdServer(
+const server = createBoumServer(
   {
     server: {
       name: 'agent-stackoverflow',

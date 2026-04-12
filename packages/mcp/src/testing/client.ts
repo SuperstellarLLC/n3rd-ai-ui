@@ -1,4 +1,4 @@
-import type { N3rdServerOptions } from '../server/types.js'
+import type { BoumServerOptions } from '../server/types.js'
 import type { Logger } from '../logging/index.js'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js'
@@ -34,7 +34,7 @@ export interface TestPromptResult {
 
 export async function createTestClient(
   setup: (mcp: McpServer, logger: Logger) => void | Promise<void>,
-  options?: Partial<N3rdServerOptions>,
+  options?: Partial<BoumServerOptions>,
 ): Promise<TestClient> {
   const serverInfo = options?.server ?? { name: 'test-server', version: '0.0.0' }
 

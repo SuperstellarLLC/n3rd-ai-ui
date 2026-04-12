@@ -2,20 +2,20 @@
 @import '../reset.css';
 
 :root {
-  --n3rd-bg-primary: #fafafa;
-  --n3rd-bg-secondary: #f0f0f0;
-  --n3rd-bg-tertiary: #e5e5e5;
+  --boum-bg-primary: #fafafa;
+  --boum-bg-secondary: #f0f0f0;
+  --boum-bg-tertiary: #e5e5e5;
 
-  --n3rd-text-primary: #1a1a1a;
-  --n3rd-text-secondary: #666666;
-  --n3rd-text-tertiary: #999999;
+  --boum-text-primary: #1a1a1a;
+  --boum-text-secondary: #666666;
+  --boum-text-tertiary: #999999;
 
-  --n3rd-border-default: #cccccc;
-  --n3rd-border-focus: #7c3aed;
-  --n3rd-border-muted: #dddddd;
+  --boum-border-default: #cccccc;
+  --boum-border-focus: #7c3aed;
+  --boum-border-muted: #dddddd;
 }
 
 ::selection {
-  background: var(--n3rd-accent-purple);
+  background: var(--boum-accent-purple);
   color: #ffffff;
 }

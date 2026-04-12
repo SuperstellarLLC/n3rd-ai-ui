@@ -1,6 +1,7 @@
 import type { ReactNode, CSSProperties } from 'react'
 import { getBorderChars } from '../../primitives/ascii-border'
 import type { BorderStyle } from '../../primitives/ascii-border'
+import { legacyClassName } from '../../utils'
 import './Box.css'
 
 type Accent = 'primary' | 'success' | 'warning' | 'danger' | 'info'
@@ -18,9 +19,9 @@ export interface BoxProps {
 
 const PADDING_MAP: Record<Padding, string> = {
   none: '0',
-  sm: 'var(--n3rd-space-2)',
-  md: 'var(--n3rd-space-4)',
-  lg: 'var(--n3rd-space-6)',
+  sm: 'var(--boum-space-2)',
+  md: 'var(--boum-space-4)',
+  lg: 'var(--boum-space-6)',
 }
 
 export function Box({
@@ -33,7 +34,7 @@ export function Box({
   style,
 }: BoxProps) {
   const chars = getBorderChars(border)
-  const accentColor = accent ? `var(--n3rd-accent-${accent})` : 'var(--n3rd-border-default)'
+  const accentColor = accent ? `var(--boum-accent-${accent})` : 'var(--boum-border-default)'
 
   if (!chars) {
     return (
@@ -50,31 +51,35 @@ export function Box({
   } as CSSProperties
 
   return (
-    <div className={`n3rd-box ${className ?? ''}`} style={boxStyle}>
-      <div className="n3rd-box-border-top" aria-hidden="true">
-        <span className="n3rd-box-border-char">{chars.topLeft}</span>
+    <div className={legacyClassName('boum-box', className ?? '')} style={boxStyle}>
+      <div className={legacyClassName('boum-box-border-top')} aria-hidden="true">
+        <span className={legacyClassName('boum-box-border-char')}>{chars.topLeft}</span>
         {title && (
           <>
-            <span className="n3rd-box-border-char">{chars.horizontal}</span>
-            <span className="n3rd-box-title">{` ${title} `}</span>
+            <span className={legacyClassName('boum-box-border-char')}>{chars.horizontal}</span>
+            <span className={legacyClassName('boum-box-title')}>{` ${title} `}</span>
           </>
         )}
-        <span className="n3rd-box-border-line">{chars.horizontal.repeat(200)}</span>
-        <span className="n3rd-box-border-char">{chars.topRight}</span>
+        <span className={legacyClassName('boum-box-border-line')}>
+          {chars.horizontal.repeat(200)}
+        </span>
+        <span className={legacyClassName('boum-box-border-char')}>{chars.topRight}</span>
       </div>
-      <div className="n3rd-box-content">
-        <span className="n3rd-box-border-side" aria-hidden="true">
+      <div className={legacyClassName('boum-box-content')}>
+        <span className={legacyClassName('boum-box-border-side')} aria-hidden="true">
           {chars.vertical}
         </span>
-        <div className="n3rd-box-inner">{children}</div>
-        <span className="n3rd-box-border-side" aria-hidden="true">
+        <div className={legacyClassName('boum-box-inner')}>{children}</div>
+        <span className={legacyClassName('boum-box-border-side')} aria-hidden="true">
           {chars.vertical}
         </span>
       </div>
-      <div className="n3rd-box-border-bottom" aria-hidden="true">
-        <span className="n3rd-box-border-char">{chars.bottomLeft}</span>
-        <span className="n3rd-box-border-line">{chars.horizontal.repeat(200)}</span>
-        <span className="n3rd-box-border-char">{chars.bottomRight}</span>
+      <div className={legacyClassName('boum-box-border-bottom')} aria-hidden="true">
+        <span className={legacyClassName('boum-box-border-char')}>{chars.bottomLeft}</span>
+        <span className={legacyClassName('boum-box-border-line')}>
+          {chars.horizontal.repeat(200)}
+        </span>
+        <span className={legacyClassName('boum-box-border-char')}>{chars.bottomRight}</span>
       </div>
     </div>
   )

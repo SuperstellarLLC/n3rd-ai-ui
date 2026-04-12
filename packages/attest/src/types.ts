@@ -1,6 +1,6 @@
 /**
  * A single attestation event — one tool invocation on an MCP server.
- * Signed in batches and shipped to n3rd.ai for reputation scoring.
+ * Signed in batches and shipped to boum.ai for reputation scoring.
  */
 export interface AttestEvent {
   /** Unique event id (UUID v4) */
@@ -20,11 +20,11 @@ export interface AttestEvent {
 }
 
 export interface AttestOptions {
-  /** Your n3rd.ai API key (starts with `n3rd_`) */
+  /** Your boum.ai API key (starts with `boum_`) */
   apiKey: string
   /**
    * Endpoint URL for event ingestion.
-   * @default 'https://api.n3rd.ai/v1/events'
+   * @default 'https://api.boum.ai/v1/events'
    */
   endpoint?: string
   /**

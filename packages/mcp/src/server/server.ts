@@ -6,7 +6,7 @@ import type { AddressInfo } from 'node:net'
 import { randomUUID } from 'node:crypto'
 import { createLogger } from '../logging/index.js'
 import type { Logger, LogLevel } from '../logging/index.js'
-import type { N3rdServer, N3rdServerOptions, HttpTransportOptions, CorsOptions } from './types.js'
+import type { BoumServer, BoumServerOptions, HttpTransportOptions, CorsOptions } from './types.js'
 import { buildHealthHandler, buildReadyHandler } from '../health/health.js'
 import { createRateLimiter } from '../rate-limit/rate-limit.js'
 import { buildProtectedResourceMetadata, buildWwwAuthenticate } from '../auth/metadata.js'
@@ -27,10 +27,10 @@ type SessionMap = Map<string, SessionEntry>
 const DEFAULT_MAX_SESSIONS = 1000
 const DEFAULT_SESSION_TTL_MS = 30 * 60 * 1000 // 30 minutes
 
-export function createN3rdServer(
-  options: N3rdServerOptions,
+export function createBoumServer(
+  options: BoumServerOptions,
   setup: (mcp: McpServer, logger: Logger) => void | Promise<void>,
-): N3rdServer {
+): BoumServer {
   const logger = createLogger({
     ...options.logger,
     context: { server: options.server.name, ...options.logger?.context },
@@ -556,3 +556,6 @@ function parseBody(req: IncomingMessage): Promise<unknown> {
     })
   })
 }
+
+/** @deprecated Use createBoumServer instead. */
+export const createN3rdServer = createBoumServer

@@ -51,7 +51,7 @@ describe('Text', () => {
       </Text>,
     )
     const prefix = screen.getByText('#')
-    expect(prefix).toHaveStyle({ WebkitTextFillColor: 'var(--n3rd-text-secondary)' })
+    expect(prefix).toHaveStyle({ WebkitTextFillColor: 'var(--boum-text-secondary)' })
   })
 
   it('has displayName', () => {
@@ -93,7 +93,7 @@ describe('Badge', () => {
 
   it('applies variant color', () => {
     const { container } = render(<Badge variant="success">OK</Badge>)
-    expect(container.firstChild).toHaveStyle({ color: 'var(--n3rd-accent-success)' })
+    expect(container.firstChild).toHaveStyle({ color: 'var(--boum-accent-success)' })
   })
 
   it('has displayName', () => {
@@ -439,9 +439,9 @@ describe('Card', () => {
     expect(a).toHaveAttribute('rel', 'noopener noreferrer')
   })
 
-  it('has n3rd-card class', () => {
+  it('has boum-card class', () => {
     const { container } = render(<Card>body</Card>)
-    expect(container.querySelector('.n3rd-card')).toBeTruthy()
+    expect(container.querySelector('.boum-card')).toBeTruthy()
   })
 
   it('has displayName', () => {
@@ -488,7 +488,7 @@ describe('Tag', () => {
 
   it('applies accent color', () => {
     const { container } = render(<Tag accent="success">ok</Tag>)
-    expect(container.firstChild).toHaveStyle({ color: 'var(--n3rd-accent-success)' })
+    expect(container.firstChild).toHaveStyle({ color: 'var(--boum-accent-success)' })
   })
 
   it('renders remove button when removable', () => {

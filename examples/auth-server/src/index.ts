@@ -3,7 +3,7 @@
  * Uses createJwtValidator with a remote JWKS endpoint.
  *
  * Set AUTH_ISSUER and AUTH_AUDIENCE env vars, then:
- *   pnpm --filter @n3rd-ai/example-auth-server start
+ *   pnpm --filter @boum-ai/example-auth-server start
  *
  * Curl without a token → 401 with WWW-Authenticate header:
  *   curl -i http://localhost:3000/mcp -X POST -H 'Content-Type: application/json' -d '{}'
@@ -11,7 +11,7 @@
  * Discover metadata:
  *   curl http://localhost:3000/.well-known/oauth-protected-resource
  */
-import { createN3rdServer, createJwtValidator } from '@n3rd-ai/mcp'
+import { createBoumServer, createJwtValidator } from '@boum-ai/mcp'
 import { z } from 'zod'
 
 const AUTH_ISSUER = process.env.AUTH_ISSUER ?? 'https://auth.example.com'
@@ -22,7 +22,7 @@ const jwtValidator = createJwtValidator({
   audience: AUTH_AUDIENCE,
 })
 
-const server = createN3rdServer(
+const server = createBoumServer(
   {
     server: {
       name: 'example-auth',

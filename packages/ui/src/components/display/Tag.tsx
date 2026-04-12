@@ -19,25 +19,25 @@ export function Tag({
   className,
   style,
 }: TagProps) {
-  const accentColor = `var(--n3rd-accent-${accent})`
+  const accentColor = `var(--boum-accent-${accent})`
 
   const tagStyle: CSSProperties = {
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 'var(--n3rd-space-1)',
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-xs)',
+    gap: 'var(--boum-space-1)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-xs)',
     color: accentColor,
     border: `1px solid ${accentColor}`,
-    padding: '1px var(--n3rd-space-2)',
+    padding: '1px var(--boum-space-2)',
     ...style,
   }
 
   const removeStyle: CSSProperties = {
     background: 'none',
     border: 'none',
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-xs)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-xs)',
     color: accentColor,
     cursor: 'pointer',
     padding: 0,

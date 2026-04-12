@@ -1,4 +1,5 @@
 import type { ReactNode, CSSProperties } from 'react'
+import { legacyClassName } from '../../utils'
 import './Card.css'
 
 type Accent = 'primary' | 'success' | 'warning' | 'danger' | 'info'
@@ -26,7 +27,7 @@ export function Card({
   className,
   style,
 }: CardProps) {
-  const accentColor = accent ? `var(--n3rd-accent-${accent})` : 'var(--n3rd-border-default)'
+  const accentColor = accent ? `var(--boum-accent-${accent})` : 'var(--boum-border-default)'
 
   const cardStyle: CSSProperties = {
     '--card-accent': accentColor,
@@ -36,13 +37,13 @@ export function Card({
   const content = (
     <>
       {(title || subtitle) && (
-        <div className="n3rd-card-header">
-          {title && <div className="n3rd-card-title">{title}</div>}
-          {subtitle && <div className="n3rd-card-subtitle">{subtitle}</div>}
+        <div className={legacyClassName('boum-card-header')}>
+          {title && <div className={legacyClassName('boum-card-title')}>{title}</div>}
+          {subtitle && <div className={legacyClassName('boum-card-subtitle')}>{subtitle}</div>}
         </div>
       )}
-      <div className="n3rd-card-body">{children}</div>
-      {footer && <div className="n3rd-card-footer">{footer}</div>}
+      <div className={legacyClassName('boum-card-body')}>{children}</div>
+      {footer && <div className={legacyClassName('boum-card-footer')}>{footer}</div>}
     </>
   )
 
@@ -50,7 +51,7 @@ export function Card({
     return (
       <a
         href={href}
-        className={`n3rd-card n3rd-card-link ${className ?? ''}`}
+        className={legacyClassName('boum-card', 'boum-card-link', className ?? '')}
         style={cardStyle}
         {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       >
@@ -60,7 +61,7 @@ export function Card({
   }
 
   return (
-    <div className={`n3rd-card ${className ?? ''}`} style={cardStyle}>
+    <div className={legacyClassName('boum-card', className ?? '')} style={cardStyle}>
       {content}
     </div>
   )

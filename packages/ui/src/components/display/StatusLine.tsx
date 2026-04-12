@@ -13,12 +13,12 @@ export function StatusLine({ left, center, right, className, style }: StatusLine
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: 'var(--n3rd-space-1) var(--n3rd-space-3)',
-    backgroundColor: 'var(--n3rd-bg-secondary)',
-    borderTop: '1px solid var(--n3rd-border-muted)',
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-xs)',
-    color: 'var(--n3rd-text-secondary)',
+    padding: 'var(--boum-space-1) var(--boum-space-3)',
+    backgroundColor: 'var(--boum-bg-secondary)',
+    borderTop: '1px solid var(--boum-border-muted)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-xs)',
+    color: 'var(--boum-text-secondary)',
     ...style,
   }
 

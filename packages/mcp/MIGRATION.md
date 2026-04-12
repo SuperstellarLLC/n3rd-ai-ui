@@ -1,6 +1,6 @@
-# Migrating from `@modelcontextprotocol/sdk` to `@n3rd-ai/mcp`
+# Migrating from `@modelcontextprotocol/sdk` to `@boum-ai/mcp`
 
-`@n3rd-ai/mcp` is a thin, opinionated wrapper around `@modelcontextprotocol/sdk`. You don't lose anything — you gain security defaults, observability, and less boilerplate.
+`@boum-ai/mcp` is a thin, opinionated wrapper around `@modelcontextprotocol/sdk`. You don't lose anything — you gain security defaults, observability, and less boilerplate.
 
 ## Side-by-side
 
@@ -31,13 +31,13 @@ process.on('SIGINT', async () => {
 })
 ```
 
-**After (`@n3rd-ai/mcp`):**
+**After (`@boum-ai/mcp`):**
 
 ```ts
-import { createN3rdServer } from '@n3rd-ai/mcp'
+import { createBoumServer } from '@boum-ai/mcp'
 import { z } from 'zod'
 
-const server = createN3rdServer(
+const server = createBoumServer(
   {
     server: { name: 'my-server', version: '1.0.0' },
     transport: { type: 'stdio' },
@@ -60,9 +60,9 @@ await server.start()
 **After:**
 
 ```ts
-import { createN3rdServer } from '@n3rd-ai/mcp'
+import { createBoumServer } from '@boum-ai/mcp'
 
-const server = createN3rdServer(
+const server = createBoumServer(
   {
     server: { name: 'my-server', version: '1.0.0' },
     transport: {
@@ -99,14 +99,14 @@ You get for free:
 **After:**
 
 ```ts
-import { createN3rdServer, createJwtValidator } from '@n3rd-ai/mcp'
+import { createBoumServer, createJwtValidator } from '@boum-ai/mcp'
 
 const jwtValidator = createJwtValidator({
   issuer: 'https://auth.example.com',
   audience: 'https://my-mcp.example.com',
 })
 
-createN3rdServer(
+createBoumServer(
   {
     server: { name: 's', version: '1.0.0' },
     transport: { type: 'http' },
@@ -138,7 +138,7 @@ The server automatically:
 **After:**
 
 ```ts
-import { toolError } from '@n3rd-ai/mcp'
+import { toolError } from '@boum-ai/mcp'
 
 mcp.registerTool(
   'divide',
@@ -160,9 +160,9 @@ mcp.registerTool(
 
 ```ts
 import { trace } from '@opentelemetry/api'
-import { adaptOtelTracer } from '@n3rd-ai/mcp'
+import { adaptOtelTracer } from '@boum-ai/mcp'
 
-createN3rdServer(
+createBoumServer(
   {
     // ...
     observability: { tracer: adaptOtelTracer(trace.getTracer('mcp-server')) },
@@ -180,7 +180,7 @@ Every tool invocation gets its own span with `mcp.tool.name`, `mcp.server.name`,
 **After:**
 
 ```ts
-import { createTestClient, assertToolText } from '@n3rd-ai/mcp/testing'
+import { createTestClient, assertToolText } from '@boum-ai/mcp/testing'
 
 const client = await createTestClient((mcp) => {
   mcp.registerTool(
@@ -203,9 +203,9 @@ await client.close()
 
 - `registerTool` / `registerResource` / `registerPrompt` APIs are untouched — they're forwarded straight to the SDK
 - Zod input/output schemas work identically
-- You still `import { McpServer } from '@n3rd-ai/mcp'` if you want the raw SDK class — we re-export it
+- You still `import { McpServer } from '@boum-ai/mcp'` if you want the raw SDK class — we re-export it
 - All SDK transports and client code remain interoperable
 
 ## What you lose
 
-Nothing. `@n3rd-ai/mcp` is a strict superset: the underlying `McpServer` instance is exposed to your setup callback, so any SDK feature we haven't wrapped yet is still one line away.
+Nothing. `@boum-ai/mcp` is a strict superset: the underlying `McpServer` instance is exposed to your setup callback, so any SDK feature we haven't wrapped yet is still one line away.

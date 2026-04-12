@@ -1,5 +1,5 @@
 {
-  "name": "@n3rd-ai/api",
+  "name": "@boum-ai/api",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -14,13 +14,13 @@
     "test:ci": "vitest run --coverage"
   },
   "dependencies": {
-    "@n3rd-ai/score": "workspace:*",
+    "@boum-ai/score": "workspace:*",
     "hono": "^4.7.0",
     "@hono/node-server": "^1.14.0",
     "better-sqlite3": "^11.8.0"
   },
   "devDependencies": {
-    "@n3rd-ai/attest": "workspace:*",
+    "@boum-ai/attest": "workspace:*",
     "@eslint/js": "^9.0.0",
     "@types/better-sqlite3": "^7.6.0",
     "@types/node": "^20",

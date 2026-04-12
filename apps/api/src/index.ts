@@ -3,18 +3,18 @@ import { createDB } from './db.js'
 import { createApp } from './routes.js'
 
 const PORT = Number(process.env.PORT ?? 4001)
-const DB_PATH = process.env.DB_PATH ?? './n3rd.db'
+const DB_PATH = process.env.DB_PATH ?? './boum.db'
 
 const db = createDB(DB_PATH)
 db.migrate()
 
 const app = createApp(db)
 
-console.info(`n3rd.ai API starting on http://127.0.0.1:${PORT}`)
+console.info(`boum.ai API starting on http://127.0.0.1:${PORT}`)
 console.info(`Database: ${DB_PATH}`)
 
 serve({ fetch: app.fetch, port: PORT }, (info) => {
-  console.info(`n3rd.ai API ready on http://127.0.0.1:${info.port}`)
+  console.info(`boum.ai API ready on http://127.0.0.1:${info.port}`)
   console.info(`  POST /v1/events   — event ingestion`)
   console.info(`  POST /v1/keys     — instant API key`)
   console.info(`  POST /v1/waitlist — waitlist capture`)

@@ -24,9 +24,9 @@ export function Code({
   const lines = children.split('\n')
 
   const codeStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-sm)',
-    lineHeight: 'var(--n3rd-line-height)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-sm)',
+    lineHeight: 'var(--boum-line-height)',
     ...style,
   }
 
@@ -38,8 +38,8 @@ export function Code({
             {showLineNumbers && (
               <span
                 style={{
-                  color: 'var(--n3rd-text-tertiary)',
-                  marginRight: 'var(--n3rd-space-3)',
+                  color: 'var(--boum-text-tertiary)',
+                  marginRight: 'var(--boum-space-3)',
                   userSelect: 'none',
                 }}
               >
@@ -47,9 +47,9 @@ export function Code({
               </span>
             )}
             {prompt && i === 0 && (
-              <span style={{ color: 'var(--n3rd-accent-primary)' }}>{prompt} </span>
+              <span style={{ color: 'var(--boum-accent-primary)' }}>{prompt} </span>
             )}
-            <span style={{ color: 'var(--n3rd-text-primary)' }}>{line}</span>
+            <span style={{ color: 'var(--boum-text-primary)' }}>{line}</span>
           </div>
         ))}
       </pre>

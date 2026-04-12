@@ -1,13 +1,13 @@
 /**
- * Example: minimal MCP server over stdio using @n3rd-ai/mcp.
+ * Example: minimal MCP server over stdio using @boum-ai/mcp.
  *
- * Run: pnpm --filter @n3rd-ai/example-stdio-server start
+ * Run: pnpm --filter @boum-ai/example-stdio-server start
  * Connect with MCP Inspector: npx @modelcontextprotocol/inspector tsx src/index.ts
  */
-import { createN3rdServer } from '@n3rd-ai/mcp'
+import { createBoumServer } from '@boum-ai/mcp'
 import { z } from 'zod'
 
-const server = createN3rdServer(
+const server = createBoumServer(
   {
     server: {
       name: 'example-stdio',

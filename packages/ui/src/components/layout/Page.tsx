@@ -11,7 +11,7 @@ export function Page({ children, maxWidth = '1200px', className, style }: PagePr
   const pageStyle: CSSProperties = {
     maxWidth,
     margin: '0 auto',
-    padding: 'var(--n3rd-space-6) var(--n3rd-space-4)',
+    padding: 'var(--boum-space-6) var(--boum-space-4)',
     minHeight: '100vh',
     overflowX: 'hidden',
     ...style,

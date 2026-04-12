@@ -1,7 +1,7 @@
 {
-  "name": "@n3rd-ai/attest",
+  "name": "@boum-ai/attest",
   "version": "0.1.0",
-  "description": "Drop-in reputation tracer for MCP servers. Three lines. Signed attestations to n3rd.ai.",
+  "description": "Drop-in reputation tracer for MCP servers. Three lines. Signed attestations to boum.ai.",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -34,19 +34,19 @@
     "mcp-reputation",
     "mcp-attestation",
     "observability",
-    "n3rd"
+    "boum"
   ],
   "author": "Superstellar LLC",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SuperstellarLLC/n3rd-ai",
+    "url": "https://github.com/SuperstellarLLC/boum-ai",
     "directory": "packages/attest"
   },
   "bugs": {
-    "url": "https://github.com/SuperstellarLLC/n3rd-ai/issues"
+    "url": "https://github.com/SuperstellarLLC/boum-ai/issues"
   },
-  "homepage": "https://n3rd.ai",
+  "homepage": "https://boum.ai",
   "publishConfig": {
     "access": "public"
   },
@@ -55,10 +55,10 @@
     "node": ">=20"
   },
   "peerDependencies": {
-    "@n3rd-ai/mcp": "workspace:*"
+    "@boum-ai/mcp": "workspace:*"
   },
   "devDependencies": {
-    "@n3rd-ai/mcp": "workspace:*",
+    "@boum-ai/mcp": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "zod": "^3.25.0",
     "@types/node": "^20",

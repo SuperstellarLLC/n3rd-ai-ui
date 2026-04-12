@@ -14,7 +14,7 @@ export function Scanline({ opacity = 0.03 }: ScanlineProps) {
     width: '100%',
     height: '100%',
     pointerEvents: 'none',
-    zIndex: 'var(--n3rd-z-scanline, 9999)' as unknown as number,
+    zIndex: 'var(--boum-z-scanline, 9999)' as unknown as number,
     background: `repeating-linear-gradient(
       0deg,
       transparent,

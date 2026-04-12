@@ -3,6 +3,7 @@
 import { type CSSProperties, type ChangeEvent, useState, useRef } from 'react'
 import { Cursor } from '../../primitives/cursor'
 import type { CursorStyle } from '../../primitives/cursor'
+import { legacyClassName } from '../../utils'
 import './Input.css'
 
 export interface InputProps {
@@ -68,25 +69,23 @@ export function Input({
     }
   }
 
-  const fieldClasses = [
-    'n3rd-input-field',
-    focused ? 'n3rd-input-field-focused' : '',
-    disabled ? 'n3rd-input-field-disabled' : '',
-    error ? 'n3rd-input-field-error' : '',
-  ]
-    .filter(Boolean)
-    .join(' ')
+  const fieldClasses = legacyClassName(
+    'boum-input-field',
+    focused ? 'boum-input-field-focused' : '',
+    disabled ? 'boum-input-field-disabled' : '',
+    error ? 'boum-input-field-error' : '',
+  )
 
   return (
-    <div className={`n3rd-input-wrapper ${className ?? ''}`} style={style}>
+    <div className={legacyClassName('boum-input-wrapper', className ?? '')} style={style}>
       {label && (
-        <label className="n3rd-input-label" htmlFor={id}>
+        <label className={legacyClassName('boum-input-label')} htmlFor={id}>
           {label}:{required && ' *'}
         </label>
       )}
       <div className={fieldClasses} onClick={() => inputRef.current?.focus()}>
-        {prefix && <span className="n3rd-input-prefix">{prefix}</span>}
-        <div className="n3rd-input-wrap">
+        {prefix && <span className={legacyClassName('boum-input-prefix')}>{prefix}</span>}
+        <div className={legacyClassName('boum-input-wrap')}>
           <input
             ref={inputRef}
             id={id}
@@ -104,13 +103,13 @@ export function Input({
             aria-label={ariaLabel}
             aria-invalid={error || undefined}
             aria-describedby={errorId ?? ariaDescribedBy}
-            className="n3rd-input"
+            className={legacyClassName('boum-input')}
           />
           {focused && !disabled && <Cursor style={cursor} />}
         </div>
       </div>
       {error && errorMessage && (
-        <div id={errorId} className="n3rd-input-error-message" role="alert">
+        <div id={errorId} className={legacyClassName('boum-input-error-message')} role="alert">
           [✗] {errorMessage}
         </div>
       )}

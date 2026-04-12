@@ -1,5 +1,5 @@
 {
-  "name": "n3rd-ai",
+  "name": "boum-ai",
   "image": "mcr.microsoft.com/devcontainers/typescript-node:22-bookworm",
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},

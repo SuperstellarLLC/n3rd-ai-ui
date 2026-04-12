@@ -25,10 +25,10 @@ const ICONS: Record<ToastType, string> = {
 }
 
 const COLORS: Record<ToastType, string> = {
-  success: 'var(--n3rd-accent-success)',
-  warning: 'var(--n3rd-accent-warning)',
-  error: 'var(--n3rd-accent-danger)',
-  info: 'var(--n3rd-accent-info)',
+  success: 'var(--boum-accent-success)',
+  warning: 'var(--boum-accent-warning)',
+  error: 'var(--boum-accent-danger)',
+  info: 'var(--boum-accent-info)',
 }
 
 interface ToastContextValue {
@@ -80,14 +80,14 @@ export function ToastProvider({
 
   const containerStyle: CSSProperties = {
     position: 'fixed',
-    bottom: 'var(--n3rd-space-6)',
-    right: 'var(--n3rd-space-6)',
+    bottom: 'var(--boum-space-6)',
+    right: 'var(--boum-space-6)',
     display: 'flex',
     flexDirection: 'column',
-    gap: 'var(--n3rd-space-2)',
-    zIndex: 'var(--n3rd-z-toast, 9998)' as unknown as number,
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-sm)',
+    gap: 'var(--boum-space-2)',
+    zIndex: 'var(--boum-z-toast, 9998)' as unknown as number,
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-sm)',
   }
 
   return (
@@ -99,14 +99,14 @@ export function ToastProvider({
             <div
               key={t.id}
               style={{
-                padding: 'var(--n3rd-space-2) var(--n3rd-space-3)',
-                backgroundColor: 'var(--n3rd-bg-secondary)',
+                padding: 'var(--boum-space-2) var(--boum-space-3)',
+                backgroundColor: 'var(--boum-bg-secondary)',
                 border: `1px solid ${COLORS[t.type]}`,
-                color: 'var(--n3rd-text-primary)',
-                animation: 'n3rd-fade-in var(--n3rd-fade-duration) ease-out',
+                color: 'var(--boum-text-primary)',
+                animation: 'boum-fade-in var(--boum-fade-duration) ease-out',
               }}
             >
-              <span style={{ color: COLORS[t.type], marginRight: 'var(--n3rd-space-2)' }}>
+              <span style={{ color: COLORS[t.type], marginRight: 'var(--boum-space-2)' }}>
                 {ICONS[t.type]}
               </span>
               {t.message}
@@ -120,7 +120,11 @@ export function ToastProvider({
 
 export function useToast(): ToastContextValue {
   const ctx = useContext(ToastContext)
-  if (!ctx) throw new Error('useToast must be used within <ToastProvider> or <N3rdProvider>')
+  if (!ctx) {
+    throw new Error(
+      'useToast must be used within <ToastProvider>, <BoumProvider>, or <N3rdProvider>',
+    )
+  }
   return ctx
 }
 

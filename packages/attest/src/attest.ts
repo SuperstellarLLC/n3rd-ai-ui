@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto'
-import type { Tracer, Span } from '@n3rd-ai/mcp'
+import type { Tracer, Span } from '@boum-ai/mcp'
 import { createBatcher, type Batcher } from './batcher.js'
 import { createClient } from './client.js'
 import type { AttestEvent, AttestOptions } from './types.js'
@@ -19,19 +19,19 @@ export interface AttestTracer extends Tracer {
 /**
  * Create a reputation tracer for an MCP server.
  *
- * Every tool invocation becomes a signed attestation event shipped to n3rd.ai.
+ * Every tool invocation becomes a signed attestation event shipped to boum.ai.
  * Zero impact on your server — events are batched, flushed async, and delivery
  * failures are silent by default (pass `onError` to observe them).
  *
  * @example
  * ```ts
- * import { createN3rdServer } from '@n3rd-ai/mcp'
- * import { attest } from '@n3rd-ai/attest'
+ * import { createBoumServer } from '@boum-ai/mcp'
+ * import { attest } from '@boum-ai/attest'
  *
- * createN3rdServer({
+ * createBoumServer({
  *   server: { name: 'weather', version: '1.0.0' },
  *   transport: { type: 'http' },
- *   observability: { tracer: attest({ apiKey: process.env.N3RD_KEY! }) },
+ *   observability: { tracer: attest({ apiKey: process.env.BOUM_KEY! }) },
  * }, (mcp) => {
  *   // register your tools as usual
  * })

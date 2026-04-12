@@ -14,9 +14,9 @@ describe('renderBadgeSvg', () => {
     expect(svg).toContain('>94<')
   })
 
-  it('includes the n3rd label', () => {
+  it('includes the boum label', () => {
     const svg = renderBadgeSvg({ server: 'weather', score: 94, band: 'excellent' })
-    expect(svg).toContain('>n3rd<')
+    expect(svg).toContain('>boum<')
   })
 
   it('uses green for excellent', () => {
@@ -47,8 +47,8 @@ describe('renderBadgeSvg', () => {
 
   it('has accessible title and aria-label', () => {
     const svg = renderBadgeSvg({ server: 's', score: 94, band: 'excellent' })
-    expect(svg).toContain('<title>n3rd: 94</title>')
-    expect(svg).toContain('aria-label="n3rd: 94"')
+    expect(svg).toContain('<title>boum: 94</title>')
+    expect(svg).toContain('aria-label="boum: 94"')
   })
 
   it('sets width based on content', () => {

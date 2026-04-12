@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import { legacyClassName } from '../../utils'
 import './Nav.css'
 
 interface NavItem {
@@ -16,16 +17,17 @@ export interface NavProps {
 
 export function Nav({ items, className, style }: NavProps) {
   return (
-    <nav className={`n3rd-nav ${className ?? ''}`} style={style}>
-      <div className="n3rd-nav-items">
+    <nav className={legacyClassName('boum-nav', className ?? '')} style={style}>
+      <div className={legacyClassName('boum-nav-items')}>
         {items.map((item) => (
           <a
             key={item.label}
             href={item.href}
-            className={`n3rd-nav-item ${item.active ? 'n3rd-nav-active' : ''}`}
+            className={legacyClassName('boum-nav-item', item.active ? 'boum-nav-active' : '')}
             {...(item.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
-            {item.active && <span className="n3rd-nav-indicator">&gt; </span>}[ {item.label}
+            {item.active && <span className={legacyClassName('boum-nav-indicator')}>&gt; </span>}[{' '}
+            {item.label}
             {item.external ? ' ↗' : ''} ]
           </a>
         ))}

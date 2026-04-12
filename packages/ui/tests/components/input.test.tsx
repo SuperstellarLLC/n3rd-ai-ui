@@ -133,7 +133,7 @@ describe('Input', () => {
     const { container } = render(<Input error errorMessage="Required field" id="test" />)
     expect(screen.getByText(/Required field/)).toBeInTheDocument()
     expect(screen.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true')
-    expect(container.querySelector('.n3rd-input-field-error')).toBeTruthy()
+    expect(container.querySelector('.boum-input-field-error')).toBeTruthy()
   })
 
   it('error message has alert role', () => {

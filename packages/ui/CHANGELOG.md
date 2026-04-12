@@ -1,10 +1,10 @@
-# @n3rd-ai/ui
+# @boum-ai/ui
 
 ## 0.4.3
 
 ### Fixed
 
-- `--n3rd-text-tertiary` bumped from `#555555` (3.4:1 contrast) to `#808080` (5.3:1) for WCAG AA compliance against the default `#0a0a0a` background
+- `--boum-text-tertiary` bumped from `#555555` (3.4:1 contrast) to `#808080` (5.3:1) for WCAG AA compliance against the default `#0a0a0a` background
 
 ## 0.4.2
 
@@ -33,4 +33,4 @@
 - Primitives: ascii-border, cursor, typewriter, scanline
 - Hooks: useTypewriter, useKeyboard, useToast
 - Utility functions: drawBox, formatTable
-- N3rdProvider with toast and scanline support
+- BoumProvider with toast and scanline support

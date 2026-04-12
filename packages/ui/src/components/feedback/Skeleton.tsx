@@ -9,10 +9,10 @@ export interface SkeletonProps {
 
 export function Skeleton({ width = 30, lines = 1, className, style }: SkeletonProps) {
   const skeletonStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-base)',
-    color: 'var(--n3rd-text-tertiary)',
-    lineHeight: 'var(--n3rd-line-height)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-base)',
+    color: 'var(--boum-text-tertiary)',
+    lineHeight: 'var(--boum-line-height)',
     ...style,
   }
 

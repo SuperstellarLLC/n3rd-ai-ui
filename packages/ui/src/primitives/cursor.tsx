@@ -18,8 +18,8 @@ export interface CursorProps {
 export function Cursor({ style = 'block', className }: CursorProps) {
   const cursorStyle: CSSProperties = {
     display: 'inline-block',
-    animation: 'n3rd-cursor-blink var(--n3rd-cursor-blink) step-end infinite',
-    color: 'var(--n3rd-text-primary)',
+    animation: 'boum-cursor-blink var(--boum-cursor-blink) step-end infinite',
+    color: 'var(--boum-text-primary)',
   }
 
   return (

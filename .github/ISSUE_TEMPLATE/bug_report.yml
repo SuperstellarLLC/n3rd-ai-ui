@@ -1,5 +1,5 @@
 name: Bug Report
-description: Report a bug in @n3rd-ai/ui
+description: Report a bug in @boum-ai/ui
 title: '[bug]: '
 labels: ['bug']
 body:
@@ -23,7 +23,7 @@ body:
       label: Steps to Reproduce
       description: Minimal steps to reproduce the behavior.
       placeholder: |
-        1. Import `Box` from `@n3rd-ai/ui`
+        1. Import `Box` from `@boum-ai/ui`
         2. Pass `border="double"`
         3. See incorrect rendering
     validations:
@@ -41,7 +41,7 @@ body:
     id: version
     attributes:
       label: Package Version
-      description: Which version of @n3rd-ai/ui are you using?
+      description: Which version of @boum-ai/ui are you using?
       placeholder: '0.1.0'
     validations:
       required: true

@@ -1,15 +1,15 @@
 /**
- * Integration test: @n3rd-ai/attest plugged into a real @n3rd-ai/mcp server
+ * Integration test: @boum-ai/attest plugged into a real @boum-ai/mcp server
  * via the observability.tracer hook. Proves the 3-line developer experience.
  */
 import { describe, it, expect, vi } from 'vitest'
 import { z } from 'zod'
-import { createN3rdServer } from '@n3rd-ai/mcp'
+import { createBoumServer } from '@boum-ai/mcp'
 import { Client } from '@modelcontextprotocol/sdk/client/index.js'
 import { attest } from '../src/attest.js'
 import type { AttestEvent } from '../src/types.js'
 
-describe('attest + @n3rd-ai/mcp integration', () => {
+describe('attest + @boum-ai/mcp integration', () => {
   it('captures tool invocations as attestation events', async () => {
     const sent: AttestEvent[] = []
     const fetchImpl = vi.fn(async (_url: string, init: RequestInit) => {
@@ -24,7 +24,7 @@ describe('attest + @n3rd-ai/mcp integration', () => {
       registerExitHandler: false,
     })
 
-    const server = createN3rdServer(
+    const server = createBoumServer(
       {
         server: { name: 'integration-test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -90,7 +90,7 @@ describe('attest + @n3rd-ai/mcp integration', () => {
       registerExitHandler: false,
     })
 
-    const server = createN3rdServer(
+    const server = createBoumServer(
       {
         server: { name: 'err-server', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },

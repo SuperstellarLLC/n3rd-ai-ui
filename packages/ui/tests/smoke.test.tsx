@@ -14,7 +14,7 @@ import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import {
   // Provider
-  N3rdProvider,
+  BoumProvider,
   // Layout
   Page,
   Stack,
@@ -55,13 +55,13 @@ import {
   renderAsciiLines,
   getBorderChars,
   BORDER_CHARS,
-  N3RD_FONT_FAMILY,
+  BOUM_FONT_FAMILY,
 } from '../src'
 
 describe('Smoke test — full page composition', () => {
   it('renders a complete landing page with all components without crashing', () => {
     const { container } = render(
-      <N3rdProvider>
+      <BoumProvider>
         <Page>
           <Nav
             items={[
@@ -155,7 +155,7 @@ describe('Smoke test — full page composition', () => {
             </Row>
 
             <Code title="example.ts" prompt="$" showLineNumbers>
-              {'npm install @n3rd-ai/ui\nimport { Box } from "@n3rd-ai/ui"'}
+              {'npm install @boum-ai/ui\nimport { Box } from "@boum-ai/ui"'}
             </Code>
 
             <Table
@@ -223,7 +223,7 @@ describe('Smoke test — full page composition', () => {
 
             <Tabs
               tabs={[
-                { label: 'React', content: <Code>{'import { Box } from "@n3rd-ai/ui"'}</Code> },
+                { label: 'React', content: <Code>{'import { Box } from "@boum-ai/ui"'}</Code> },
                 { label: 'Usage', content: <Text>Use it in your app</Text> },
               ]}
               accent="info"
@@ -272,7 +272,7 @@ describe('Smoke test — full page composition', () => {
             ]}
           />
         </Page>
-      </N3rdProvider>,
+      </BoumProvider>,
     )
 
     // Verify the page rendered without crashing
@@ -309,13 +309,13 @@ describe('Smoke test — full page composition', () => {
     expect(container.textContent).toContain('╗')
 
     // Verify CSS classes are applied (not empty module objects)
-    expect(container.querySelector('.n3rd-box')).toBeTruthy()
-    expect(container.querySelector('.n3rd-nav')).toBeTruthy()
-    expect(container.querySelector('.n3rd-btn')).toBeTruthy()
-    expect(container.querySelector('.n3rd-input')).toBeTruthy()
-    expect(container.querySelector('.n3rd-card')).toBeTruthy()
-    expect(container.querySelector('.n3rd-footer')).toBeTruthy()
-    expect(container.querySelector('.n3rd-grid')).toBeTruthy()
+    expect(container.querySelector('.boum-box')).toBeTruthy()
+    expect(container.querySelector('.boum-nav')).toBeTruthy()
+    expect(container.querySelector('.boum-btn')).toBeTruthy()
+    expect(container.querySelector('.boum-input')).toBeTruthy()
+    expect(container.querySelector('.boum-card')).toBeTruthy()
+    expect(container.querySelector('.boum-footer')).toBeTruthy()
+    expect(container.querySelector('.boum-grid')).toBeTruthy()
 
     // Verify no empty class attributes (the CSS module bug)
     const allElements = container.querySelectorAll('[class]')
@@ -345,6 +345,6 @@ describe('Smoke test — full page composition', () => {
     expect(BORDER_CHARS.single.topLeft).toBe('┌')
 
     // Font constant
-    expect(N3RD_FONT_FAMILY).toContain('JetBrains Mono')
+    expect(BOUM_FONT_FAMILY).toContain('JetBrains Mono')
   })
 })

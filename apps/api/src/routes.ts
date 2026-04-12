@@ -1,8 +1,8 @@
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
-import { verify } from '@n3rd-ai/attest'
-import { computeScore, renderBadgeSvg } from '@n3rd-ai/score'
-import type { EventRecord } from '@n3rd-ai/score'
+import { verify } from '@boum-ai/attest'
+import { computeScore, renderBadgeSvg } from '@boum-ai/score'
+import type { EventRecord } from '@boum-ai/score'
 import type { DB } from './db.js'
 
 export function createApp(db: DB): Hono {
@@ -15,14 +15,14 @@ export function createApp(db: DB): Hono {
 
   // ─── Event ingestion ────────────────────────────────────
   app.post('/v1/events', async (c) => {
-    const apiKey = c.req.header('X-N3rd-Api-Key')
-    if (!apiKey) return c.json({ error: 'Missing X-N3rd-Api-Key header' }, 401)
+    const apiKey = c.req.header('X-Boum-Api-Key') ?? c.req.header('X-N3rd-Api-Key')
+    if (!apiKey) return c.json({ error: 'Missing X-Boum-Api-Key header' }, 401)
 
     const serverId = db.validateApiKey(apiKey)
     if (!serverId) return c.json({ error: 'Invalid or expired API key' }, 403)
 
     // Verify signature
-    const signature = c.req.header('X-N3rd-Signature')
+    const signature = c.req.header('X-Boum-Signature') ?? c.req.header('X-N3rd-Signature')
     const body = await c.req.text()
     if (signature) {
       const sig = signature.replace(/^sha256=/, '')
@@ -100,7 +100,7 @@ export function createApp(db: DB): Hono {
       apiKey,
       serverId,
       expiresIn: '24h',
-      profile: `https://n3rd.ai/@${body.owner}/${body.name}`,
+      profile: `https://boum.ai/@${body.owner}/${body.name}`,
     })
   })
 
@@ -143,7 +143,7 @@ export function createApp(db: DB): Hono {
       ...server,
       tools,
       recentEvents,
-      badge: `https://n3rd.ai/@${server.owner}/${server.name}/badge.svg`,
+      badge: `https://boum.ai/@${server.owner}/${server.name}/badge.svg`,
     })
   })
 

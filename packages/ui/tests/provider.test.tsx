@@ -1,22 +1,22 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
-import { N3rdProvider } from '../src'
+import { BoumProvider } from '../src'
 
-describe('N3rdProvider', () => {
+describe('BoumProvider', () => {
   it('renders children', () => {
     render(
-      <N3rdProvider>
+      <BoumProvider>
         <div>child</div>
-      </N3rdProvider>,
+      </BoumProvider>,
     )
     expect(screen.getByText('child')).toBeInTheDocument()
   })
 
   it('renders scanline when enabled', () => {
     const { container } = render(
-      <N3rdProvider scanlines>
+      <BoumProvider scanlines>
         <div>child</div>
-      </N3rdProvider>,
+      </BoumProvider>,
     )
     const scanline = container.querySelector('[aria-hidden="true"]')
     expect(scanline).toBeTruthy()
@@ -24,9 +24,9 @@ describe('N3rdProvider', () => {
 
   it('does not render scanline by default', () => {
     const { container } = render(
-      <N3rdProvider>
+      <BoumProvider>
         <div>child</div>
-      </N3rdProvider>,
+      </BoumProvider>,
     )
     // The only aria-hidden should not be a fixed-position scanline
     const fixedEls = Array.from(container.querySelectorAll('[aria-hidden="true"]')).filter(
@@ -36,6 +36,6 @@ describe('N3rdProvider', () => {
   })
 
   it('has displayName', () => {
-    expect(N3rdProvider.displayName).toBe('N3rdProvider')
+    expect(BoumProvider.displayName).toBe('BoumProvider')
   })
 })

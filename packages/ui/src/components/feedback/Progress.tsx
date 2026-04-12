@@ -26,12 +26,12 @@ export function Progress({
   const bar = '█'.repeat(filled) + '░'.repeat(empty)
 
   const progressStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-sm)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-sm)',
     display: 'inline-flex',
     alignItems: 'center',
-    gap: 'var(--n3rd-space-2)',
-    color: accent ? `var(--n3rd-accent-${accent})` : 'var(--n3rd-accent-primary)',
+    gap: 'var(--boum-space-2)',
+    color: accent ? `var(--boum-accent-${accent})` : 'var(--boum-accent-primary)',
     ...style,
   }
 
@@ -46,7 +46,7 @@ export function Progress({
     >
       <span>[{bar}]</span>
       {showLabel && (
-        <span style={{ color: 'var(--n3rd-text-secondary)' }}>{Math.round(percent)}%</span>
+        <span style={{ color: 'var(--boum-text-secondary)' }}>{Math.round(percent)}%</span>
       )}
     </div>
   )

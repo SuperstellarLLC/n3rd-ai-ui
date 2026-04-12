@@ -1,70 +1,70 @@
-.n3rd-input-wrapper {
-  font-family: var(--n3rd-font);
+.boum-input-wrapper {
+  font-family: var(--boum-font);
 }
 
-.n3rd-input-label {
+.boum-input-label {
   display: block;
-  color: var(--n3rd-text-secondary);
-  font-size: var(--n3rd-text-sm);
-  margin-bottom: var(--n3rd-space-1);
+  color: var(--boum-text-secondary);
+  font-size: var(--boum-text-sm);
+  margin-bottom: var(--boum-space-1);
 }
 
-.n3rd-input-field {
+.boum-input-field {
   display: flex;
   align-items: center;
-  gap: var(--n3rd-space-2);
-  padding: var(--n3rd-space-2);
-  background: var(--n3rd-bg-secondary);
-  border: 1px solid var(--n3rd-border-default);
+  gap: var(--boum-space-2);
+  padding: var(--boum-space-2);
+  background: var(--boum-bg-secondary);
+  border: 1px solid var(--boum-border-default);
   cursor: text;
 }
 
-.n3rd-input-field-focused,
-.n3rd-input-field:focus-within {
-  border-color: var(--n3rd-border-focus);
-  outline: 1px solid var(--n3rd-border-focus);
+.boum-input-field-focused,
+.boum-input-field:focus-within {
+  border-color: var(--boum-border-focus);
+  outline: 1px solid var(--boum-border-focus);
   outline-offset: -1px;
 }
 
-.n3rd-input-field-disabled {
+.boum-input-field-disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
-.n3rd-input-prefix {
-  color: var(--n3rd-accent-primary);
+.boum-input-prefix {
+  color: var(--boum-accent-primary);
   flex-shrink: 0;
   user-select: none;
 }
 
-.n3rd-input-wrap {
+.boum-input-wrap {
   flex: 1;
   display: flex;
   align-items: center;
 }
 
-.n3rd-input {
+.boum-input {
   flex: 1;
-  font-family: var(--n3rd-font);
-  font-size: var(--n3rd-text-base);
-  color: var(--n3rd-text-primary);
+  font-family: var(--boum-font);
+  font-size: var(--boum-text-base);
+  color: var(--boum-text-primary);
   background: transparent;
   border: none;
   outline: none;
   padding: 0;
-  caret-color: var(--n3rd-accent-primary);
+  caret-color: var(--boum-accent-primary);
 }
 
-.n3rd-input::placeholder {
-  color: var(--n3rd-text-tertiary);
+.boum-input::placeholder {
+  color: var(--boum-text-tertiary);
 }
 
-.n3rd-input-field-error {
-  border-color: var(--n3rd-accent-danger);
+.boum-input-field-error {
+  border-color: var(--boum-accent-danger);
 }
 
-.n3rd-input-error-message {
-  color: var(--n3rd-accent-danger);
-  font-size: var(--n3rd-text-xs);
-  margin-top: var(--n3rd-space-1);
+.boum-input-error-message {
+  color: var(--boum-accent-danger);
+  font-size: var(--boum-text-xs);
+  margin-top: var(--boum-space-1);
 }

@@ -20,11 +20,11 @@ export function Tabs({ tabs, defaultIndex = 0, accent = 'primary', className, st
   const [active, setActive] = useState(defaultIndex)
 
   const containerStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
+    fontFamily: 'var(--boum-font)',
     ...style,
   }
 
-  const accentColor = `var(--n3rd-accent-${accent})`
+  const accentColor = `var(--boum-accent-${accent})`
 
   return (
     <div className={className} style={containerStyle}>
@@ -32,9 +32,9 @@ export function Tabs({ tabs, defaultIndex = 0, accent = 'primary', className, st
         role="tablist"
         style={{
           display: 'flex',
-          gap: 'var(--n3rd-space-1)',
-          borderBottom: '1px solid var(--n3rd-border-default)',
-          fontSize: 'var(--n3rd-text-sm)',
+          gap: 'var(--boum-space-1)',
+          borderBottom: '1px solid var(--boum-border-default)',
+          fontSize: 'var(--boum-text-sm)',
         }}
       >
         {tabs.map((tab, i) => (
@@ -44,13 +44,13 @@ export function Tabs({ tabs, defaultIndex = 0, accent = 'primary', className, st
             aria-selected={i === active}
             onClick={() => setActive(i)}
             style={{
-              padding: 'var(--n3rd-space-2) var(--n3rd-space-3)',
+              padding: 'var(--boum-space-2) var(--boum-space-3)',
               background: 'none',
               border: 'none',
               borderBottom: i === active ? `2px solid ${accentColor}` : '2px solid transparent',
-              fontFamily: 'var(--n3rd-font)',
-              fontSize: 'var(--n3rd-text-sm)',
-              color: i === active ? accentColor : 'var(--n3rd-text-secondary)',
+              fontFamily: 'var(--boum-font)',
+              fontSize: 'var(--boum-text-sm)',
+              color: i === active ? accentColor : 'var(--boum-text-secondary)',
               cursor: 'pointer',
               fontWeight: i === active ? 700 : 400,
             }}
@@ -62,7 +62,7 @@ export function Tabs({ tabs, defaultIndex = 0, accent = 'primary', className, st
       <div
         role="tabpanel"
         style={{
-          padding: 'var(--n3rd-space-4) 0',
+          padding: 'var(--boum-space-4) 0',
         }}
       >
         {tabs[active]?.content}

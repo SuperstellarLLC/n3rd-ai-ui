@@ -1,8 +1,8 @@
 /**
  * Benchmark: in-process tool invocation throughput.
- * Compares @n3rd-ai/mcp instrumented server against raw @modelcontextprotocol/sdk.
+ * Compares @boum-ai/mcp instrumented server against raw @modelcontextprotocol/sdk.
  *
- * Run: pnpm --filter @n3rd-ai/mcp bench
+ * Run: pnpm --filter @boum-ai/mcp bench
  */
 import { Bench } from 'tinybench'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
@@ -32,7 +32,7 @@ async function buildInstrumentedClient(): Promise<Client> {
     { capabilities: { logging: {} } },
   )
 
-  // Same instrumentation as createN3rdServer but in-process
+  // Same instrumentation as createBoumServer but in-process
   const metrics = createServerMetrics()
   const tracer = noopTracer
 
@@ -86,7 +86,7 @@ async function main(): Promise<void> {
     await rawClient.callTool({ name: 'echo', arguments: { msg: 'hello' } })
   })
 
-  bench.add('@n3rd-ai/mcp instrumented tool call', async () => {
+  bench.add('@boum-ai/mcp instrumented tool call', async () => {
     await instrClient.callTool({ name: 'echo', arguments: { msg: 'hello' } })
   })
 

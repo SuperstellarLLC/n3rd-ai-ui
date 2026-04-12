@@ -1,4 +1,4 @@
-# @n3rd-ai/attest
+# @boum-ai/attest
 
 ## 0.1.0
 
@@ -8,7 +8,7 @@ Drop-in reputation tracer for MCP servers. Three lines.
 
 **Core**
 
-- `attest()` factory returns an `@n3rd-ai/mcp` compatible `Tracer`
+- `attest()` factory returns an `@boum-ai/mcp` compatible `Tracer`
 - Captures every tool invocation as a signed attestation event
 - HMAC-SHA256 event signing with `timingSafeEqual` verification
 - Event batcher with size + interval + process-exit flushing
@@ -24,11 +24,11 @@ Drop-in reputation tracer for MCP servers. Three lines.
 **Bundle size**
 
 - **1.38 KB gzipped** (4 KB limit)
-- Zero runtime deps beyond `@n3rd-ai/mcp` (peer)
+- Zero runtime deps beyond `@boum-ai/mcp` (peer)
 - Uses only Node built-ins (`crypto`, `process`)
 
 **Testing**
 
 - 39 tests covering tracer, batcher, client, signer, full integration
-- Integration test wires `attest` into a real `createN3rdServer` over HTTP
+- Integration test wires `attest` into a real `createBoumServer` over HTTP
   with the SDK's real `Client` — proves the 3-line DX end-to-end

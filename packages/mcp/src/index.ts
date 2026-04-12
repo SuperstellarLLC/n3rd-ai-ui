@@ -1,6 +1,8 @@
 // Server
-export { createN3rdServer } from './server/index.js'
+export { createBoumServer, createN3rdServer } from './server/index.js'
 export type {
+  BoumServer,
+  BoumServerOptions,
   N3rdServer,
   N3rdServerOptions,
   ServerInfo,

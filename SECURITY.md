@@ -6,8 +6,8 @@ We support the latest minor version of each published package with security fixe
 
 | Package        | Supported versions |
 | -------------- | ------------------ |
-| `@n3rd-ai/ui`  | `0.4.x`            |
-| `@n3rd-ai/mcp` | `0.1.x`            |
+| `@boum-ai/ui`  | `0.4.x`            |
+| `@boum-ai/mcp` | `0.1.x`            |
 
 Earlier versions do not receive security patches. Please upgrade to stay protected.
 
@@ -17,8 +17,8 @@ Earlier versions do not receive security patches. Please upgrade to stay protect
 
 Instead, report privately via one of these channels:
 
-1. **GitHub Security Advisories** (preferred): [Report a vulnerability](https://github.com/SuperstellarLLC/n3rd-ai/security/advisories/new)
-2. **Email**: `security@n3rd.ai`
+1. **GitHub Security Advisories** (preferred): [Report a vulnerability](https://github.com/SuperstellarLLC/boum-ai/security/advisories/new)
+2. **Email**: `security@boum.ai`
 
 Please include:
 
@@ -58,7 +58,7 @@ Out of scope:
 
 ## Secure defaults
 
-`@n3rd-ai/mcp` ships with security-hardened defaults:
+`@boum-ai/mcp` ships with security-hardened defaults:
 
 - CORS reflects the request `Origin` only when set, otherwise uses `*` for OPTIONS preflight compatibility
 - Request body size limited to 4 MB (HTTP 413 on excess)

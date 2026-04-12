@@ -6,7 +6,7 @@
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@n3rd-ai/example-stdio-server", "start"],
+      "runtimeArgs": ["--filter", "@boum-ai/example-stdio-server", "start"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"]
@@ -16,7 +16,7 @@
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@n3rd-ai/example-http-server", "start"],
+      "runtimeArgs": ["--filter", "@boum-ai/example-http-server", "start"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"]
@@ -26,17 +26,17 @@
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@n3rd-ai/agent-stackoverflow", "start"],
+      "runtimeArgs": ["--filter", "@boum-ai/agent-stackoverflow", "start"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"]
     },
     {
-      "name": "Vitest: @n3rd-ai/mcp",
+      "name": "Vitest: @boum-ai/mcp",
       "type": "node",
       "request": "launch",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--filter", "@n3rd-ai/mcp", "test"],
+      "runtimeArgs": ["--filter", "@boum-ai/mcp", "test"],
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
       "skipFiles": ["<node_internals>/**"]

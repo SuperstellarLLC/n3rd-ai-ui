@@ -1,9 +1,9 @@
-.n3rd-btn {
+.boum-btn {
   display: inline-flex;
   align-items: center;
-  gap: var(--n3rd-space-1);
-  font-family: var(--n3rd-font);
-  font-size: var(--n3rd-text-base);
+  gap: var(--boum-space-1);
+  font-family: var(--boum-font);
+  font-size: var(--boum-text-base);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -14,64 +14,64 @@
   text-decoration: none;
   border: none;
   background: none;
-  padding: var(--n3rd-space-1) var(--n3rd-space-2);
+  padding: var(--boum-space-1) var(--boum-space-2);
 }
 
-.n3rd-btn-primary {
-  color: var(--n3rd-accent-primary);
+.boum-btn-primary {
+  color: var(--boum-accent-primary);
 }
 
-.n3rd-btn-primary:hover {
-  background: var(--n3rd-accent-primary);
-  color: var(--n3rd-bg-primary);
+.boum-btn-primary:hover {
+  background: var(--boum-accent-primary);
+  color: var(--boum-bg-primary);
 }
 
-.n3rd-btn-secondary {
-  color: var(--n3rd-text-secondary);
+.boum-btn-secondary {
+  color: var(--boum-text-secondary);
 }
 
-.n3rd-btn-secondary:hover {
-  color: var(--n3rd-text-primary);
+.boum-btn-secondary:hover {
+  color: var(--boum-text-primary);
 }
 
-.n3rd-btn-danger {
-  color: var(--n3rd-accent-danger);
+.boum-btn-danger {
+  color: var(--boum-accent-danger);
 }
 
-.n3rd-btn-danger:hover {
-  background: var(--n3rd-accent-danger);
-  color: var(--n3rd-bg-primary);
+.boum-btn-danger:hover {
+  background: var(--boum-accent-danger);
+  color: var(--boum-bg-primary);
 }
 
-.n3rd-btn-ghost {
-  color: var(--n3rd-text-secondary);
-  padding: var(--n3rd-space-1) 0;
+.boum-btn-ghost {
+  color: var(--boum-text-secondary);
+  padding: var(--boum-space-1) 0;
 }
 
-.n3rd-btn-ghost:hover {
-  color: var(--n3rd-text-primary);
+.boum-btn-ghost:hover {
+  color: var(--boum-text-primary);
 }
 
-.n3rd-btn:focus-visible {
-  outline: 2px solid var(--n3rd-border-focus);
+.boum-btn:focus-visible {
+  outline: 2px solid var(--boum-border-focus);
   outline-offset: 2px;
 }
 
-.n3rd-btn:active:not(.n3rd-btn-disabled) {
+.boum-btn:active:not(.boum-btn-disabled) {
   opacity: 0.8;
 }
 
-.n3rd-btn-disabled {
+.boum-btn-disabled {
   opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
 }
 
-.n3rd-btn-loading {
+.boum-btn-loading {
   cursor: wait;
 }
 
-.n3rd-btn-spinner {
+.boum-btn-spinner {
   display: inline-block;
-  margin-right: var(--n3rd-space-1);
+  margin-right: var(--boum-space-1);
 }

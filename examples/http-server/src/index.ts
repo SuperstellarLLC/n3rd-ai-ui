@@ -2,14 +2,14 @@
  * Example: production-shaped MCP server over Streamable HTTP.
  * Demonstrates health checks, rate limiting, metrics, and structured logging.
  *
- * Run: pnpm --filter @n3rd-ai/example-http-server start
+ * Run: pnpm --filter @boum-ai/example-http-server start
  * Then: curl http://localhost:3000/health
  *       curl http://localhost:3000/metrics
  */
-import { createN3rdServer } from '@n3rd-ai/mcp'
+import { createBoumServer } from '@boum-ai/mcp'
 import { z } from 'zod'
 
-const server = createN3rdServer(
+const server = createBoumServer(
   {
     server: {
       name: 'example-http',

@@ -1,10 +1,10 @@
-# n3rd-ai
+# boum-ai
 
-Monorepo for n3rd-ai packages.
+Monorepo for boum-ai packages.
 
 | Package                      | Version                                          | Description                             |
 | ---------------------------- | ------------------------------------------------ | --------------------------------------- |
-| [@n3rd-ai/ui](./packages/ui) | ![npm](https://img.shields.io/npm/v/@n3rd-ai/ui) | Terminal-first UI framework for Next.js |
+| [@boum-ai/ui](./packages/ui) | ![npm](https://img.shields.io/npm/v/@boum-ai/ui) | Terminal-first UI framework for Next.js |
 
 ## Development
 

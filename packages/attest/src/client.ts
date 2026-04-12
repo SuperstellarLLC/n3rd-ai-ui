@@ -5,7 +5,7 @@ export interface AttestClient {
   send(events: AttestEvent[]): Promise<void>
 }
 
-const DEFAULT_ENDPOINT = 'https://api.n3rd.ai/v1/events'
+const DEFAULT_ENDPOINT = 'https://api.boum.ai/v1/events'
 const DEFAULT_TIMEOUT_MS = 10_000
 
 export function createClient(
@@ -30,16 +30,18 @@ export function createClient(
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'X-Boum-Signature': `sha256=${signature}`,
+            'X-Boum-Api-Key': options.apiKey,
             'X-N3rd-Signature': `sha256=${signature}`,
             'X-N3rd-Api-Key': options.apiKey,
-            'User-Agent': '@n3rd-ai/attest',
+            'User-Agent': '@boum-ai/attest',
           },
           body,
           signal: controller.signal,
         })
 
         if (!res.ok) {
-          throw new Error(`n3rd.ai ingestion rejected: ${res.status} ${res.statusText}`)
+          throw new Error(`boum.ai ingestion rejected: ${res.status} ${res.statusText}`)
         }
       } finally {
         clearTimeout(timeout)

@@ -1,5 +1,5 @@
 {
-  "name": "@n3rd-ai/web",
+  "name": "@boum-ai/web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@n3rd-ai/ui": "workspace:*",
+    "@boum-ai/ui": "workspace:*",
     "next": "16.2.1",
     "react": "19.2.4",
     "react-dom": "19.2.4"

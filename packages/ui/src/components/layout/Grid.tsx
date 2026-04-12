@@ -1,4 +1,5 @@
 import type { ReactNode, CSSProperties } from 'react'
+import { legacyClassName } from '../../utils'
 import './Grid.css'
 
 type Gap = 'none' | 'sm' | 'md' | 'lg' | 'xl'
@@ -13,10 +14,10 @@ export interface GridProps {
 
 const GAP_MAP: Record<Gap, string> = {
   none: '0',
-  sm: 'var(--n3rd-space-2)',
-  md: 'var(--n3rd-space-4)',
-  lg: 'var(--n3rd-space-6)',
-  xl: 'var(--n3rd-space-8)',
+  sm: 'var(--boum-space-2)',
+  md: 'var(--boum-space-4)',
+  lg: 'var(--boum-space-6)',
+  xl: 'var(--boum-space-8)',
 }
 
 export function Grid({ children, columns = 3, gap = 'md', className, style }: GridProps) {
@@ -29,7 +30,7 @@ export function Grid({ children, columns = 3, gap = 'md', className, style }: Gr
   }
 
   return (
-    <div className={`n3rd-grid ${className ?? ''}`} style={gridStyle}>
+    <div className={legacyClassName('boum-grid', className ?? '')} style={gridStyle}>
       {children}
     </div>
   )

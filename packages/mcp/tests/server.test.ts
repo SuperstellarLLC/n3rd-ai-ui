@@ -1,8 +1,8 @@
 import { describe, it, expect, afterEach } from 'vitest'
-import { createN3rdServer } from '../src/server/index.js'
-import type { N3rdServer } from '../src/server/types.js'
+import { createBoumServer } from '../src/server/index.js'
+import type { BoumServer } from '../src/server/types.js'
 
-let server: N3rdServer | undefined
+let server: BoumServer | undefined
 
 afterEach(async () => {
   if (server) {
@@ -11,15 +11,15 @@ afterEach(async () => {
   }
 })
 
-function getPort(s: N3rdServer): number {
+function getPort(s: BoumServer): number {
   const addr = s.address()
   if (!addr) throw new Error('Server not listening')
   return addr.port
 }
 
-describe('createN3rdServer', () => {
+describe('createBoumServer', () => {
   it('creates a server with required fields', () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0 } },
@@ -31,7 +31,7 @@ describe('createN3rdServer', () => {
   })
 
   it('provides a logger', () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0 } },
@@ -45,7 +45,7 @@ describe('createN3rdServer', () => {
   })
 
   it('setLogLevel changes the log level', () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0 } },
@@ -57,7 +57,7 @@ describe('createN3rdServer', () => {
   })
 
   it('address() returns null before start', () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0 } },
@@ -68,7 +68,7 @@ describe('createN3rdServer', () => {
   })
 
   it('address() returns bound address after start', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -84,7 +84,7 @@ describe('createN3rdServer', () => {
   })
 
   it('starts and stops HTTP server', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -102,7 +102,7 @@ describe('createN3rdServer', () => {
   })
 
   it('stop is idempotent', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -119,7 +119,7 @@ describe('createN3rdServer', () => {
 
 describe('HTTP server endpoints', () => {
   it('responds to CORS preflight', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -138,7 +138,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('uses custom CORS origin', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: {
@@ -157,7 +157,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('sets security headers', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -174,7 +174,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('returns 413 for oversized body', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -195,7 +195,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('returns 404 for unknown paths', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -211,7 +211,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('serves health endpoint at /health', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -232,7 +232,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('serves ready endpoint at /ready', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -253,7 +253,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('rejects POST with wrong Content-Type', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -273,7 +273,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('applies rate limiting headers', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -307,7 +307,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('serves protected resource metadata', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -333,7 +333,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('returns 401 for unauthenticated MCP request when auth enabled', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -360,7 +360,7 @@ describe('HTTP server endpoints', () => {
   })
 
   it('returns 503 when max sessions reached', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'test', version: '1.0.0' },
         transport: {

@@ -17,23 +17,23 @@ const ICONS: Record<Variant, string> = {
 }
 
 const COLORS: Record<Variant, string> = {
-  success: 'var(--n3rd-accent-success)',
-  warning: 'var(--n3rd-accent-warning)',
-  error: 'var(--n3rd-accent-danger)',
-  info: 'var(--n3rd-accent-info)',
+  success: 'var(--boum-accent-success)',
+  warning: 'var(--boum-accent-warning)',
+  error: 'var(--boum-accent-danger)',
+  info: 'var(--boum-accent-info)',
 }
 
 export function Alert({ children, variant = 'info', className, style }: AlertProps) {
   const alertStyle: CSSProperties = {
     display: 'flex',
     alignItems: 'flex-start',
-    gap: 'var(--n3rd-space-2)',
-    padding: 'var(--n3rd-space-3)',
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-sm)',
-    backgroundColor: 'var(--n3rd-bg-secondary)',
+    gap: 'var(--boum-space-2)',
+    padding: 'var(--boum-space-3)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-sm)',
+    backgroundColor: 'var(--boum-bg-secondary)',
     borderLeft: `2px solid ${COLORS[variant]}`,
-    color: 'var(--n3rd-text-primary)',
+    color: 'var(--boum-text-primary)',
     ...style,
   }
 

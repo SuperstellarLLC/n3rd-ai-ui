@@ -24,23 +24,23 @@ export interface TextProps {
 }
 
 const SIZE_MAP: Record<Size, string> = {
-  xs: 'var(--n3rd-text-xs)',
-  sm: 'var(--n3rd-text-sm)',
-  base: 'var(--n3rd-text-base)',
-  lg: 'var(--n3rd-text-lg)',
-  xl: 'var(--n3rd-text-xl)',
-  '2xl': 'var(--n3rd-text-2xl)',
+  xs: 'var(--boum-text-xs)',
+  sm: 'var(--boum-text-sm)',
+  base: 'var(--boum-text-base)',
+  lg: 'var(--boum-text-lg)',
+  xl: 'var(--boum-text-xl)',
+  '2xl': 'var(--boum-text-2xl)',
 }
 
 const COLOR_MAP: Record<Color, string> = {
-  primary: 'var(--n3rd-text-primary)',
-  secondary: 'var(--n3rd-text-secondary)',
-  tertiary: 'var(--n3rd-text-tertiary)',
-  accent: 'var(--n3rd-accent-primary)',
-  success: 'var(--n3rd-accent-success)',
-  warning: 'var(--n3rd-accent-warning)',
-  danger: 'var(--n3rd-accent-danger)',
-  info: 'var(--n3rd-accent-info)',
+  primary: 'var(--boum-text-primary)',
+  secondary: 'var(--boum-text-secondary)',
+  tertiary: 'var(--boum-text-tertiary)',
+  accent: 'var(--boum-accent-primary)',
+  success: 'var(--boum-accent-success)',
+  warning: 'var(--boum-accent-warning)',
+  danger: 'var(--boum-accent-danger)',
+  info: 'var(--boum-accent-info)',
 }
 
 export function Text({
@@ -55,13 +55,13 @@ export function Text({
   style,
 }: TextProps) {
   const textStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
+    fontFamily: 'var(--boum-font)',
     fontSize: SIZE_MAP[size],
     fontWeight: bold ? 700 : 400,
-    lineHeight: 'var(--n3rd-line-height)',
+    lineHeight: 'var(--boum-line-height)',
     color: gradient ? 'transparent' : COLOR_MAP[color],
     ...(gradient && {
-      background: 'var(--n3rd-gradient)',
+      background: 'var(--boum-gradient)',
       backgroundClip: 'text',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
@@ -74,9 +74,9 @@ export function Text({
       {prefix && (
         <span
           style={{
-            color: 'var(--n3rd-text-secondary)',
-            marginRight: 'var(--n3rd-space-1)',
-            ...(gradient && { WebkitTextFillColor: 'var(--n3rd-text-secondary)' }),
+            color: 'var(--boum-text-secondary)',
+            marginRight: 'var(--boum-space-1)',
+            ...(gradient && { WebkitTextFillColor: 'var(--boum-text-secondary)' }),
           }}
         >
           {prefix}

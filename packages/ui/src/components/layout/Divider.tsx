@@ -18,10 +18,10 @@ export function Divider({ variant = 'single', label, className, style }: Divider
   const dividerStyle: CSSProperties = {
     display: 'flex',
     alignItems: 'center',
-    color: 'var(--n3rd-border-default)',
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-base)',
-    margin: 'var(--n3rd-space-4) 0',
+    color: 'var(--boum-border-default)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-base)',
+    margin: 'var(--boum-space-4) 0',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     ...style,
@@ -38,8 +38,8 @@ export function Divider({ variant = 'single', label, className, style }: Divider
         <span style={lineStyle}>{char.repeat(200)}</span>
         <span
           style={{
-            padding: '0 var(--n3rd-space-2)',
-            color: 'var(--n3rd-text-secondary)',
+            padding: '0 var(--boum-space-2)',
+            color: 'var(--boum-text-secondary)',
             flexShrink: 0,
           }}
         >

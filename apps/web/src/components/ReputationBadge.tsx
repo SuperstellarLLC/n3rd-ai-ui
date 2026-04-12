@@ -1,5 +1,5 @@
 /**
- * ReputationBadge — the one visual asset that defines n3rd.ai's product surface.
+ * ReputationBadge — the one visual asset that defines boum.ai's product surface.
  *
  * Displays a server's reputation score (0-100) in an ASCII-framed card.
  * This is the embeddable asset users paste into their README — the viral loop.
@@ -10,7 +10,7 @@
  *   50-69   fair       (warning color)
  *    0-49   unverified (danger color)
  */
-import { Box, Stack, Text } from '@n3rd-ai/ui'
+import { Box, Stack, Text } from '@boum-ai/ui'
 
 export interface ReputationBadgeProps {
   server: string
@@ -38,7 +38,7 @@ export function ReputationBadge({
     <Box
       border="double"
       padding="md"
-      title={`n3rd · ${server}`}
+      title={`boum · ${server}`}
       style={{ maxWidth: width, display: 'inline-block' }}
     >
       <Stack gap="sm">

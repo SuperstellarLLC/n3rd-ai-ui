@@ -21,7 +21,7 @@ const COLORS: Record<string, string> = {
 
 export function renderBadgeSvg(opts: BadgeOptions): string {
   const color = COLORS[opts.band] ?? COLORS.unverified
-  const label = 'n3rd'
+  const label = 'boum'
   const value = opts.verified !== false ? `${opts.score}` : 'unverified'
   const labelWidth = label.length * 7 + 12
   const valueWidth = value.length * 7 + 12

@@ -1,4 +1,4 @@
-# @n3rd-ai/mcp
+# @boum-ai/mcp
 
 ## 0.1.0
 
@@ -8,7 +8,7 @@ Production-ready MCP server framework wrapping `@modelcontextprotocol/sdk`.
 
 **Core**
 
-- Server factory (`createN3rdServer`) with Streamable HTTP + stdio transports
+- Server factory (`createBoumServer`) with Streamable HTTP + stdio transports
 - Opinionated defaults: CORS with origin reflection, security headers, body size limit (4 MB), request timeouts (30s/60s/120s), graceful shutdown
 - Session management: TTL-based expiry, LRU eviction with 503 backpressure, configurable `maxSessions`
 - Content-Type validation (415 on non-JSON POST)

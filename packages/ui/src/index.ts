@@ -78,8 +78,14 @@ export type { BorderStyle } from './primitives/ascii-border'
 export { renderAsciiText, renderAsciiLines } from './primitives/ascii-font'
 
 // Provider
-export { N3rdProvider } from './provider'
-export type { N3rdProviderProps } from './provider'
+export { BoumProvider, N3rdProvider } from './provider'
+export type { BoumProviderProps, N3rdProviderProps } from './provider'
 
 // Theme / Fonts
-export { N3rdFonts, jetbrainsMono, N3RD_FONT_FAMILY } from './theme/fonts'
+export {
+  BoumFonts,
+  N3rdFonts,
+  jetbrainsMono,
+  BOUM_FONT_FAMILY,
+  N3RD_FONT_FAMILY,
+} from './theme/fonts'

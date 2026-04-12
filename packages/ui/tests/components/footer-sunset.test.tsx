@@ -11,11 +11,11 @@ import { describe, it, expect } from 'vitest'
 import { Footer } from '../../src'
 
 function getSunsetElements(container: HTMLElement) {
-  const sunset = container.querySelector('.n3rd-footer-sunset') as HTMLElement
-  const sunLines = container.querySelectorAll('.n3rd-footer-sun-line')
-  const sunGaps = container.querySelectorAll('.n3rd-footer-sun-gap')
-  const horizon = container.querySelector('.n3rd-footer-horizon') as HTMLElement
-  const horizonBright = container.querySelector('.n3rd-footer-horizon-bright') as HTMLElement
+  const sunset = container.querySelector('.boum-footer-sunset') as HTMLElement
+  const sunLines = container.querySelectorAll('.boum-footer-sun-line')
+  const sunGaps = container.querySelectorAll('.boum-footer-sun-gap')
+  const horizon = container.querySelector('.boum-footer-horizon') as HTMLElement
+  const horizonBright = container.querySelector('.boum-footer-horizon-bright') as HTMLElement
   return { sunset, sunLines, sunGaps, horizon, horizonBright }
 }
 
@@ -29,7 +29,7 @@ describe('Footer sunset geometry', () => {
     const { sunset } = getSunsetElements(container)
     expect(sunset).toBeTruthy()
     // Check via computed class — the CSS sets max-width: 350px
-    expect(sunset.className).toContain('n3rd-footer-sunset')
+    expect(sunset.className).toContain('boum-footer-sunset')
   })
 
   it('has exactly 10 sun lines', () => {
@@ -79,17 +79,17 @@ describe('Footer sunset geometry', () => {
 
     // Gaps should appear AFTER the bulk of sun lines, not interspersed throughout
     // Get position of first gap relative to sun lines
-    const sunset = container.querySelector('.n3rd-footer-sunset') as HTMLElement
+    const sunset = container.querySelector('.boum-footer-sunset') as HTMLElement
     const children = Array.from(sunset.children)
-    const firstGapIndex = children.findIndex((el) => el.classList.contains('n3rd-footer-sun-gap'))
+    const firstGapIndex = children.findIndex((el) => el.classList.contains('boum-footer-sun-gap'))
     const totalSunLines = children.filter((el) =>
-      el.classList.contains('n3rd-footer-sun-line'),
+      el.classList.contains('boum-footer-sun-line'),
     ).length
 
     // First gap should be after at least 60% of sun lines
     const linesBeforeFirstGap = children
       .slice(0, firstGapIndex)
-      .filter((el) => el.classList.contains('n3rd-footer-sun-line')).length
+      .filter((el) => el.classList.contains('boum-footer-sun-line')).length
     expect(linesBeforeFirstGap / totalSunLines).toBeGreaterThanOrEqual(0.6)
   })
 
@@ -99,7 +99,7 @@ describe('Footer sunset geometry', () => {
 
     sunLines.forEach((line) => {
       const bg = (line as HTMLElement).style.background
-      expect(bg).toMatch(/^var\(--n3rd-accent-/)
+      expect(bg).toMatch(/^var\(--boum-accent-/)
     })
   })
 
@@ -108,7 +108,7 @@ describe('Footer sunset geometry', () => {
     const { horizon } = getSunsetElements(container)
     expect(horizon).toBeTruthy()
     // Horizon should NOT have the same max-width as sunset
-    expect(horizon.className).toContain('n3rd-footer-horizon')
+    expect(horizon.className).toContain('boum-footer-horizon')
   })
 
   it('horizon bright line is 100% width', () => {

@@ -1,7 +1,7 @@
 import Database from 'better-sqlite3'
 import { createHash, randomUUID } from 'node:crypto'
-import { MIGRATIONS } from '@n3rd-ai/score'
-import type { ServerRecord, EventRecord } from '@n3rd-ai/score'
+import { MIGRATIONS } from '@boum-ai/score'
+import type { ServerRecord, EventRecord } from '@boum-ai/score'
 
 const LOCAL_MIGRATIONS = [
   `CREATE TABLE IF NOT EXISTS waitlist_entries (
@@ -146,7 +146,7 @@ export function createDB(path = ':memory:'): DB {
     },
 
     createApiKey(serverId, options = {}) {
-      const rawKey = `n3rd_${randomUUID().replace(/-/g, '')}`
+      const rawKey = `boum_${randomUUID().replace(/-/g, '')}`
       const keyHash = hashKey(rawKey)
       const prefix = rawKey.slice(0, 12)
       const now = Date.now()

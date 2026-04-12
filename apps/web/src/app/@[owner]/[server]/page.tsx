@@ -1,4 +1,4 @@
-import { Page, Stack, Row, Box, Text, Heading, Button, Code, Nav, Footer } from '@n3rd-ai/ui'
+import { Page, Stack, Row, Box, Text, Heading, Button, Code, Nav, Footer } from '@boum-ai/ui'
 import { ReputationBadge } from '@/components/ReputationBadge'
 import { fetchServer } from '@/lib/api'
 import { notFound } from 'next/navigation'
@@ -11,7 +11,7 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { owner, server: name } = await params
   return {
-    title: `${owner}/${name} — n3rd.ai`,
+    title: `${owner}/${name} — boum.ai`,
     description: `Reputation profile for the ${name} MCP server by ${owner}`,
   }
 }
@@ -21,10 +21,10 @@ export default async function ProfilePage({ params }: Props) {
   const profile = await fetchServer(owner, name)
   if (!profile) notFound()
 
-  const badgeMarkdown = `![n3rd](https://n3rd.ai/@${owner}/${name}/badge.svg)`
-  const claimSnippet = `import { attest } from '@n3rd-ai/attest'
+  const badgeMarkdown = `![boum](https://boum.ai/@${owner}/${name}/badge.svg)`
+  const claimSnippet = `import { attest } from '@boum-ai/attest'
 
-// Add to your createN3rdServer config:
+// Add to your createBoumServer config:
 observability: { tracer: attest({ apiKey: 'YOUR_KEY' }) }`
 
   return (
@@ -147,9 +147,9 @@ observability: { tracer: attest({ apiKey: 'YOUR_KEY' }) }`
 
       <Footer
         tagline="the reputation layer for ai agents"
-        branding="n3rd.ai"
+        branding="boum.ai"
         links={[
-          { label: 'github', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
+          { label: 'github', href: 'https://github.com/SuperstellarLLC/boum-ai', external: true },
         ]}
       />
     </Page>

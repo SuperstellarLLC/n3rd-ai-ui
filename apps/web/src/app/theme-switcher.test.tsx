@@ -3,7 +3,7 @@ import { cleanup, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import ThemeSwitcher from './theme-switcher'
 
-const STORAGE_KEY = 'n3rd-theme'
+const STORAGE_KEY = 'boum-theme'
 
 /** Button name patterns — handles the `[ LABEL ]` brackets on primary variant */
 const buttonPatterns: Record<string, RegExp> = {
@@ -40,10 +40,10 @@ describe('ThemeSwitcher', () => {
 
     it('highlights unicorn as the default active theme', () => {
       render(<ThemeSwitcher />)
-      expect(getButton('UNICORN')).toHaveClass('n3rd-btn-primary')
-      expect(getButton('CLASSIC')).toHaveClass('n3rd-btn-ghost')
-      expect(getButton('RETRO')).toHaveClass('n3rd-btn-ghost')
-      expect(getButton('PAPER')).toHaveClass('n3rd-btn-ghost')
+      expect(getButton('UNICORN')).toHaveClass('boum-btn-primary')
+      expect(getButton('CLASSIC')).toHaveClass('boum-btn-ghost')
+      expect(getButton('RETRO')).toHaveClass('boum-btn-ghost')
+      expect(getButton('PAPER')).toHaveClass('boum-btn-ghost')
     })
   })
 
@@ -54,10 +54,10 @@ describe('ThemeSwitcher', () => {
 
       await user.click(getButton('CLASSIC'))
 
-      expect(document.documentElement.style.getPropertyValue('--n3rd-accent-primary')).toBe(
+      expect(document.documentElement.style.getPropertyValue('--boum-accent-primary')).toBe(
         '#22c55e',
       )
-      expect(document.documentElement.style.getPropertyValue('--n3rd-gradient')).toBe(
+      expect(document.documentElement.style.getPropertyValue('--boum-gradient')).toBe(
         'linear-gradient(90deg, #16a34a, #22c55e, #4ade80)',
       )
     })
@@ -68,7 +68,7 @@ describe('ThemeSwitcher', () => {
 
       await user.click(getButton('RETRO'))
 
-      expect(document.documentElement.style.getPropertyValue('--n3rd-accent-primary')).toBe(
+      expect(document.documentElement.style.getPropertyValue('--boum-accent-primary')).toBe(
         '#f59e0b',
       )
     })
@@ -79,8 +79,8 @@ describe('ThemeSwitcher', () => {
 
       await user.click(getButton('PAPER'))
 
-      expect(document.documentElement.style.getPropertyValue('--n3rd-bg-primary')).toBe('#fafafa')
-      expect(document.documentElement.style.getPropertyValue('--n3rd-text-primary')).toBe('#1a1a1a')
+      expect(document.documentElement.style.getPropertyValue('--boum-bg-primary')).toBe('#fafafa')
+      expect(document.documentElement.style.getPropertyValue('--boum-text-primary')).toBe('#1a1a1a')
     })
 
     it('applies unicorn theme (dark backgrounds, violet accent)', async () => {
@@ -91,8 +91,8 @@ describe('ThemeSwitcher', () => {
       await user.click(getButton('PAPER'))
       await user.click(getButton('UNICORN'))
 
-      expect(document.documentElement.style.getPropertyValue('--n3rd-bg-primary')).toBe('#0a0a0a')
-      expect(document.documentElement.style.getPropertyValue('--n3rd-accent-primary')).toBe(
+      expect(document.documentElement.style.getPropertyValue('--boum-bg-primary')).toBe('#0a0a0a')
+      expect(document.documentElement.style.getPropertyValue('--boum-accent-primary')).toBe(
         '#a855f7',
       )
     })
@@ -103,8 +103,8 @@ describe('ThemeSwitcher', () => {
 
       await user.click(getButton('CLASSIC'))
 
-      expect(getButton('CLASSIC')).toHaveClass('n3rd-btn-primary')
-      expect(getButton('UNICORN')).toHaveClass('n3rd-btn-ghost')
+      expect(getButton('CLASSIC')).toHaveClass('boum-btn-primary')
+      expect(getButton('UNICORN')).toHaveClass('boum-btn-ghost')
     })
 
     it('switches between all themes in sequence', async () => {
@@ -120,7 +120,7 @@ describe('ThemeSwitcher', () => {
 
       for (const [label, accent] of expected) {
         await user.click(getButton(label))
-        expect(document.documentElement.style.getPropertyValue('--n3rd-accent-primary')).toBe(
+        expect(document.documentElement.style.getPropertyValue('--boum-accent-primary')).toBe(
           accent,
         )
       }
@@ -141,7 +141,7 @@ describe('ThemeSwitcher', () => {
       localStorage.setItem(STORAGE_KEY, 'classic')
       render(<ThemeSwitcher />)
 
-      expect(document.documentElement.style.getPropertyValue('--n3rd-accent-primary')).toBe(
+      expect(document.documentElement.style.getPropertyValue('--boum-accent-primary')).toBe(
         '#22c55e',
       )
     })
@@ -150,7 +150,7 @@ describe('ThemeSwitcher', () => {
       localStorage.setItem(STORAGE_KEY, 'paper')
       render(<ThemeSwitcher />)
 
-      expect(document.documentElement.style.getPropertyValue('--n3rd-bg-primary')).toBe('#fafafa')
+      expect(document.documentElement.style.getPropertyValue('--boum-bg-primary')).toBe('#fafafa')
     })
 
     it('ignores invalid localStorage values', () => {
@@ -158,7 +158,7 @@ describe('ThemeSwitcher', () => {
       render(<ThemeSwitcher />)
 
       // Should not crash, and should not apply any theme override
-      expect(document.documentElement.style.getPropertyValue('--n3rd-accent-primary')).toBe('')
+      expect(document.documentElement.style.getPropertyValue('--boum-accent-primary')).toBe('')
     })
 
     it('overwrites previous selection on re-pick', async () => {
@@ -179,29 +179,29 @@ describe('ThemeSwitcher', () => {
       render(<ThemeSwitcher />)
 
       const expectedVars = [
-        '--n3rd-bg-primary',
-        '--n3rd-bg-secondary',
-        '--n3rd-bg-tertiary',
-        '--n3rd-text-primary',
-        '--n3rd-text-secondary',
-        '--n3rd-text-tertiary',
-        '--n3rd-border-default',
-        '--n3rd-border-focus',
-        '--n3rd-border-muted',
-        '--n3rd-accent-violet',
-        '--n3rd-accent-purple',
-        '--n3rd-accent-lavender',
-        '--n3rd-accent-pink',
-        '--n3rd-accent-rose',
-        '--n3rd-accent-cyan',
-        '--n3rd-accent-aqua',
-        '--n3rd-accent-primary',
-        '--n3rd-accent-success',
-        '--n3rd-accent-warning',
-        '--n3rd-accent-danger',
-        '--n3rd-accent-info',
-        '--n3rd-gradient',
-        '--n3rd-gradient-full',
+        '--boum-bg-primary',
+        '--boum-bg-secondary',
+        '--boum-bg-tertiary',
+        '--boum-text-primary',
+        '--boum-text-secondary',
+        '--boum-text-tertiary',
+        '--boum-border-default',
+        '--boum-border-focus',
+        '--boum-border-muted',
+        '--boum-accent-violet',
+        '--boum-accent-purple',
+        '--boum-accent-lavender',
+        '--boum-accent-pink',
+        '--boum-accent-rose',
+        '--boum-accent-cyan',
+        '--boum-accent-aqua',
+        '--boum-accent-primary',
+        '--boum-accent-success',
+        '--boum-accent-warning',
+        '--boum-accent-danger',
+        '--boum-accent-info',
+        '--boum-gradient',
+        '--boum-gradient-full',
       ]
 
       for (const themeName of ['CLASSIC', 'RETRO', 'PAPER', 'UNICORN']) {

@@ -1,5 +1,5 @@
 @media (max-width: 640px) {
-  .n3rd-grid {
+  .boum-grid {
     grid-template-columns: 1fr !important;
   }
 }

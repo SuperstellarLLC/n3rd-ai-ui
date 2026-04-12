@@ -23,7 +23,7 @@ describe('Nav', () => {
 
   it('shows active indicator', () => {
     const { container } = render(<Nav items={items} />)
-    expect(container.querySelector('.n3rd-nav-active')).toBeTruthy()
+    expect(container.querySelector('.boum-nav-active')).toBeTruthy()
   })
 
   it('sets external link attributes', () => {
@@ -38,9 +38,9 @@ describe('Nav', () => {
     expect(screen.getByText(/GITHUB/).textContent).toContain('↗')
   })
 
-  it('has n3rd-nav class', () => {
+  it('has boum-nav class', () => {
     const { container } = render(<Nav items={items} />)
-    expect(container.querySelector('.n3rd-nav')).toBeTruthy()
+    expect(container.querySelector('.boum-nav')).toBeTruthy()
   })
 
   it('has displayName', () => {

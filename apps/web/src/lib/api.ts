@@ -1,9 +1,14 @@
 /**
- * API client for the n3rd.ai backend.
+ * API client for the boum.ai backend.
  * Used by Server Components to fetch data at the edge.
  */
 
-const API_BASE = process.env.N3RD_API_URL ?? 'http://127.0.0.1:4001'
+const API_BASE =
+  process.env.BOUM_API_URL ??
+  process.env.NEXT_PUBLIC_BOUM_API_URL ??
+  process.env.N3RD_API_URL ??
+  process.env.NEXT_PUBLIC_N3RD_API_URL ??
+  'http://127.0.0.1:4001'
 
 export interface ServerProfile {
   id: string

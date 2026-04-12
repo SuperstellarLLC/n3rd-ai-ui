@@ -2,13 +2,13 @@
  * Pre-seed script: fetches the official MCP Registry and populates the database
  * with initial scores computed from public signals.
  *
- * Run: pnpm --filter @n3rd-ai/api seed
+ * Run: pnpm --filter @boum-ai/api seed
  */
 import { createDB } from '../src/db.js'
-import { computePublicScore } from '@n3rd-ai/score'
+import { computePublicScore } from '@boum-ai/score'
 
 const REGISTRY_URL = 'https://registry.modelcontextprotocol.io/v0.1/servers'
-const DB_PATH = process.env.DB_PATH ?? './n3rd.db'
+const DB_PATH = process.env.DB_PATH ?? './boum.db'
 
 interface RegistryServer {
   name: string // "io.github.user/server"

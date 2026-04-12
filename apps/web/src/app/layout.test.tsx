@@ -6,7 +6,7 @@ import { render, screen } from '@testing-library/react'
 describe('RootLayout', () => {
   describe('metadata export', () => {
     it('has the correct title', () => {
-      expect(metadata.title).toBe('n3rd.ai — Frontier UI for AI')
+      expect(metadata.title).toBe('boum.ai — Frontier UI for AI')
     })
 
     it('has a description', () => {
@@ -26,9 +26,9 @@ describe('RootLayout', () => {
     it('has Open Graph metadata', () => {
       const og = metadata.openGraph as Record<string, unknown>
       expect(og).toBeDefined()
-      expect(og.title).toBe('n3rd.ai — Frontier UI for AI')
-      expect(og.url).toBe('https://n3rd.ai')
-      expect(og.siteName).toBe('n3rd.ai')
+      expect(og.title).toBe('boum.ai — Frontier UI for AI')
+      expect(og.url).toBe('https://boum.ai')
+      expect(og.siteName).toBe('boum.ai')
       expect(og.type).toBe('website')
     })
 

@@ -10,18 +10,18 @@ export interface BadgeProps {
 }
 
 const VARIANT_MAP: Record<Variant, string> = {
-  default: 'var(--n3rd-accent-primary)',
-  success: 'var(--n3rd-accent-success)',
-  warning: 'var(--n3rd-accent-warning)',
-  danger: 'var(--n3rd-accent-danger)',
-  info: 'var(--n3rd-accent-info)',
+  default: 'var(--boum-accent-primary)',
+  success: 'var(--boum-accent-success)',
+  warning: 'var(--boum-accent-warning)',
+  danger: 'var(--boum-accent-danger)',
+  info: 'var(--boum-accent-info)',
 }
 
 export function Badge({ children, variant = 'default', className, style }: BadgeProps) {
   const badgeStyle: CSSProperties = {
     display: 'inline-block',
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-xs)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-xs)',
     fontWeight: 700,
     color: VARIANT_MAP[variant],
     textTransform: 'uppercase',

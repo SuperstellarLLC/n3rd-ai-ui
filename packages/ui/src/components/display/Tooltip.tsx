@@ -25,16 +25,16 @@ export function Tooltip({ children, content, position = 'top', className }: Tool
     ...(position === 'top'
       ? { bottom: '100%', marginBottom: '6px' }
       : { top: '100%', marginTop: '6px' }),
-    padding: 'var(--n3rd-space-1) var(--n3rd-space-2)',
-    background: 'var(--n3rd-bg-tertiary)',
-    border: '1px solid var(--n3rd-border-default)',
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-xs)',
-    color: 'var(--n3rd-text-primary)',
+    padding: 'var(--boum-space-1) var(--boum-space-2)',
+    background: 'var(--boum-bg-tertiary)',
+    border: '1px solid var(--boum-border-default)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-xs)',
+    color: 'var(--boum-text-primary)',
     whiteSpace: 'nowrap',
     pointerEvents: 'none',
-    zIndex: 'var(--n3rd-z-tooltip, 9997)' as unknown as number,
-    animation: 'n3rd-fade-in var(--n3rd-fade-duration) ease-out',
+    zIndex: 'var(--boum-z-tooltip, 9997)' as unknown as number,
+    animation: 'boum-fade-in var(--boum-fade-duration) ease-out',
   }
 
   return (

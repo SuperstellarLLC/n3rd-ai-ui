@@ -33,9 +33,9 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
   })
 
   const tableStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
-    fontSize: 'var(--n3rd-text-sm)',
-    color: 'var(--n3rd-border-default)',
+    fontFamily: 'var(--boum-font)',
+    fontSize: 'var(--boum-text-sm)',
+    color: 'var(--boum-border-default)',
     width: '100%',
     whiteSpace: 'pre',
     ...style,
@@ -43,7 +43,7 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
 
   if (!chars) {
     return (
-      <table className={className} style={{ ...tableStyle, color: 'var(--n3rd-text-primary)' }}>
+      <table className={className} style={{ ...tableStyle, color: 'var(--boum-text-primary)' }}>
         <thead>
           <tr>
             {columns.map((col) => (
@@ -52,8 +52,8 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
                 scope="col"
                 style={{
                   textAlign: 'left',
-                  padding: 'var(--n3rd-space-2)',
-                  color: 'var(--n3rd-text-secondary)',
+                  padding: 'var(--boum-space-2)',
+                  color: 'var(--boum-text-secondary)',
                 }}
               >
                 {col}
@@ -68,10 +68,10 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
                 <td
                   key={j}
                   style={{
-                    padding: 'var(--n3rd-space-2)',
+                    padding: 'var(--boum-space-2)',
                     color: getCellAccent(cell)
-                      ? `var(--n3rd-accent-${getCellAccent(cell)})`
-                      : 'var(--n3rd-text-primary)',
+                      ? `var(--boum-accent-${getCellAccent(cell)})`
+                      : 'var(--boum-text-primary)',
                   }}
                 >
                   {getCellText(cell)}
@@ -108,7 +108,7 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
   return (
     <div className={className} style={tableStyle}>
       <div>{line(chars.topLeft, chars.teeTop, chars.topRight, chars.horizontal)}</div>
-      <div style={{ color: 'var(--n3rd-text-secondary)' }}>{headerRow}</div>
+      <div style={{ color: 'var(--boum-text-secondary)' }}>{headerRow}</div>
       <div>{line(chars.teeLeft, chars.cross, chars.teeRight, chars.horizontal)}</div>
       {normalizedRows.map((row, i) => (
         <div key={i}>
@@ -120,9 +120,9 @@ export function Table({ columns, rows, border = 'single', className, style }: Ta
             return (
               <span key={j}>
                 {accent ? (
-                  <span style={{ color: `var(--n3rd-accent-${accent})` }}>{content}</span>
+                  <span style={{ color: `var(--boum-accent-${accent})` }}>{content}</span>
                 ) : (
-                  <span style={{ color: 'var(--n3rd-text-primary)' }}>{content}</span>
+                  <span style={{ color: 'var(--boum-text-primary)' }}>{content}</span>
                 )}
                 {j < colCount - 1 ? chars.vertical : ''}
               </span>

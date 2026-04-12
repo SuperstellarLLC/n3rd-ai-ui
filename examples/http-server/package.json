@@ -1,5 +1,5 @@
 {
-  "name": "@n3rd-ai/example-http-server",
+  "name": "@boum-ai/example-http-server",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@n3rd-ai/mcp": "workspace:*",
+    "@boum-ai/mcp": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.29.0",
     "zod": "^3.25.0"
   },

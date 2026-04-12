@@ -12,12 +12,12 @@ export interface HeadingProps {
 }
 
 const SIZE_MAP: Record<Level, string> = {
-  1: 'var(--n3rd-text-2xl)',
-  2: 'var(--n3rd-text-xl)',
-  3: 'var(--n3rd-text-lg)',
-  4: 'var(--n3rd-text-base)',
-  5: 'var(--n3rd-text-sm)',
-  6: 'var(--n3rd-text-xs)',
+  1: 'var(--boum-text-2xl)',
+  2: 'var(--boum-text-xl)',
+  3: 'var(--boum-text-lg)',
+  4: 'var(--boum-text-base)',
+  5: 'var(--boum-text-sm)',
+  6: 'var(--boum-text-xs)',
 }
 
 const PREFIX_MAP: Record<Level, string> = {
@@ -40,13 +40,13 @@ export function Heading({
   const Tag = `h${level}` as const
 
   const headingStyle: CSSProperties = {
-    fontFamily: 'var(--n3rd-font)',
+    fontFamily: 'var(--boum-font)',
     fontSize: SIZE_MAP[level],
     fontWeight: 700,
-    lineHeight: 'var(--n3rd-line-height)',
-    color: gradient ? 'transparent' : 'var(--n3rd-text-primary)',
+    lineHeight: 'var(--boum-line-height)',
+    color: gradient ? 'transparent' : 'var(--boum-text-primary)',
     ...(gradient && {
-      background: 'var(--n3rd-gradient)',
+      background: 'var(--boum-gradient)',
       backgroundClip: 'text',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
@@ -60,9 +60,9 @@ export function Heading({
       {prefix && (
         <span
           style={{
-            color: 'var(--n3rd-text-tertiary)',
-            marginRight: 'var(--n3rd-space-2)',
-            ...(gradient && { WebkitTextFillColor: 'var(--n3rd-text-tertiary)' }),
+            color: 'var(--boum-text-tertiary)',
+            marginRight: 'var(--boum-space-2)',
+            ...(gradient && { WebkitTextFillColor: 'var(--boum-text-tertiary)' }),
           }}
         >
           {PREFIX_MAP[level]}

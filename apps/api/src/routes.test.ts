@@ -2,7 +2,7 @@ import { describe, it, expect, beforeEach, afterEach } from 'vitest'
 import { createDB, type DB } from './db.js'
 import { createApp } from './routes.js'
 import type { Hono } from 'hono'
-import { sign } from '@n3rd-ai/attest'
+import { sign } from '@boum-ai/attest'
 
 let db: DB
 let app: Hono
@@ -41,7 +41,7 @@ describe('POST /v1/keys', () => {
     const res = await request('POST', '/v1/keys', { owner: 'alice', name: 'weather' })
     expect(res.status).toBe(200)
     const body = await res.json() as { apiKey: string; serverId: string }
-    expect(body.apiKey).toMatch(/^n3rd_/)
+    expect(body.apiKey).toMatch(/^boum_/)
     expect(body.serverId).toBe('alice/weather')
   })
 
@@ -102,8 +102,8 @@ describe('POST /v1/events', () => {
     const rawRes = await app.request('http://localhost/v1/events', {
       method: 'POST',
       headers: {
-        'X-N3rd-Api-Key': apiKey,
-        'X-N3rd-Signature': `sha256=${sig}`,
+        'X-Boum-Api-Key': apiKey,
+        'X-Boum-Signature': `sha256=${sig}`,
         'Content-Type': 'application/json',
       },
       body,
@@ -111,6 +111,33 @@ describe('POST /v1/events', () => {
     expect(rawRes.status).toBe(200)
     const result = await rawRes.json() as { accepted: number }
     expect(result.accepted).toBe(2)
+  })
+
+  it('accepts legacy n3rd headers during the transition', async () => {
+    const keyRes = await request('POST', '/v1/keys', { owner: 'legacy', name: 'tools' })
+    const { apiKey } = await keyRes.json() as { apiKey: string }
+
+    const events = {
+      events: [
+        { id: '1', ts: Date.now(), server: 'tools', tool: 'search', duration_ms: 42, status: 'ok' },
+      ],
+    }
+    const body = JSON.stringify(events)
+    const sig = sign(body, apiKey)
+
+    const rawRes = await app.request('http://localhost/v1/events', {
+      method: 'POST',
+      headers: {
+        'X-N3rd-Api-Key': apiKey,
+        'X-N3rd-Signature': `sha256=${sig}`,
+        'Content-Type': 'application/json',
+      },
+      body,
+    })
+
+    expect(rawRes.status).toBe(200)
+    const result = await rawRes.json() as { accepted: number }
+    expect(result.accepted).toBe(1)
   })
 
   it('rejects requests without API key', async () => {
@@ -122,7 +149,7 @@ describe('POST /v1/events', () => {
     const res = await app.request('http://localhost/v1/events', {
       method: 'POST',
       headers: {
-        'X-N3rd-Api-Key': 'n3rd_invalid',
+        'X-Boum-Api-Key': 'boum_invalid',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ events: [{ id: '1', ts: 1, server: 'x', tool: 'y', duration_ms: 1, status: 'ok' }] }),
@@ -176,7 +203,7 @@ describe('GET /v1/badge/:owner/:name', () => {
     expect(res.headers.get('content-type')).toBe('image/svg+xml')
     const svg = await res.text()
     expect(svg).toContain('<svg')
-    expect(svg).toContain('n3rd')
+    expect(svg).toContain('boum')
   })
 
   it('returns unverified SVG for unknown server', async () => {

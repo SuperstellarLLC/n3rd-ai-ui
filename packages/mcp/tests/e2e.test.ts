@@ -5,13 +5,13 @@
  */
 import { describe, it, expect, afterEach, vi } from 'vitest'
 import { z } from 'zod'
-import { createN3rdServer } from '../src/server/index.js'
-import type { N3rdServer } from '../src/server/types.js'
+import { createBoumServer } from '../src/server/index.js'
+import type { BoumServer } from '../src/server/types.js'
 import type { Tracer, Span } from '../src/observability/index.js'
 import { Client } from '@modelcontextprotocol/sdk/client/index.js'
 import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
 
-let server: N3rdServer | undefined
+let server: BoumServer | undefined
 
 afterEach(async () => {
   if (server) {
@@ -20,7 +20,7 @@ afterEach(async () => {
   }
 })
 
-function port(s: N3rdServer): number {
+function port(s: BoumServer): number {
   const a = s.address()
   if (!a) throw new Error('not listening')
   return a.port
@@ -28,7 +28,7 @@ function port(s: N3rdServer): number {
 
 describe('E2E MCP protocol flow over HTTP', () => {
   it('completes initialize → list → call → close round-trip', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'e2e-server', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -66,7 +66,7 @@ describe('E2E MCP protocol flow over HTTP', () => {
   })
 
   it('increments tool call metrics on each invocation', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'metrics-server', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -94,7 +94,7 @@ describe('E2E MCP protocol flow over HTTP', () => {
   })
 
   it('records tool errors in metrics', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'err-server', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -120,7 +120,7 @@ describe('E2E MCP protocol flow over HTTP', () => {
   })
 
   it('tracks active sessions via gauge', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'session-server', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -148,7 +148,7 @@ describe('E2E MCP protocol flow over HTTP', () => {
   })
 
   it('serves /metrics endpoint with Prometheus format', async () => {
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 's', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
@@ -201,7 +201,7 @@ describe('Tracer integration', () => {
       },
     }
 
-    server = createN3rdServer(
+    server = createBoumServer(
       {
         server: { name: 'trace', version: '1.0.0' },
         transport: { type: 'http', options: { port: 0, host: '127.0.0.1' } },
