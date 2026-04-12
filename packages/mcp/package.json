@@ -76,7 +76,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@eslint/js": "^9.0.0",
+    "@eslint/js": "^10.0.1",
     "fast-check": "^3.23.0",
     "tinybench": "^3.0.0",
     "tsx": "^4.19.0",
