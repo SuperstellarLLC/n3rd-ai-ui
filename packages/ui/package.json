@@ -89,11 +89,11 @@
     "@testing-library/react": "^15.0.0",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.0",
-    "@vitest/coverage-v8": "^4.1.0",
+    "@vitest/coverage-v8": "^4.1.4",
     "eslint": "^9.0.0",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "jsdom": "^29.0.0",
+    "jsdom": "^29.0.2",
     "next": "^15.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -101,7 +101,7 @@
     "@size-limit/preset-small-lib": "^11.0.0",
     "tsup": "^8.0.0",
     "typescript": "~5.8.0",
-    "typescript-eslint": "^8.0.0",
-    "vitest": "^4.1.0"
+    "typescript-eslint": "^8.58.1",
+    "vitest": "^4.1.4"
   }
 }
