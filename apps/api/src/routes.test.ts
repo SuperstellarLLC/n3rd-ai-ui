@@ -51,6 +51,38 @@ describe('POST /v1/keys', () => {
   })
 })
 
+describe('POST /v1/waitlist', () => {
+  it('stores a waitlist entry', async () => {
+    const res = await request('POST', '/v1/waitlist', {
+      email: 'hello@example.com',
+      useCase: 'Comparing apartments side by side',
+      source: 'landing-page',
+    })
+    expect(res.status).toBe(200)
+    const body = await res.json() as { ok: boolean; duplicate: boolean }
+    expect(body.ok).toBe(true)
+    expect(body.duplicate).toBe(false)
+    expect(db.getWaitlistEntry('hello@example.com')?.use_case).toContain('apartments')
+  })
+
+  it('deduplicates repeated submissions', async () => {
+    await request('POST', '/v1/waitlist', { email: 'repeat@example.com' })
+    const res = await request('POST', '/v1/waitlist', {
+      email: 'repeat@example.com',
+      useCase: 'Code review',
+    })
+    expect(res.status).toBe(200)
+    const body = await res.json() as { duplicate: boolean }
+    expect(body.duplicate).toBe(true)
+    expect(db.getWaitlistEntry('repeat@example.com')?.use_case).toBe('Code review')
+  })
+
+  it('rejects invalid emails', async () => {
+    const res = await request('POST', '/v1/waitlist', { email: 'not-an-email' })
+    expect(res.status).toBe(400)
+  })
+})
+
 describe('POST /v1/events', () => {
   it('accepts signed events', async () => {
     // Create a key first

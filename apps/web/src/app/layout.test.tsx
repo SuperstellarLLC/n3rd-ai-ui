@@ -6,16 +6,16 @@ import { render, screen } from '@testing-library/react'
 describe('RootLayout', () => {
   describe('metadata export', () => {
     it('has the correct title', () => {
-      expect(metadata.title).toBe('n3rd.ai — The reputation layer for AI agents')
+      expect(metadata.title).toBe('n3rd.ai — Frontier UI for AI')
     })
 
     it('has a description', () => {
-      expect(metadata.description).toContain('signed and scored')
+      expect(metadata.description).toContain('interactive interfaces')
     })
 
     it('has keywords', () => {
       expect(metadata.keywords).toEqual(
-        expect.arrayContaining(['mcp', 'reputation', 'ai-agents', 'attestation']),
+        expect.arrayContaining(['frontier ui', 'ai interface', 'interactive ai', 'generative ui']),
       )
     })
 
@@ -26,7 +26,7 @@ describe('RootLayout', () => {
     it('has Open Graph metadata', () => {
       const og = metadata.openGraph as Record<string, unknown>
       expect(og).toBeDefined()
-      expect(og.title).toBe('n3rd.ai — The reputation layer for AI agents')
+      expect(og.title).toBe('n3rd.ai — Frontier UI for AI')
       expect(og.url).toBe('https://n3rd.ai')
       expect(og.siteName).toBe('n3rd.ai')
       expect(og.type).toBe('website')
@@ -45,7 +45,7 @@ describe('RootLayout', () => {
 
   describe('viewport export', () => {
     it('has the correct theme color', () => {
-      expect(viewport.themeColor).toBe('#0a0a0a')
+      expect(viewport.themeColor).toBe('#f4ede4')
     })
 
     it('sets device width and initial scale', () => {

@@ -1,182 +1,407 @@
-import { Page, Stack, Row, Box, Text, Heading, Logo, Button, Code, Nav, Footer } from '@n3rd-ai/ui'
-import { ReputationBadge } from '@/components/ReputationBadge'
+import Image from 'next/image'
+import styles from './page.module.css'
+import { WaitlistForm } from '@/components/WaitlistForm'
 
-const INSTALL_SNIPPET = `import { createN3rdServer } from '@n3rd-ai/mcp'
-import { attest } from '@n3rd-ai/attest'
+type ImageShowcaseCard = {
+  kind: 'image'
+  eyebrow: string
+  title: string
+  description: string
+  image: string
+  alt: string
+  chips: string[]
+}
 
-createN3rdServer({
-  server: { name: 'weather', version: '1.0.0' },
-  transport: { type: 'http' },
-  observability: { tracer: attest({ apiKey: process.env.N3RD_KEY! }) },
-}, setup)`
+type CodeShowcaseCard = {
+  kind: 'code'
+  eyebrow: string
+  title: string
+  description: string
+  chips: string[]
+}
 
-const CLI_DEMO = `$ npx n3rd init weather
-  ✓ scaffolded weather/ with @n3rd-ai/mcp + attest
-$ cd weather && pnpm dev
-  ✓ MCP server listening on http://127.0.0.1:3000/mcp
-  ✓ first attestation signed and shipped
-  → profile: https://n3rd.ai/@you/weather  claim it →`
+const heroHomes = [
+  {
+    title: 'Seestrasse Loft',
+    details: '3 bed · 142 m² · Lake view',
+    price: 'CHF 3,980',
+    verdict: 'Best overall fit',
+    image:
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Modern apartment kitchen with wood finishes and large windows.',
+  },
+  {
+    title: 'Kreis 5 Penthouse',
+    details: '2 bed · 118 m² · Morning light',
+    price: 'CHF 3,720',
+    verdict: 'Strong value',
+    image:
+      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Bright apartment living room with soft furniture and a city-facing window.',
+  },
+]
 
-const BADGE_MARKDOWN = `![n3rd](https://n3rd.ai/@you/weather/badge.svg)`
+const showcaseCards: Array<ImageShowcaseCard | CodeShowcaseCard> = [
+  {
+    kind: 'image',
+    eyebrow: 'Summer shoes',
+    title: 'See the trade-offs, not just the paragraph.',
+    description:
+      'Compare comfort, support, waterproofing, and style in one living view with galleries, notes, and price deltas.',
+    image:
+      'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Bright athletic shoes displayed against a colorful background.',
+    chips: ['Gallery view', 'Comfort notes', 'Price deltas'],
+  },
+  {
+    kind: 'image',
+    eyebrow: 'Home search',
+    title: 'Line up kitchens, views, commutes, and numbers.',
+    description:
+      'Turn a messy property search into a clean shortlist with side-by-side photos, scoring, and deal-breaker filters.',
+    image:
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=80',
+    alt: 'High-end kitchen interior with wide windows and natural light.',
+    chips: ['Photo compare', 'Commute math', 'Budget guardrails'],
+  },
+  {
+    kind: 'image',
+    eyebrow: 'Travel planning',
+    title: 'Move from itinerary text to a trip workspace.',
+    description:
+      'Keep flights, neighborhoods, hotel options, walking times, and budget assumptions visible at once while you refine.',
+    image:
+      'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Coastal travel scene with turquoise water and beach umbrellas.',
+    chips: ['Maps', 'Cost tracker', 'Editable schedule'],
+  },
+  {
+    kind: 'code',
+    eyebrow: 'Code review',
+    title: 'Ship richer technical answers than plain markdown.',
+    description:
+      'Render diffs, architecture notes, performance hotspots, and verification steps in a workspace that feels built for engineering teams.',
+    chips: ['Diff views', 'Risk callouts', 'Source-linked notes'],
+  },
+]
 
-const CENTER_TEXT = { textAlign: 'center' as const }
+const productPrinciples = [
+  {
+    step: '01',
+    title: 'Ask normally',
+    body: 'Users type the same natural prompts they already use in Claude or ChatGPT. No new language to learn.',
+  },
+  {
+    step: '02',
+    title: 'Render structured views',
+    body: 'n3rd turns the answer into trusted UI blocks like compare tables, galleries, maps, calculators, and review panels.',
+  },
+  {
+    step: '03',
+    title: 'Refine in place',
+    body: 'Filters, preferences, and follow-up prompts keep the view alive so users can iterate without losing context.',
+  },
+]
+
+const trustSignals = [
+  'Interactive comparisons instead of walls of text',
+  'Live preferences and editable views inside the conversation',
+  'Sources, numbers, and reasoning attached to every card',
+]
 
 export default function Home() {
   return (
-    <Page>
-      <Nav
-        items={[
-          { label: 'HOME', href: '/', active: true },
-          { label: 'DOCS', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
-          { label: 'EXPLORE', href: '/explore' },
-          { label: 'TRY', href: '/try' },
-          { label: 'GITHUB', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
-        ]}
-      />
+    <main className={styles.page}>
+      <div className={styles.backgroundAura} aria-hidden="true" />
 
-      <Stack gap="xl">
-        {/* HERO — reputation layer for AI agents */}
-        <Stack gap="lg" align="center">
-          <Logo text="n3rd.ai" gradient decorated />
-          <Heading level={1} style={CENTER_TEXT}>
-            THE REPUTATION LAYER FOR AI AGENTS
-          </Heading>
-          <Text size="lg" color="secondary" style={CENTER_TEXT}>
-            Every MCP tool call, signed and scored. One number. Embeddable anywhere.
-          </Text>
-          <Row gap="md" justify="center">
-            <Button href="https://npmjs.com/package/@n3rd-ai/attest" external variant="primary">
-              GET STARTED
-            </Button>
-            <Button href="https://github.com/SuperstellarLLC/n3rd-ai" external variant="ghost">
-              VIEW ON GITHUB
-            </Button>
-          </Row>
-        </Stack>
+      <header className={styles.header}>
+        <a href="#top" className={styles.brand}>
+          n3rd.ai
+        </a>
 
-        {/* THE DEMO — terminal showing the 90-second path */}
-        <Box border="double" title="npx n3rd init weather" padding="lg">
-          <pre
-            style={{
-              fontFamily: 'inherit',
-              margin: 0,
-              whiteSpace: 'pre-wrap',
-              lineHeight: 1.6,
-              color: 'var(--n3rd-text-secondary)',
-            }}
-          >
-            {CLI_DEMO}
-          </pre>
-        </Box>
+        <nav className={styles.nav} aria-label="Primary">
+          <a href="#use-cases">Use cases</a>
+          <a href="#experience">Experience</a>
+          <a href="#waitlist">Waitlist</a>
+        </nav>
 
-        {/* THE BADGE — the viral loop */}
-        <Stack gap="lg" align="center">
-          <Heading level={2} style={CENTER_TEXT}>
-            YOUR SERVER, SCORED
-          </Heading>
-          <Text size="base" color="secondary" style={CENTER_TEXT}>
-            One number. 0–100. Updated live. Embeddable in any README.
-          </Text>
-          <Row gap="lg" justify="center" wrap>
-            <ReputationBadge server="weather" score={94} uptimePct={99.7} callsPerDay={12_500} />
-            <ReputationBadge server="github" score={78} uptimePct={98.2} callsPerDay={2_300_000} />
-            <ReputationBadge
-              server="demo"
-              score={42}
-              uptimePct={91.4}
-              callsPerDay={120}
-              verified={false}
-            />
-          </Row>
-          <Box border="single" padding="sm">
-            <Stack gap="sm">
-              <Text size="xs" color="tertiary">
-                paste into your README:
-              </Text>
-              <Text size="sm" color="primary">
-                {BADGE_MARKDOWN}
-              </Text>
-            </Stack>
-          </Box>
-        </Stack>
+        <a href="#waitlist" className={styles.headerCta}>
+          Join waitlist
+        </a>
+      </header>
 
-        {/* THE INSTALL — three lines */}
-        <Stack gap="md" align="center">
-          <Heading level={2} style={CENTER_TEXT}>
-            THREE LINES. ZERO CONFIG.
-          </Heading>
-          <Text size="base" color="secondary" style={CENTER_TEXT}>
-            Drop @n3rd-ai/attest into any MCP server. Your reputation starts on the next tool call.
-          </Text>
-          <Box style={{ width: '100%', maxWidth: 720 }}>
-            <Code title="server.ts">{INSTALL_SNIPPET}</Code>
-          </Box>
-        </Stack>
+      <section id="top" className={styles.heroSection}>
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>Frontier UI for frontier AI</p>
+          <h1 className={styles.heroTitle}>AI should answer with interfaces, not documents.</h1>
+          <p className={styles.heroDescription}>
+            n3rd turns long AI responses into interactive views you can actually use. Compare
+            products, homes, trips, and code in galleries, tables, maps, and workspaces that adapt
+            as fast as you think.
+          </p>
 
-        {/* WHY TRUST IT */}
-        <Stack gap="md">
-          <Heading level={2} style={CENTER_TEXT}>
-            WHY TRUST IT
-          </Heading>
-          <Row gap="md" wrap justify="center">
-            <Box border="single" title="signed" padding="md" style={{ flex: 1, minWidth: 240 }}>
-              <Text color="secondary">
-                Every event is HMAC-SHA256 signed with your private key. Tamper-evident. Verifiable.
-              </Text>
-            </Box>
-            <Box border="single" title="tiny" padding="md" style={{ flex: 1, minWidth: 240 }}>
-              <Text color="secondary">
-                1.38 KB gzipped. Zero runtime deps beyond @n3rd-ai/mcp. Your bundle does not notice.
-              </Text>
-            </Box>
-            <Box
-              border="single"
-              title="non-blocking"
-              padding="md"
-              style={{ flex: 1, minWidth: 240 }}
-            >
-              <Text color="secondary">
-                Events batch in memory and ship async. Delivery failures are silent. Your server
-                never waits.
-              </Text>
-            </Box>
-            <Box border="single" title="open" padding="md" style={{ flex: 1, minWidth: 240 }}>
-              <Text color="secondary">
-                MIT licensed. Auditable code. Runs in your process, not ours. You own the keys.
-              </Text>
-            </Box>
-          </Row>
-        </Stack>
+          <div className={styles.heroActions}>
+            <a href="#waitlist" className={styles.primaryButton}>
+              Join the waitlist
+            </a>
+            <a href="#use-cases" className={styles.secondaryButton}>
+              Explore the vision
+            </a>
+          </div>
 
-        {/* CTA */}
-        <Stack gap="md" align="center">
-          <Heading level={2} style={CENTER_TEXT}>
-            READY IN 90 SECONDS
-          </Heading>
-          <Text size="base" color="secondary" style={CENTER_TEXT}>
-            Waiting for your first tool call is the only onboarding step.
-          </Text>
-          <Row gap="md" justify="center">
-            <Button href="https://npmjs.com/package/@n3rd-ai/attest" external variant="primary">
-              NPM INSTALL @N3RD-AI/ATTEST
-            </Button>
-          </Row>
-        </Stack>
-      </Stack>
+          <ul className={styles.signalList}>
+            {trustSignals.map((signal) => (
+              <li key={signal}>{signal}</li>
+            ))}
+          </ul>
+        </div>
 
-      <Footer
-        tagline="the reputation layer for ai agents"
-        branding="n3rd.ai · built by superstellar"
-        links={[
-          { label: 'github', href: 'https://github.com/SuperstellarLLC/n3rd-ai', external: true },
-          { label: 'npm', href: 'https://npmjs.com/package/@n3rd-ai/attest', external: true },
-          {
-            label: 'security',
-            href: 'https://github.com/SuperstellarLLC/n3rd-ai/security',
-            external: true,
-          },
-        ]}
-      />
-    </Page>
+        <div className={styles.heroVisual}>
+          <div className={styles.mockWindow}>
+            <div className={styles.windowTopbar}>
+              <div className={styles.windowDots} aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+              <div className={styles.windowTabs}>
+                <span>Homes</span>
+                <span>Shoes</span>
+                <span>Trips</span>
+                <span>Code</span>
+              </div>
+            </div>
+
+            <div className={styles.workspace}>
+              <aside className={styles.workspaceSidebar}>
+                <div className={styles.promptCard}>
+                  <span className={styles.promptLabel}>Prompt</span>
+                  <p>
+                    Find a bright Zurich apartment under CHF 4k and compare kitchens, views,
+                    commute, and overall value.
+                  </p>
+                </div>
+
+                <div className={styles.filterStack}>
+                  <span className={styles.filterChip}>Morning light</span>
+                  <span className={styles.filterChip}>Walkable area</span>
+                  <span className={styles.filterChip}>Quiet street</span>
+                  <span className={styles.filterChip}>Lake or skyline view</span>
+                </div>
+
+                <div className={styles.summaryCard}>
+                  <span className={styles.summaryLabel}>n3rd insight</span>
+                  <p>
+                    Seestrasse Loft wins on kitchen quality and natural light. Kreis 5 gives the
+                    strongest price-to-space ratio.
+                  </p>
+                </div>
+              </aside>
+
+              <div className={styles.workspaceMain}>
+                <div className={styles.compareHeader}>
+                  <div>
+                    <p className={styles.compareEyebrow}>Live comparison</p>
+                    <h2>Apartment shortlist</h2>
+                  </div>
+                  <p className={styles.compareMeta}>2 saved views · 1 updated preference</p>
+                </div>
+
+                <div className={styles.homeGrid}>
+                  {heroHomes.map((home) => (
+                    <article key={home.title} className={styles.homeCard}>
+                      <div className={styles.homeImageWrap}>
+                        <Image
+                          src={home.image}
+                          alt={home.alt}
+                          fill
+                          priority
+                          sizes="(max-width: 960px) 100vw, 26vw"
+                          className={styles.coverImage}
+                        />
+                      </div>
+                      <div className={styles.homeBody}>
+                        <div>
+                          <h3>{home.title}</h3>
+                          <p>{home.details}</p>
+                        </div>
+                        <div className={styles.homeMetrics}>
+                          <span>{home.price}</span>
+                          <span>{home.verdict}</span>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+
+                <div className={styles.scorePanel}>
+                  <div>
+                    <p className={styles.compareEyebrow}>Why it works</p>
+                    <h3>Answers become a surface you can steer.</h3>
+                  </div>
+                  <div className={styles.scoreRows}>
+                    <div>
+                      <span>Kitchen quality</span>
+                      <strong>9.4</strong>
+                    </div>
+                    <div>
+                      <span>Commute fit</span>
+                      <strong>8.8</strong>
+                    </div>
+                    <div>
+                      <span>Value score</span>
+                      <strong>8.6</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.floatingCard}>
+            <p className={styles.compareEyebrow}>Quick swap</p>
+            <h3>Summer shoes</h3>
+            <p>Side-by-side fit notes, heat comfort, and waterproof trade-offs.</p>
+          </div>
+
+          <div className={styles.floatingCode}>
+            <p className={styles.compareEyebrow}>Code review view</p>
+            <pre>{`+ keep inline risk callouts\n+ surface tests beside diff\n- bury key regressions in prose`}</pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="use-cases" className={styles.section}>
+        <div className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>Real-life experiences</p>
+          <h2>Decision-heavy workflows become visual, fast, and obvious.</h2>
+          <p>
+            The best early wedge is not generic chat. It is helping people make better decisions
+            when plain text is too clumsy to hold the full picture.
+          </p>
+        </div>
+
+        <div className={styles.showcaseGrid}>
+          {showcaseCards.map((card) => (
+            <article key={card.title} className={styles.showcaseCard}>
+              {card.kind === 'image' ? (
+                <div className={styles.showcaseImageWrap}>
+                  <Image
+                    src={card.image}
+                    alt={card.alt}
+                    fill
+                    sizes="(max-width: 960px) 100vw, 33vw"
+                    className={styles.coverImage}
+                  />
+                </div>
+              ) : (
+                <div className={styles.codeCardPreview}>
+                  <div className={styles.codeCardHeader}>
+                    <span>Changed files</span>
+                    <span>4</span>
+                  </div>
+                  <div className={styles.codeRows}>
+                    <span>[P1] Unsafe HTML render path</span>
+                    <span>[P2] Missing loading state in compare view</span>
+                    <span>Suggested tests ready</span>
+                  </div>
+                </div>
+              )}
+
+              <div className={styles.showcaseContent}>
+                <p className={styles.showcaseEyebrow}>{card.eyebrow}</p>
+                <h3>{card.title}</h3>
+                <p>{card.description}</p>
+                <div className={styles.showcaseChips}>
+                  {card.chips.map((chip) => (
+                    <span key={chip}>{chip}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="experience" className={styles.experienceSection}>
+        <div className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>The product thesis</p>
+          <h2>Chat was the prototype. The future is conversational software.</h2>
+          <p>
+            Frontier models already understand nuance. The missing layer is an interface runtime
+            that can hold comparisons, choices, media, and edits without collapsing back into a
+            scrolling transcript.
+          </p>
+        </div>
+
+        <div className={styles.experienceGrid}>
+          <article className={styles.textWallCard}>
+            <p className={styles.compareEyebrow}>What users get today</p>
+            <h3>A wall of text</h3>
+            <p>
+              Helpful, but hard to scan, hard to compare, and too easy to lose once the next prompt
+              lands.
+            </p>
+            <div className={styles.textWallBlock}>
+              <p>
+                Option 1 has the best kitchen but costs slightly more. Option 2 is a better value if
+                commute matters. Option 3 has strong natural light although the layout feels less
+                efficient...
+              </p>
+            </div>
+          </article>
+
+          <article className={styles.interfaceCard}>
+            <p className={styles.compareEyebrow}>What n3rd makes possible</p>
+            <h3>A live interface</h3>
+            <p>
+              The answer keeps its shape: filters remain editable, sources stay visible, and the UI
+              updates as the conversation evolves.
+            </p>
+            <div className={styles.interfaceList}>
+              <span>Gallery</span>
+              <span>Compare table</span>
+              <span>Calculator</span>
+              <span>Map</span>
+              <span>Diff viewer</span>
+              <span>Source drawer</span>
+            </div>
+          </article>
+        </div>
+
+        <div className={styles.principlesGrid}>
+          {productPrinciples.map((item) => (
+            <article key={item.step} className={styles.principleCard}>
+              <span>{item.step}</span>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="waitlist" className={styles.waitlistSection}>
+        <div className={styles.waitlistCopy}>
+          <p className={styles.eyebrow}>Early access</p>
+          <h2>Join the waitlist for the first serious frontier UI client.</h2>
+          <p>
+            We’re prioritizing people and teams who already live in ChatGPT or Claude and want their
+            highest-value workflows to feel native, visual, and fast.
+          </p>
+        </div>
+
+        <WaitlistForm />
+      </section>
+
+      <footer className={styles.footer}>
+        <p>n3rd.ai is building the interface layer that makes AI feel like the future.</p>
+        <div>
+          <a href="#top">Back to top</a>
+          <a href="https://github.com/SuperstellarLLC/n3rd-ai" target="_blank" rel="noreferrer">
+            GitHub
+          </a>
+        </div>
+      </footer>
+    </main>
   )
 }

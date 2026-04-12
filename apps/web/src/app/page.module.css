@@ -1,0 +1,858 @@
+.page {
+  position: relative;
+  overflow: hidden;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px 96px;
+}
+
+.backgroundAura {
+  position: absolute;
+  inset: -10% -18% auto;
+  height: 680px;
+  background:
+    radial-gradient(circle at 18% 28%, rgba(255, 122, 24, 0.24), transparent 34%),
+    radial-gradient(circle at 72% 14%, rgba(14, 165, 233, 0.18), transparent 32%),
+    radial-gradient(circle at 58% 54%, rgba(44, 197, 176, 0.14), transparent 28%);
+  filter: blur(18px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 52px;
+  padding: 14px 18px;
+  border: 1px solid rgba(22, 31, 51, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.74);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 40px rgba(16, 24, 40, 0.08);
+}
+
+.brand {
+  color: var(--page-ink);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav a,
+.footer a {
+  color: rgba(17, 24, 39, 0.82);
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.headerCta,
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.headerCta,
+.primaryButton {
+  color: white;
+  background: linear-gradient(135deg, #0f2542, #1d4f91 62%, #1190c9);
+  box-shadow: 0 18px 28px rgba(16, 24, 40, 0.18);
+}
+
+.secondaryButton {
+  color: var(--page-ink);
+  border: 1px solid rgba(22, 31, 51, 0.14);
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.primaryButton:disabled {
+  cursor: wait;
+  opacity: 0.7;
+  transform: none;
+}
+
+.heroSection,
+.waitlistSection,
+.experienceGrid,
+.principlesGrid,
+.showcaseGrid {
+  display: grid;
+  gap: 28px;
+}
+
+.heroSection {
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  align-items: center;
+  margin-bottom: 92px;
+}
+
+.heroCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.eyebrow,
+.showcaseEyebrow,
+.compareEyebrow,
+.promptLabel,
+.summaryLabel {
+  margin: 0;
+  color: var(--page-accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.heroTitle,
+.sectionHeading h2,
+.waitlistCopy h2 {
+  margin: 0;
+  color: var(--page-ink);
+  font-family: var(--font-display), serif;
+  font-size: clamp(3.5rem, 6vw, 6.15rem);
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+}
+
+.heroDescription,
+.sectionHeading p,
+.waitlistCopy p,
+.showcaseContent p,
+.principleCard p,
+.textWallCard p,
+.interfaceCard p,
+.promptCard p,
+.summaryCard p,
+.floatingCard p {
+  margin: 0;
+  color: var(--page-muted);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.signalList {
+  display: grid;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.signalList li {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(17, 24, 39, 0.86);
+  font-size: 0.98rem;
+}
+
+.signalList li::before {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff7a18, #0ea5e9);
+  content: '';
+  box-shadow: 0 0 0 5px rgba(255, 122, 24, 0.12);
+}
+
+.heroVisual {
+  position: relative;
+  min-height: 690px;
+}
+
+.mockWindow {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 30px;
+  background:
+    linear-gradient(180deg, rgba(16, 24, 40, 0.96), rgba(11, 16, 30, 0.96)), rgba(11, 16, 30, 0.96);
+  color: #eef4ff;
+  box-shadow:
+    0 36px 80px rgba(10, 14, 28, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.windowTopbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.windowDots {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.windowDots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.windowTabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.windowTabs span,
+.filterChip,
+.showcaseChips span,
+.interfaceList span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(238, 244, 255, 0.88);
+  font-size: 0.85rem;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(230px, 0.42fr) minmax(0, 0.58fr);
+  gap: 22px;
+  padding: 24px;
+}
+
+.workspaceSidebar,
+.workspaceMain,
+.filterStack,
+.homeBody,
+.scoreRows,
+.sectionHeading,
+.showcaseContent,
+.footer,
+.waitlistCopy {
+  display: flex;
+  flex-direction: column;
+}
+
+.workspaceSidebar {
+  gap: 18px;
+}
+
+.promptCard,
+.summaryCard,
+.scorePanel,
+.floatingCard,
+.floatingCode,
+.textWallCard,
+.interfaceCard,
+.principleCard,
+.showcaseCard,
+.waitlistSection {
+  border: 1px solid rgba(22, 31, 51, 0.12);
+  border-radius: 28px;
+  box-shadow:
+    0 24px 44px rgba(16, 24, 40, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.promptCard,
+.summaryCard {
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.filterStack {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.workspaceMain {
+  gap: 18px;
+}
+
+.compareHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.compareHeader h2,
+.scorePanel h3,
+.floatingCard h3,
+.sectionHeading h2,
+.showcaseContent h3,
+.textWallCard h3,
+.interfaceCard h3,
+.principleCard h3,
+.waitlistCopy h2 {
+  margin: 0;
+}
+
+.compareHeader h2,
+.scorePanel h3,
+.floatingCard h3,
+.showcaseContent h3,
+.textWallCard h3,
+.interfaceCard h3,
+.principleCard h3 {
+  color: inherit;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 1.42rem;
+  line-height: 1.15;
+}
+
+.compareMeta {
+  margin: 0;
+  color: rgba(238, 244, 255, 0.64);
+  font-size: 0.9rem;
+}
+
+.homeGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.homeCard {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.homeImageWrap,
+.showcaseImageWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.homeImageWrap {
+  aspect-ratio: 1.18 / 0.88;
+}
+
+.showcaseImageWrap {
+  aspect-ratio: 1.15 / 0.9;
+}
+
+.coverImage {
+  object-fit: cover;
+}
+
+.homeBody {
+  gap: 16px;
+  padding: 16px;
+}
+
+.homeBody h3,
+.homeBody p,
+.scoreRows div,
+.codeCardHeader,
+.footer p {
+  margin: 0;
+}
+
+.homeBody p {
+  color: rgba(238, 244, 255, 0.72);
+  font-size: 0.95rem;
+}
+
+.homeMetrics {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(238, 244, 255, 0.92);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.scorePanel {
+  gap: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(11, 95, 134, 0.22), rgba(255, 122, 24, 0.08));
+}
+
+.scoreRows {
+  gap: 14px;
+}
+
+.scoreRows div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(238, 244, 255, 0.84);
+}
+
+.scoreRows div:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.scoreRows strong {
+  font-size: 1.2rem;
+}
+
+.floatingCard,
+.floatingCode {
+  position: absolute;
+  padding: 18px;
+  backdrop-filter: blur(18px);
+  animation: float 8s ease-in-out infinite;
+}
+
+.floatingCard {
+  top: -18px;
+  right: -12px;
+  max-width: 280px;
+  background: rgba(255, 250, 244, 0.86);
+  transform: rotate(5deg);
+}
+
+.floatingCard h3,
+.floatingCard p,
+.floatingCode p,
+.floatingCode pre {
+  color: var(--page-ink);
+}
+
+.floatingCode {
+  left: -22px;
+  bottom: 26px;
+  max-width: 280px;
+  background: rgba(255, 255, 255, 0.9);
+  transform: rotate(-5deg);
+  animation-delay: 1.2s;
+}
+
+.floatingCode pre {
+  margin: 8px 0 0;
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.section,
+.experienceSection,
+.waitlistSection {
+  margin-bottom: 92px;
+}
+
+.sectionHeading {
+  gap: 14px;
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.sectionHeading h2,
+.waitlistCopy h2 {
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+}
+
+.showcaseGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.showcaseCard {
+  overflow: hidden;
+  background: rgba(255, 252, 247, 0.84);
+}
+
+.showcaseContent {
+  gap: 14px;
+  padding: 22px;
+}
+
+.showcaseChips,
+.interfaceList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.showcaseChips span,
+.interfaceList span {
+  color: rgba(17, 24, 39, 0.86);
+  border-color: rgba(22, 31, 51, 0.12);
+  background: rgba(17, 24, 39, 0.04);
+}
+
+.codeCardPreview {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 240px;
+  padding: 22px;
+  background:
+    linear-gradient(160deg, rgba(15, 37, 66, 0.96), rgba(17, 95, 148, 0.84)), rgba(15, 37, 66, 0.96);
+  color: rgba(238, 244, 255, 0.96);
+}
+
+.codeCardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.codeRows {
+  display: grid;
+  gap: 12px;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.experienceGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 28px;
+}
+
+.textWallCard,
+.interfaceCard,
+.principleCard,
+.waitlistSection {
+  padding: 28px;
+  background: rgba(255, 252, 247, 0.76);
+}
+
+.textWallCard,
+.interfaceCard {
+  gap: 16px;
+}
+
+.textWallBlock {
+  padding: 18px;
+  border-radius: 20px;
+  background: rgba(17, 24, 39, 0.06);
+}
+
+.interfaceList {
+  margin-top: auto;
+}
+
+.principlesGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.principleCard {
+  gap: 14px;
+}
+
+.principleCard > span {
+  color: var(--page-accent);
+  font-size: 0.96rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.waitlistSection {
+  grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 24, 0.12), transparent 42%),
+    radial-gradient(circle at bottom right, rgba(14, 165, 233, 0.12), transparent 40%),
+    rgba(255, 252, 247, 0.88);
+}
+
+.waitlistCopy {
+  gap: 18px;
+  max-width: 560px;
+}
+
+.waitlistForm,
+.formGrid,
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.waitlistForm {
+  gap: 18px;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(15, 37, 66, 0.94);
+  color: rgba(238, 244, 255, 0.96);
+  box-shadow: 0 26px 56px rgba(16, 24, 40, 0.18);
+}
+
+.formGrid {
+  gap: 16px;
+}
+
+.field {
+  gap: 10px;
+}
+
+.field span {
+  color: rgba(238, 244, 255, 0.84);
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  color: inherit;
+  font: inherit;
+  padding: 15px 16px;
+  outline: none;
+  transition:
+    border-color 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.textarea {
+  min-height: 126px;
+  resize: vertical;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: rgba(238, 244, 255, 0.48);
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: rgba(14, 165, 233, 0.72);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.12);
+}
+
+.formFooter {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.helperText,
+.formStatus,
+.successPanel p {
+  margin: 0;
+  color: rgba(238, 244, 255, 0.74);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.formStatus {
+  color: #ffd6cf;
+}
+
+.successPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 28px;
+  border-radius: 28px;
+  background: rgba(15, 37, 66, 0.94);
+  color: rgba(238, 244, 255, 0.96);
+}
+
+.successPanel h3 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.successBadge {
+  display: inline-flex;
+  align-self: flex-start;
+  min-height: 32px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(44, 197, 176, 0.16);
+  color: #b7fff0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 8px;
+  color: rgba(17, 24, 39, 0.72);
+}
+
+.footer div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--float-rotation, 0deg));
+  }
+  50% {
+    transform: translateY(-12px) rotate(var(--float-rotation, 0deg));
+  }
+}
+
+.floatingCard {
+  --float-rotation: 5deg;
+}
+
+.floatingCode {
+  --float-rotation: -5deg;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floatingCard,
+  .floatingCode,
+  .headerCta,
+  .primaryButton,
+  .secondaryButton {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (hover: hover) {
+  .headerCta:hover,
+  .primaryButton:hover,
+  .secondaryButton:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@media (max-width: 1120px) {
+  .heroSection,
+  .waitlistSection {
+    grid-template-columns: 1fr;
+  }
+
+  .heroVisual {
+    min-height: auto;
+  }
+
+  .floatingCard,
+  .floatingCode {
+    position: relative;
+    inset: auto;
+    max-width: none;
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 28px;
+  }
+
+  .showcaseGrid,
+  .experienceGrid,
+  .principlesGrid,
+  .homeGrid,
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .compareHeader,
+  .footer,
+  .formFooter {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    padding: 20px 16px 72px;
+  }
+
+  .header {
+    gap: 14px;
+    margin-bottom: 36px;
+    padding: 16px;
+  }
+
+  .nav {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .heroSection,
+  .section,
+  .experienceSection,
+  .waitlistSection {
+    margin-bottom: 72px;
+  }
+
+  .heroTitle,
+  .sectionHeading h2,
+  .waitlistCopy h2 {
+    font-size: clamp(2.6rem, 13vw, 3.8rem);
+  }
+
+  .workspace,
+  .waitlistSection,
+  .textWallCard,
+  .interfaceCard,
+  .principleCard {
+    padding: 22px;
+  }
+
+  .mockWindow {
+    border-radius: 24px;
+  }
+}

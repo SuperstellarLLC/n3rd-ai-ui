@@ -104,6 +104,32 @@ export function createApp(db: DB): Hono {
     })
   })
 
+  // ─── Waitlist capture ───────────────────────────────────
+  app.post('/v1/waitlist', async (c) => {
+    let body: Record<string, unknown>
+
+    try {
+      body = await c.req.json()
+    } catch {
+      return c.json({ error: 'Invalid JSON body' }, 400)
+    }
+
+    const email = normalizeEmail(body.email)
+    if (!email || !EMAIL_RE.test(email)) {
+      return c.json({ error: 'A valid email is required' }, 400)
+    }
+
+    const result = db.upsertWaitlistEntry({
+      email,
+      name: normalizeText(body.name, 120),
+      company: normalizeText(body.company, 120),
+      use_case: normalizeText(body.useCase, 1200),
+      source: normalizeText(body.source, 80) ?? 'landing-page',
+    })
+
+    return c.json({ ok: true, duplicate: !result.created })
+  })
+
   // ─── Server profile ─────────────────────────────────────
   app.get('/v1/servers/:owner/:name', (c) => {
     const id = `${c.req.param('owner')}/${c.req.param('name')}`
@@ -261,4 +287,19 @@ function recomputeServerScore(db: DB, serverId: string): void {
       last_event_at: events[0]?.ts ?? null,
     })
   }
+}
+
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+function normalizeEmail(value: unknown): string | null {
+  if (typeof value !== 'string') return null
+  const email = value.trim().toLowerCase()
+  return email ? email : null
+}
+
+function normalizeText(value: unknown, maxLength: number): string | null {
+  if (typeof value !== 'string') return null
+  const normalized = value.trim()
+  if (!normalized) return null
+  return normalized.slice(0, maxLength)
 }

@@ -1,5 +1,13 @@
 @import '@n3rd-ai/ui/theme/unicorn.css';
-@import '@n3rd-ai/ui/theme/fonts.css';
+
+:root {
+  --page-ink: #141b2b;
+  --page-muted: #586071;
+  --page-accent: #0f6aa8;
+  --page-surface: rgba(255, 251, 246, 0.82);
+  --font-sans: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', sans-serif;
+  --font-display: 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', serif;
+}
 
 html,
 body {
@@ -10,7 +18,28 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 122, 24, 0.16), transparent 28%),
+    radial-gradient(circle at top right, rgba(14, 165, 233, 0.12), transparent 30%),
+    linear-gradient(180deg, #f5efe5 0%, #fbf7f0 42%, #f7f0e7 100%);
+  color: var(--page-ink);
+  font-family: var(--font-sans), 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a,
+button,
+input,
+textarea {
+  font: inherit;
+}
+
 ::selection {
-  background: var(--n3rd-accent-primary, #a855f7);
-  color: var(--n3rd-bg-primary, #0a0a0a);
+  background: rgba(15, 106, 168, 0.2);
+  color: var(--page-ink);
 }

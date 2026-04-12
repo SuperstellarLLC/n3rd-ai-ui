@@ -3,6 +3,31 @@ import { createHash, randomUUID } from 'node:crypto'
 import { MIGRATIONS } from '@n3rd-ai/score'
 import type { ServerRecord, EventRecord } from '@n3rd-ai/score'
 
+const LOCAL_MIGRATIONS = [
+  `CREATE TABLE IF NOT EXISTS waitlist_entries (
+    email TEXT PRIMARY KEY,
+    name TEXT,
+    company TEXT,
+    use_case TEXT,
+    source TEXT,
+    status TEXT NOT NULL DEFAULT 'new',
+    created_at INTEGER NOT NULL,
+    updated_at INTEGER NOT NULL
+  )`,
+  `CREATE INDEX IF NOT EXISTS idx_waitlist_created_at ON waitlist_entries(created_at DESC)`,
+] as const
+
+export interface WaitlistEntry {
+  email: string
+  name: string | null
+  company: string | null
+  use_case: string | null
+  source: string | null
+  status: string
+  created_at: number
+  updated_at: number
+}
+
 export interface DB {
   /** Run all migrations */
   migrate(): void
@@ -24,6 +49,16 @@ export interface DB {
   createApiKey(serverId: string, options?: { temporary?: boolean; ttlMs?: number }): string
   /** Validate an API key. Returns the associated server_id or undefined. */
   validateApiKey(rawKey: string): string | undefined
+  /** Get a waitlist entry by email. */
+  getWaitlistEntry(email: string): WaitlistEntry | undefined
+  /** Insert or update a waitlist entry. Returns whether it was created. */
+  upsertWaitlistEntry(entry: {
+    email: string
+    name: string | null
+    company: string | null
+    use_case: string | null
+    source: string | null
+  }): { created: boolean }
   /** Close the database */
   close(): void
 }
@@ -36,6 +71,9 @@ export function createDB(path = ':memory:'): DB {
   return {
     migrate() {
       for (const sql of MIGRATIONS) {
+        db.exec(sql)
+      }
+      for (const sql of LOCAL_MIGRATIONS) {
         db.exec(sql)
       }
     },
@@ -128,6 +166,34 @@ export function createDB(path = ':memory:'): DB {
       if (!row) return undefined
       if (row.expires_at && row.expires_at < Date.now()) return undefined
       return row.server_id
+    },
+
+    getWaitlistEntry(email) {
+      return db.prepare('SELECT * FROM waitlist_entries WHERE email = ?').get(email) as
+        | WaitlistEntry
+        | undefined
+    },
+
+    upsertWaitlistEntry(entry) {
+      const existing = db.prepare('SELECT created_at FROM waitlist_entries WHERE email = ?')
+        .get(entry.email) as { created_at: number } | undefined
+      const now = Date.now()
+      db.prepare(`
+        INSERT INTO waitlist_entries (email, name, company, use_case, source, status, created_at, updated_at)
+        VALUES (@email, @name, @company, @use_case, @source, 'new', @created_at, @updated_at)
+        ON CONFLICT(email) DO UPDATE SET
+          name = COALESCE(excluded.name, waitlist_entries.name),
+          company = COALESCE(excluded.company, waitlist_entries.company),
+          use_case = COALESCE(excluded.use_case, waitlist_entries.use_case),
+          source = COALESCE(excluded.source, waitlist_entries.source),
+          updated_at = excluded.updated_at
+      `).run({
+        ...entry,
+        created_at: existing?.created_at ?? now,
+        updated_at: now,
+      })
+
+      return { created: !existing }
     },
 
     close() {

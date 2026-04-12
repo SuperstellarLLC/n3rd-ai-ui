@@ -3,6 +3,14 @@ import type { NextConfig } from 'next'
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
   // TypeScript checking is handled by `turbo run typecheck` — skip during build
   // to avoid React 18/19 type conflicts between workspace packages
   typescript: { ignoreBuildErrors: true },
@@ -22,7 +30,7 @@ const nextConfig: NextConfig = {
             "script-src 'self' 'unsafe-inline'",
             "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
             "font-src 'self' https://fonts.gstatic.com data:",
-            "img-src 'self' data: blob:",
+            "img-src 'self' data: blob: https://images.unsplash.com",
             "connect-src 'self'",
             "frame-ancestors 'none'",
             "base-uri 'self'",
