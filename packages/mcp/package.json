@@ -80,15 +80,15 @@
     "fast-check": "^3.23.0",
     "tinybench": "^3.0.0",
     "tsx": "^4.19.0",
-    "jose": "^6.0.0",
+    "jose": "^6.2.3",
     "zod": "^3.25.0",
-    "@vitest/coverage-v8": "^4.1.0",
+    "@vitest/coverage-v8": "^4.1.5",
     "eslint": "^9.0.0",
     "size-limit": "^11.0.0",
     "@size-limit/preset-small-lib": "^11.0.0",
     "tsup": "^8.0.0",
     "typescript": "~5.8.0",
-    "typescript-eslint": "^8.0.0",
-    "vitest": "^4.1.0"
+    "typescript-eslint": "^8.59.1",
+    "vitest": "^4.1.5"
   }
 }
